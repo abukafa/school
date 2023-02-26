@@ -124,7 +124,7 @@
                         </h6>
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link <?= $title <> 'Biodata' ?: 'active' ?>" href="/member/biodata">
+                                <a class="nav-link <?= $title <> 'Biodata' ?: 'active' ?>" href="/member/biodata/<?= session()->get('idm') ?>">
                                     <span data-feather="database"></span>
                                     Biodata
                                 </a>

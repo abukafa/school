@@ -60,7 +60,10 @@ $routes->get('/dashboard', 'OfficeDashboard::index');
 $routes->get('/admin/profil', 'OfficeDashboard::profil');
 $routes->post('/admin/profil', 'OfficeDashboard::save');
 
+$routes->get('/admin/member', 'OfficeMember::get');
+$routes->get('/admin/member/(:num)', 'OfficeMember::get/$1');
 $routes->get('/admin/guru', 'OfficeMember::guru');
+$routes->get('/admin/guru/(:any)', 'OfficeMember::guru/$1');
 $routes->get('/admin/siswa', 'OfficeMember::siswa');
 $routes->get('/admin/siswa/(:num)', 'OfficeMember::siswa/$1');
 $routes->get('/admin/biodata/(:num)', 'MemberBiodata::index/$1');
@@ -85,7 +88,7 @@ $routes->delete('/admin/pengguna/(:num)', 'OfficeUser::delete/$1');
 $routes->get('/password', 'OfficeUser::changePass');
 $routes->post('/password/update', 'OfficeUser::updatePass');
 
-$routes->get('/member/biodata', 'MemberBiodata::index');
+$routes->get('/member/biodata/(:num)', 'MemberBiodata::index/$1');
 
 $routes->get('/member/kompetensi', 'MemberKompetensi::index');
 

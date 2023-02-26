@@ -36,6 +36,7 @@ class OfficeUser extends BaseController
         $data = [
             'uname' => $this->request->getVar('uname'),
             'pass' => password_hash($this->request->getVar('pass'), PASSWORD_DEFAULT),
+            'idm' => $this->request->getVar('idm'),
             'nama' => $this->request->getVar('nama'),
             'tipe' => $this->request->getVar('tipe'),
             'akses' => $this->request->getVar('akses'),
@@ -50,6 +51,7 @@ class OfficeUser extends BaseController
     {
         $data = [
             'uname' => $this->request->getVar('uname'),
+            'idm' => $this->request->getVar('idm'),
             'nama' => $this->request->getVar('nama'),
             'tipe' => $this->request->getVar('tipe'),
             'akses' => $this->request->getVar('akses'),

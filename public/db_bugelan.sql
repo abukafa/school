@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 22, 2023 at 05:16 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.10
+-- Generation Time: Feb 27, 2023 at 12:19 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.0.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -39,7 +39,7 @@ CREATE TABLE `absensi` (
   `jam5` smallint(1) NOT NULL,
   `absen` varchar(1) NOT NULL,
   `ket` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -51,20 +51,21 @@ CREATE TABLE `admin` (
   `id` int(11) NOT NULL,
   `uname` text NOT NULL,
   `pass` text NOT NULL,
+  `idm` int(11) NOT NULL,
   `nama` text NOT NULL,
   `tipe` text NOT NULL,
   `akses` text NOT NULL,
   `ket` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id`, `uname`, `pass`, `nama`, `tipe`, `akses`, `ket`) VALUES
-(1, 'abu.kafa', '$2y$10$6J.gtIwGc4svpgxJtLWSNOqxvpN3aG.XpG9.Vz6e6VEryUxgDPGfW', 'Abdul Aziz, S.Pd.I', 'Programmer', 'Office', ''),
-(27, 'bgl.user', '$2y$10$N/fnoXZNjpBGDa7ZIXpYguScWzRkvluaQU/KQeujZ.PO2K1CD.MnW', 'Acep Helmi, S. Pd. I', 'Manager', 'User Guru', ''),
-(28, 'bgl.supe', '$2y$10$dJurQnfT.bQPUmIqTm9hTOESyBwLFB9wGA7S/Qv2ftqw/sCED6d..', 'Ai Mala, S. Pd', 'Officer', 'User', '1000');
+INSERT INTO `admin` (`id`, `uname`, `pass`, `idm`, `nama`, `tipe`, `akses`, `ket`) VALUES
+(1, 'abu.kafa', '$2y$10$6J.gtIwGc4svpgxJtLWSNOqxvpN3aG.XpG9.Vz6e6VEryUxgDPGfW', 85, 'Abdul Aziz, S.Pd.I', 'Programmer', 'Office', ''),
+(32, 'adm01', '$2y$10$C9E0QZnpdxTur6ZoXPpRMeqE8xnhM3JsNRi5JeKXGNhpjJCw4MuzW', 62, 'Adi Bayu Maulana Putra', 'Administrator', 'Absensi', ''),
+(33, 'adm02', '$2y$10$t4d51VYeOcCTIN.7AoQN6.s4fnf/iPEn5ENP8X3U3SayguyR.eFIe', 1, 'Ade Nurafni', 'Administrator', 'Absensi, Blog', '');
 
 -- --------------------------------------------------------
 
@@ -76,12 +77,12 @@ CREATE TABLE `blog` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `kategori` bigint(20) UNSIGNED NOT NULL,
   `ni` bigint(20) UNSIGNED NOT NULL,
-  `autor` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `judul` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `excerpt` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `body` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `autor` varchar(50) NOT NULL,
+  `judul` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `excerpt` text NOT NULL,
+  `body` text NOT NULL,
   `published` timestamp NULL DEFAULT NULL,
   `created` timestamp NULL DEFAULT NULL,
   `updated` timestamp NULL DEFAULT NULL
@@ -125,10 +126,10 @@ CREATE TABLE `galeri` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `kategori` bigint(20) UNSIGNED NOT NULL,
   `ni` bigint(20) UNSIGNED NOT NULL,
-  `autor` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `judul` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `caption` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `autor` varchar(50) NOT NULL,
+  `judul` varchar(255) NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `caption` text NOT NULL,
   `published` timestamp NULL DEFAULT NULL,
   `created` timestamp NULL DEFAULT NULL,
   `updated` timestamp NULL DEFAULT NULL
@@ -148,7 +149,7 @@ CREATE TABLE `info` (
   `bagian` varchar(25) NOT NULL,
   `informasi` text NOT NULL,
   `ket` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -164,7 +165,7 @@ CREATE TABLE `kalender` (
   `acara` text NOT NULL,
   `ket` text NOT NULL,
   `warna` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `kalender`
@@ -191,7 +192,7 @@ CREATE TABLE `kompetensi` (
   `hasil` text NOT NULL,
   `tahun` text NOT NULL,
   `ket` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -231,14 +232,14 @@ CREATE TABLE `member` (
   `pass` varchar(100) NOT NULL,
   `arsip` varchar(100) NOT NULL,
   `ket` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `member`
 --
 
 INSERT INTO `member` (`id`, `ni`, `nama`, `panggil`, `jk`, `tempat_lahir`, `tanggal_lahir`, `nik`, `no_kk`, `alamat`, `rt`, `rw`, `kelurahan`, `kecamatan`, `kabupaten`, `kode_pos`, `telepon`, `email`, `tahun`, `nama_ayah`, `tl_ayah`, `pekerjaan_ayah`, `nama_ibu`, `tl_ibu`, `pekerjaan_ibu`, `kesan`, `pesan`, `akun`, `pass`, `arsip`, `ket`) VALUES
-(1, '0084508542', 'Ade Nurafni', '', '', 'Tasikmalaya', '2008-05-16', '3278055605080002', '', 'Bugelan', '3', '10', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Nedi', '1969', 'Buruh', 'Mae', '1972', 'Tidak Bekerja', '', '', 'Siswa', '456', '', ''),
+(1, '0084508542', 'Ade Nurafni', '', '', 'Tasikmalaya', '2008-05-16', '3278055605080002', '', 'Bugelan', '3', '10', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Nedi', '1969', 'Buruh', 'Mae', '1972', 'Tidak Bekerja', '', '', 'Siswa', '123', '', ''),
 (4, '0083140286', 'Anggraini Salsabillah', '', 'P', 'Tasikmalaya', '2008-11-04', '3278054411080003', '', 'Bugelan', '2', '6', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2021', 'Ishak', '1970', 'Buruh', 'Tuti Astuti', '1975', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
 (5, '0087709032', 'Fatema Alzahra', '', 'P', 'Saudi Arabia', '2008-10-20', '3205196010080003', '', 'Perum Dano Asri', '0', '0', 'Cibodas', 'Kec. Cikajang', 'Kota Tasikmalaya', '44171', '', '', '2021', 'Ade Candra', '1966', 'Sudah Meninggal', 'Sri Rahayu', '1966', 'Pns/Tni/Polri', '', '', 'Siswa', '', '', ''),
 (6, '0095932413', 'Fuad Hasyim', '', 'L', 'Malang', '2009-12-06', '3278050612090002', '', 'Bugelan', '4', '6', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2021', 'Karom', '1975', 'Pedagang Kecil', 'Dede Entin Kartini', '1981', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
@@ -297,7 +298,7 @@ INSERT INTO `member` (`id`, `ni`, `nama`, `panggil`, `jk`, `tempat_lahir`, `tang
 (60, '0061730037', 'Sofi Sopiawati', '', 'P', 'Tasikmalaya', '2006-06-20', '3278056006060010', '', 'Bugeulan', '3', '6', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Entis Sutisna', '1967', 'Buruh', 'Ita', '1977', 'Lainnya', '', '', 'Siswa', '', '', ''),
 (61, '0079798077', 'Yayu Purnamasari', '', 'P', 'Tasikmalaya', '2007-01-04', '3278054401070003', '3278050803070003', 'Bugelan', '2', '4', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Jojo', '1966', 'Buruh', 'Dede Uyum', '1972', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
 (62, '0083017635', 'Adi Bayu Maulana Putra', '', 'L', 'Tasikmalaya', '2008-04-15', '', '', 'Kp. cisapi 001/007', '', '', '', '', 'Kota Tasikmalaya', '', '', '', '2021', '', '', '', '', '', '', '', '', 'Siswa', '', '', ''),
-(71, 'BGL202201', 'Asep Irfan Helmi, S.T.', '', 'L', 'Tasikmalaya', '2022-08-15', '', '', 'Kp. Bugelan', '03', '016', 'Kel. Gn Tandala', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Guru', '', '', ''),
+(71, 'BGL202201', 'Asep Irfan Helmi, S.T.', '', '', 'Tasikmalaya', '2022-08-15', '', '', 'Kp. Bugelan', '03', '016', 'Kel. Gn Tandala', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Pengurus', '', '', ''),
 (72, 'BGL202202', 'Urfah Hidayah, S. Pd', '', 'P', 'Tasikmalaya', '1928-08-08', '', '', 'Kp. Bugelan', '02', '16', 'Kel. Gn Tandala', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Guru', '', '', ''),
 (73, 'BGL202203', 'Ai Mala Nurmala, S. Pd', '', 'P', 'Tasikmalaya', '2022-08-03', '', '', 'Kp. Bugelan', '01', '016', 'Kel. Gn Tandala', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Guru', '', '', ''),
 (74, 'BGL202204', 'Ai Pristianti, S. Pd', '', 'P', 'Tasikmalaya', '1915-12-28', '', '', 'Kp. Cianjur wetan', '01', '08', 'Kel. Gn Tandala', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Guru', '', '', ''),
@@ -306,12 +307,11 @@ INSERT INTO `member` (`id`, `ni`, `nama`, `panggil`, `jk`, `tempat_lahir`, `tang
 (78, 'BGL202208', 'Dede Siti Sobariah, S. Pd', '', 'P', 'Tasikmalaya', '1914-02-10', '', '', 'Kp. Gunung Waru', '04', '015', 'Kel. Karsamenak', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Guru', '', '', ''),
 (79, 'BGL202209', 'Andi Purnamasari, S. Pd', '', 'P', 'Tasikmalaya', '1934-01-25', '', '', 'Kp. Pelang', '03', '06', 'Kel. Sukamanah', 'Cipedes', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Guru', '', '', ''),
 (81, 'BGL202211', 'Muhamad Sodik, A. md Kom', '', 'L', 'Tasikmalaya', '2022-08-15', '', '', 'Kp. Legok Oncom,', '01', '07', 'Desa Sukamulya', 'Singaparna', 'Kab. Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Guru', '', '', ''),
-(82, 'BGL202212', 'Parhan Mulyana, S. Pd', '', 'L', 'Tasikmalaya', '1913-02-17', '', '', 'Kp. Cibuluh', '04', '11', 'Kel. Karanganyar', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Guru', '', '', ''),
-(83, 'BGL202213', 'Suci Nur Amanatillah', '', 'P', 'Tasikmalaya', '1915-08-05', '', '', 'Kp. Cibogo', '02', '05', 'Kel. Cibeuti', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Guru', '', '', ''),
+(82, 'BGL202212', 'Parhan Mulyana, S. Pd', '', '', 'Tasikmalaya', '1913-02-17', '', '', 'Kp. Cibuluh', '04', '11', 'Kel. Karanganyar', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Staff', '', '', ''),
+(83, 'BGL202213', 'Suci Nur Amanatillah', '', '', 'Tasikmalaya', '1915-08-05', '', '', 'Kp. Cibogo', '02', '05', 'Kel. Cibeuti', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Staff', '', '', ''),
 (84, 'BGL202214', 'Fitria Adi Rahayu, S. ST', '', 'P', 'Jakarta', '2022-08-23', '', '', 'Kp. Bugelan', '04', '06', 'Kel. Gn Tandala', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Guru', '', '', ''),
 (85, 'BGL202215', 'Abdul Aziz, S.Pd.I', '', 'L', 'Bandung', '1934-01-30', '', '', 'Kp. Karangsari', '05', '05', 'Desa Kujang', 'Cikoneng', 'Kab. Ciamis', '', '', '', '', '', '', '', '', '', '', '', '', 'Guru', '', '', ''),
-(86, 'BGL202216', 'Acep Helmi, S. Pd. I', '', 'L', 'Tasikmalaya', '2022-08-15', '', '', 'Kp. Bugelan', '03', '016', 'Kel. Gn Tandala', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Guru', '', '', ''),
-(87, 'BGLCOBA', 'Coba Input', 'Coba', '', 'Tasikmalaya', '2023-03-02', '3278051504080002', '9998051504080002', 'Jln. Yudhanegara Tasikmalaya', '1', '6', 'Gn. Tandala', 'Kawalu', 'Sumatera Utara', '46561', '0821345654', 'bugelan.smpt@gmail.com', '2022', 'Wahyu Hidayah', '2023-02-24', 'Pedagang', 'Yuli Lestari', '2023-02-25', 'Ibu Rumah Tangga', 'Cukup mengesankan', 'Rajinlah belajar', 'Guru', '123', '', 'Tiga');
+(86, 'BGL202216', 'Acep Helmi, S. Pd. I', '', '', 'Tasikmalaya', '2022-08-15', '', '', 'Kp. Bugelan', '03', '016', 'Kel. Gn Tandala', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Pengurus', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -323,12 +323,12 @@ CREATE TABLE `pengantar` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `kategori` bigint(20) UNSIGNED NOT NULL,
   `ni` bigint(20) UNSIGNED NOT NULL,
-  `autor` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `judul` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `excerpt` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `body` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `autor` varchar(50) NOT NULL,
+  `judul` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `excerpt` text NOT NULL,
+  `body` text NOT NULL,
   `published` timestamp NULL DEFAULT NULL,
   `created` timestamp NULL DEFAULT NULL,
   `updated` timestamp NULL DEFAULT NULL
@@ -356,7 +356,7 @@ CREATE TABLE `profil` (
   `tema` text NOT NULL,
   `kontak` text NOT NULL,
   `ket` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `profil`
@@ -447,7 +447,7 @@ ALTER TABLE `absensi`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `blog`

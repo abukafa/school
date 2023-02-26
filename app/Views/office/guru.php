@@ -20,13 +20,13 @@ flash_alert();
                 <li>
                     <h6 class="dropdown-header">Tampilkan Data</h6>
                 </li>
-                <li><a class="dropdown-item" href="#">Guru</a></li>
-                <li><a class="dropdown-item" href="#">Staff</a></li>
-                <li><a class="dropdown-item" href="#">Pengurus</a></li>
+                <li><a class="dropdown-item" href="/admin/guru/Guru">Guru</a></li>
+                <li><a class="dropdown-item" href="/admin/guru/Staff">Staff</a></li>
+                <li><a class="dropdown-item" href="/admin/guru/Pengurus">Pengurus</a></li>
                 <li>
                     <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" href="#">Semua Data</a></li>
+                <li><a class="dropdown-item" href="/admin/guru/">Semua Data</a></li>
             </ul>
         </div>
     </div>

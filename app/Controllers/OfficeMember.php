@@ -13,11 +13,26 @@ class OfficeMember extends BaseController
         $this->memberModel = new MemberModel();
     }
 
-    public function guru()
+    public function get($id = NULL)
     {
+        if ($id == NULL) {
+            $data = ['member' => $this->memberModel->orderby('nama')->findAll()];
+        } else {
+            $data = ['member' => $this->memberModel->find($id)];
+        }
+        echo json_encode($data);
+    }
+
+    public function guru($status = NULL)
+    {
+        if ($status == NULL) {
+            $guru = $this->memberModel->where('akun <> ', 'Siswa')->findAll();
+        } else {
+            $guru = $this->memberModel->where('akun', $status)->findAll();
+        }
         $data = [
             'title' => 'Guru',
-            'guru' => $this->memberModel->where('akun <> ', 'Siswa')->findAll()
+            'guru' => $guru
         ];
         return view('office/guru', $data);
     }

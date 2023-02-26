@@ -24,38 +24,41 @@ flash_alert();
             <th class="text-center">Opsi</th>
         </tr>
         <?php $no = 1;
-        foreach ($user as $row) : ?>
-            <tr>
-                <td><?= $no ?></td>
-                <td><?= $row['uname'] ?></td>
-                <td class="d-none d-md-table-cell"><?= $row['nama'] ?></td>
-                <td><?= $row['tipe'] ?></td>
-                <td class="d-none d-xl-table-cell"><?= $row['akses'] ?></td>
-                <td class="text-end">
-                    <a data-id="<?= $row['id'] ?>" class="btn btn-sm btn-primary editPengguna" data-bs-toggle="modal" data-bs-target="#modalForm"><span data-feather="edit"></span></a>
-                    <form action="/admin/pengguna/<?= $row['id']; ?>" method="post" class="d-inline" id="delete-<?= $row['id'] ?>">
-                        <?= csrf_field(); ?>
-                        <input type="hidden" name="_method" value="delete">
-                        <button type="button" class="btn btn-sm btn-danger delete-<?= $row['id'] ?>"><span data-feather="trash"></span></button>
-                    </form>
-                    <script>
-                        $('.delete-<?= $row['id'] ?>').click(function() {
-                            swal({
-                                title: 'Anda yakin?',
-                                text: "Data tidak bisa dikembalikan!",
-                                type: 'warning',
-                                showCancelButton: true,
-                                confirmButtonClass: 'btn btn-success',
-                                cancelButtonClass: 'btn btn-danger m-l-10',
-                                confirmButtonText: 'Hapus!'
-                            }).then(function() {
-                                $('#delete-<?= $row['id'] ?>').submit();
-                            })
-                        });
-                    </script>
-                </td>
-            </tr>
+        foreach ($user as $row) :
+            if ($row['idm'] <> session()->get('idm')) {
+        ?>
+                <tr>
+                    <td><?= $no ?></td>
+                    <td><?= $row['uname'] ?></td>
+                    <td class="d-none d-md-table-cell"><?= $row['nama'] ?></td>
+                    <td><?= $row['tipe'] ?></td>
+                    <td class="d-none d-xl-table-cell"><?= $row['akses'] ?></td>
+                    <td class="text-end">
+                        <a data-id="<?= $row['id'] ?>" class="btn btn-sm btn-primary editPengguna" data-bs-toggle="modal" data-bs-target="#modalForm"><span data-feather="edit"></span></a>
+                        <form action="/admin/pengguna/<?= $row['id']; ?>" method="post" class="d-inline" id="delete-<?= $row['id'] ?>">
+                            <?= csrf_field(); ?>
+                            <input type="hidden" name="_method" value="delete">
+                            <button type="button" class="btn btn-sm btn-danger delete-<?= $row['id'] ?>"><span data-feather="trash"></span></button>
+                        </form>
+                        <script>
+                            $('.delete-<?= $row['id'] ?>').click(function() {
+                                swal({
+                                    title: 'Anda yakin?',
+                                    text: "Data tidak bisa dikembalikan!",
+                                    type: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonClass: 'btn btn-success',
+                                    cancelButtonClass: 'btn btn-danger m-l-10',
+                                    confirmButtonText: 'Hapus!'
+                                }).then(function() {
+                                    $('#delete-<?= $row['id'] ?>').submit();
+                                })
+                            });
+                        </script>
+                    </td>
+                </tr>
         <?php $no++;
+            }
         endforeach; ?>
     </table>
 </main>
@@ -77,16 +80,12 @@ flash_alert();
                         <label class='form-label' for='pass'>Password</label>
                         <input type='text' class='form-control' name='pass' id='pass' value="adminbugelan" readonly>
                     </div>
-                    <div class='mb-2'>
-                        <label for="nama" class="form-label">Nama</label>
-                        <input class="form-control" list="datalistOptions" id="nama" name="nama" placeholder="Ketik untuk mencari...">
-                        <datalist id="datalistOptions">
-                            <option value="San Francisco">
-                            <option value="New York">
-                            <option value="Seattle">
-                            <option value="Los Angeles">
-                            <option value="Chicago">
-                        </datalist>
+                    <div class="mb-2">
+                        <label id="idm_label" for="idm">Nama</label>
+                        <select id="idm" name="idm" class="form-control form-select" aria-label="Nama">
+                            <option>.. pilih ..</option>
+                        </select>
+                        <input type="text" class="form-control" id="nama" name="nama" readonly>
                     </div>
                     <div class='mb-2'>
                         <label class='form-label' for='tipe'>Tipe Akun</label>
@@ -116,6 +115,7 @@ flash_alert();
 </div>
 
 <script>
+    // modal Edit view
     $('.editPengguna').on('click', function() {
         const id = $(this).data('id');
         $('#formLabel').html('Edit Data <b>Pengguna</b>');
@@ -130,6 +130,8 @@ flash_alert();
             success: function(data) {
                 $('#uname').val(data.user.uname);
                 $('#pass').attr('type', 'password');
+                $('#idm').attr('class', 'form-select d-none');
+                $('#nama').attr('type', 'text');
                 $('#nama').val(data.user.nama);
                 $('#tipe').val(data.user.tipe);
                 $('#akses').val(data.user.akses);
@@ -137,15 +139,44 @@ flash_alert();
             }
         });
     });
+    // modal Input view
     $('.inputPengguna').on('click', function() {
         $('#formLabel').html('Input Data <b>Pengguna</b>');
         $('.modal-body form').attr('action', '/admin/pengguna');
         $('#uname').val('');
         $('#pass').attr('type', 'text');
-        $('#nama').val('');
+        $('#idm').attr('class', 'form-select');
+        $('#nama').attr('type', 'hidden');
         $('#tipe').val('');
         $('#akses').val('');
         $('#ket').val('');
+    });
+    // selector id member
+    $(function() {
+        $.ajax({
+            url: '/admin/member',
+            method: 'get',
+            dataType: 'json',
+            success: function(data) {
+                $.each(data.member, function(key, value) {
+                    $('#idm').append('<option value="' + value.id + '">' + value.nama + '</option>');
+                });
+            }
+        });
+    });
+    // select nama member
+    $(document).ready(function() {
+        $("#idm").change(function() {
+            var id = $(this).val();
+            $.ajax({
+                url: '/admin/member/' + id,
+                type: 'get',
+                dataType: 'json',
+                success: function(data) {
+                    $("#nama").val(data.member.nama);
+                }
+            });
+        });
     });
 </script>
 

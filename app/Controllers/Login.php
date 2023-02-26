@@ -60,7 +60,7 @@ class Login extends BaseController
         if ($member) {
             if ($pass == $member['pass']) {
                 $akun = ($member['akun'] == 'Siswa') ? $member['tahun'] : $member['akun'];
-                session()->set(['uname' => $uname, 'member' => $akun]);
+                session()->set(['uname' => $uname, 'member' => $akun, 'idm' => $member['id']]);
                 flash($member['nama'], 'Selamat Datang');
                 // dd(session()->get());
             } else {

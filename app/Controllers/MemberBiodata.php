@@ -65,7 +65,12 @@ class MemberBiodata extends BaseController
             flash('Berhasil', 'Mengubah Data Member');
         }
         $view = $this->memberModel->where('ni', $this->request->getPost('ni'))->first();
-        return redirect()->to('/admin/biodata/' . $view['id']);
+
+        if (session()->get('member')) {
+            return redirect()->to('/member/biodata/' . $view['id']);
+        } else {
+            return redirect()->to('/admin/biodata/' . $view['id']);
+        }
     }
 
     public function delete($id)

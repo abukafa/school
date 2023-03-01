@@ -5,7 +5,23 @@ $this->section('content');
 flash_alert();
 ?>
 
+<link href="<?= base_url() ?>/plugins/croppie/croppie.css" rel="stylesheet" />
 <link href="<?= base_url() ?>/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="<?= base_url() ?>/plugins/virtual-select/virtual-select.min.css" />
+<script src="<?= base_url() ?>/plugins/virtual-select/virtual-select.min.js"></script>
+
+<style>
+    #label-virtual-select {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    #virtual-select {
+        max-width: 100%;
+        /* width: 500px; */
+    }
+</style>
 
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -13,27 +29,56 @@ flash_alert();
     </div>
     <form action="" method="post">
         <div class="row my-5">
-            <div class="col text-center">
-                <img class="mb-2 rounded-circle" src="<?= base_url() ?>/img/profile/no.png" alt="" width="200" height="200">
-                <input type="file" class="form-control" name="pic" id="pic" accept=".jpg" onchange="imgPreview()">
+            <div id="uploaded_image" class="col text-center">
+                <img src="<?= uploaded(($member) ? $member['id'] . '.png' : '', '/img/profile') ?>" class="rounded-circle mb-2" id="imgPreview" width="200" height="200" />
             </div>
+            <input type='file' class='form-control d-none p-1' name='upload_image' id='upload_image' accept='.jpg'>
         </div>
     </form>
     <form action="<?= (!$member) ? '/admin/biodata' : ((session()->get('member')) ? '/member/biodata/' : '/admin/biodata/') . $member['id'] ?>" method="post">
         <div class="row mb-5">
-            <div class='col-md-6 mb-5'>
-                <label class='form-label' for='akun'>Jenis Akun</label>
-                <select type='text' class='form-select' name='akun' id='akun'>
-                    <option><?= ($member) ? $member['akun'] : '' ?></option>
-                    <option>Guru</option>
-                    <option>Staff</option>
-                    <option>Pengurus</option>
-                    <option>Siswa</option>
-                </select>
-            </div>
-            <div class='col-md-6 mb-2'>
-                <label class='form-label' for='pass'>Passcode</label>
-                <input type='text' class='form-control' name='pass' id='pass' value="<?= ($member) ? $member['pass'] : '' ?>">
+            <div class="<?= (session()->get('member')) ? 'd-none' : ''  ?>">
+                <div class='col-md-6 mb-5'>
+                    <label class='form-label' for='akun'>Jenis Akun</label>
+                    <select type='text' class='form-select' name='akun' id='akun'>
+                        <option><?= ($member) ? $member['akun'] : '' ?></option>
+                        <option>Guru</option>
+                        <option>Staff</option>
+                        <option>Pengurus</option>
+                        <option>Siswa</option>
+                    </select>
+                </div>
+                <div class='col-md-6 mb-2'>
+                    <label class='form-label' for='pass'>Passcode</label>
+                    <div class="input-group">
+                        <input type='text' class='form-control' name='id' id='id' value="<?= ($member) ? $member['id'] : '' ?>">
+                        <input type='text' class='form-control' name='pass' id='pass' value="<?= ($member) ? $member['pass'] : '' ?>">
+                    </div>
+                </div>
+                <div class='col-12 mb-2'>
+                    <label id="label-virtual-select" for='ket'>Keterangan</label>
+                    <select multiple name="ket" id="virtual-select" placeholder="<?= ($member) ? $member['ket'] : '' ?>" data-search="false" data-silent-initial-value-set="true">
+                        <option>Kepala Sekolah</option>
+                        <option>Sekretaris</option>
+                        <option>Bendahara</option>
+                        <option>Kurikulum</option>
+                        <option>Kesiswaan</option>
+                        <option>Wali Kelas 7</option>
+                        <option>Wali Kelas 8</option>
+                        <option>Wali Kelas 9</option>
+                        <option>PAI</option>
+                        <option>PKN</option>
+                        <option>Bhs. Indo</option>
+                        <option>Matematika</option>
+                        <option>IPA</option>
+                        <option>IPS</option>
+                        <option>Seni Budaya</option>
+                        <option>Bhs. Inggris</option>
+                        <option>Bhs. Sunda</option>
+                        <option>PJOK</option>
+                        <option>TIK</option>
+                    </select>
+                </div>
             </div>
             <div class='col-md-6 mb-2'>
                 <label class='form-label' for='ni'>Nomor Induk Siswa</label>
@@ -136,26 +181,18 @@ flash_alert();
                 <input type="text" class="form-control" name="pekerjaan_ibu" value="<?= ($member) ? $member['pekerjaan_ibu'] : '' ?>">
             </div>
             <div class='col-12 mb-2'>
-                <label class='form-label' for='kesan'>Kesan</label>
-                <input type='text' class='form-control' name='kesan' id='kesan' value="<?= ($member) ? $member['kesan'] : '' ?>">
-            </div>
-            <div class='col-12 mb-2'>
-                <label class='form-label' for='pesan'>Pesan</label>
-                <input type='text' class='form-control' name='pesan' id='pesan' value="<?= ($member) ? $member['pesan'] : '' ?>">
-            </div>
-            <div class='col-12 mb-2'>
                 <label class='form-label' for='arsip'>Arsip</label>
-                <input type='file' class='form-control' name='arsip' id='arsip' accept='.jpg' value="<?= ($member) ? $member['arsip'] : '' ?>">
+                <input type='file' class='form-control' name='arsip' id='arsip' accept='.pdf' value="<?= ($member) ? $member['arsip'] : '' ?>">
             </div>
-            <div class='col-12 mb-2'>
-                <label class='form-label' for='ket'>Keterangan</label>
-                <select type='text' class='form-select' name='ket' id='ket'>
-                    <option><?= ($member) ? $member['ket'] : '' ?></option>
-                    <option>Satu</option>
-                    <option>Dua</option>
-                    <option>Tiga</option>
-                    <option>Empat</option>
-                </select>
+            <div class="<?= (session()->get('member') > (date('Y') - 3)) ? 'd-none' : ''  ?>">
+                <div class='col-12 mb-2'>
+                    <label class='form-label' for='kesan'>Kesan</label>
+                    <textarea type='text' class='form-control' name='kesan' id='kesan'><?= ($member) ? $member['kesan'] : '' ?></textarea>
+                </div>
+                <div class='col-12 mb-2'>
+                    <label class='form-label' for='pesan'>Pesan</label>
+                    <textarea type='text' class='form-control' name='pesan' id='pesan'><?= ($member) ? $member['pesan'] : '' ?></textarea>
+                </div>
             </div>
             <div class="col mt-4">
                 <button type="submit" class="btn btn-primary w-100" name="save">Simpan</button>
@@ -164,6 +201,29 @@ flash_alert();
     </form>
 </main>
 
+<div class="modal fade" id="uploadimageModal" tabindex="-1" aria-labelledby="ModalLabel" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ModalLabel">Upload & Crop Image</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col text-center">
+                        <div id="image_demo" style="width:350px; margin-top:30px"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary crop_image">Crop & Upload Image</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="<?= base_url() ?>/plugins/croppie/croppie.js"></script>
 <script src="<?= base_url() ?>/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
 <script type="text/javascript">
     $('#tanggal_lahir').datepicker({
@@ -180,6 +240,65 @@ flash_alert();
         autoclose: true,
         todayHighlight: true,
         format: 'yyyy-mm-dd'
+    });
+
+    $('#uploaded_image').css('cursor', 'pointer');
+    $('#uploaded_image').click(function() {
+        $('#upload_image').trigger('click')
+    });
+
+    $(document).ready(function() {
+
+        $image_crop = $('#image_demo').croppie({
+            enableExif: true,
+            viewport: {
+                width: 200,
+                height: 200,
+                type: 'square' //circle
+            },
+            boundary: {
+                width: 300,
+                height: 300
+            }
+        });
+
+        $('#upload_image').on('change', function() {
+            var reader = new FileReader();
+            reader.onload = function(event) {
+                $image_crop.croppie('bind', {
+                    url: event.target.result
+                }).then(function() {
+                    console.log('jQuery bind complete');
+                });
+            }
+            reader.readAsDataURL(this.files[0]);
+            $('#uploadimageModal').modal('show');
+        });
+
+        $('.crop_image').click(function(event) {
+            var id = $('#id').val();
+            $image_crop.croppie('result', {
+                type: 'canvas',
+                size: 'viewport'
+            }).then(function(response) {
+                $.ajax({
+                    url: "/plugins/croppie/upload.php?id=" + id,
+                    type: "POST",
+                    data: {
+                        "image": response
+                    },
+                    success: function(data) {
+                        $('#uploadimageModal').modal('hide');
+                        $('#uploaded_image').html(data);
+                        console.log(data);
+                    }
+                });
+            })
+        });
+    });
+
+    VirtualSelect.init({
+        ele: '#virtual-select'
     });
 </script>
 

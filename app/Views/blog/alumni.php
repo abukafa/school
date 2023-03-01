@@ -7,7 +7,7 @@ $this->section('content');
     <div class="col">
         <article class="blog-post">
             <h2 class="blog-post-title">Alumni SMPT Bugelan</h2>
-            <p class="blog-post-meta mb-5">Update 2023</p>
+            <p class="blog-post-meta mb-5">Update <?= $profil['periode'] ?></p>
 
             <table class="table table-hover align-middle">
                 <tr>
@@ -18,34 +18,22 @@ $this->section('content');
                     <th class="d-none d-lg-table-cell">Pendidikan</th>
                     <th>Kelulusan</th>
                 </tr>
-                <tr>
-                    <td>
-                        <a href="" data-bs-toggle="modal" data-bs-target="#detailInfo">
-                            <img src="<?= base_url() ?>/img/profile/no.png" class="w5 rounded-circle" style="max-width: 50px;">
-                        </a>
-                    </td>
-                    <td>Bambang Sujatmika</td>
-                    <td class="d-none d-lg-table-cell">1 Feb 2005</td>
-                    <td>Sumanto</td>
-                    <td class="d-none d-lg-table-cell">Universitas Galuh</td>
-                    <td>
-                        <span class="badge rounded-pill bg-success">2020</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="" data-bs-toggle="modal" data-bs-target="#detailInfo">
-                            <img src="<?= base_url() ?>/img/profile/no.png" class="w5 rounded-circle" style="max-width: 50px;">
-                        </a>
-                    </td>
-                    <td>Bambang Sujatmika</td>
-                    <td class="d-none d-lg-table-cell">1 Feb 2005</td>
-                    <td>Sumanto</td>
-                    <td class="d-none d-lg-table-cell">Universitas Galuh</td>
-                    <td>
-                        <span class="badge rounded-pill bg-success">2020</span>
-                    </td>
-                </tr>
+                <?php foreach ($alumni as $row) : ?>
+                    <tr>
+                        <td>
+                            <a href="" data-bs-toggle="modal" data-bs-target="#detailInfo">
+                                <img src="<?= uploaded(($row) ? $row['id'] . '.png' : '', '/img/profile') ?>" class="w5 rounded-circle" style="max-width: 50px;">
+                            </a>
+                        </td>
+                        <td><?= $row['nama'] ?></td>
+                        <td class="d-none d-lg-table-cell"><?= $row['tanggal_lahir'] ?></td>
+                        <td><?= $row['nama_ayah'] ?></td>
+                        <td class="d-none d-lg-table-cell"></td>
+                        <td>
+                            <span class="badge rounded-pill bg-success"><?= $row['tahun'] + 3 ?></span>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
             </table>
         </article>
     </div>
@@ -55,7 +43,7 @@ $this->section('content');
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="detailLabel">Informasi</h5>
+                <h5 class="modal-title" id="detailLabel">Portofolio</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

@@ -4,13 +4,16 @@ namespace App\Controllers;
 
 use App\Models\UserModel;
 use App\Models\MemberModel;
+use App\Models\ProfilModel;
 
 class Login extends BaseController
 {
     public function admin()
     {
+        $profileModel = new ProfilModel();
         $data = [
-            'title' => 'Login'
+            'title' => 'Login',
+            'profil' => $profileModel->first()
         ];
         if (session()->get('uname')) {
             return redirect()->to('/dashboard');
@@ -21,8 +24,10 @@ class Login extends BaseController
 
     public function member()
     {
+        $profileModel = new ProfilModel();
         $data = [
-            'title' => 'Login'
+            'title' => 'Login',
+            'profil' => $profileModel->first()
         ];
         if (session()->get('uname')) {
             return redirect()->to('/dashboard');
@@ -60,7 +65,7 @@ class Login extends BaseController
         if ($member) {
             if ($pass == $member['pass']) {
                 $akun = ($member['akun'] == 'Siswa') ? $member['tahun'] : $member['akun'];
-                session()->set(['uname' => $uname, 'member' => $akun, 'idm' => $member['id']]);
+                session()->set(['uname' => $uname, 'member' => $akun, 'id' => $member['id']]);
                 flash($member['nama'], 'Selamat Datang');
                 // dd(session()->get());
             } else {

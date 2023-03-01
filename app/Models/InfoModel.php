@@ -14,5 +14,5 @@ class InfoModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['tgl_awal', 'tgl_ahir', 'prioritas', 'bagian', 'informasi', 'ket'];
+    protected $allowedFields    = ['tgl_awal', 'tgl_ahir', 'prioritas', 'bagian', 'tentang', 'detail', 'ket'];
 }

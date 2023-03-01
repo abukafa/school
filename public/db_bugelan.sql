@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 27, 2023 at 12:19 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.0.25
+-- Generation Time: Mar 01, 2023 at 03:38 AM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,8 +29,10 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `absensi` (
   `id` int(11) NOT NULL,
-  `ni` varchar(10) NOT NULL,
-  `nama` varchar(50) NOT NULL,
+  `idm` int(11) NOT NULL,
+  `akun` varchar(15) NOT NULL,
+  `tahun` varchar(5) NOT NULL,
+  `panggil` varchar(50) NOT NULL,
   `tanggal` varchar(10) NOT NULL,
   `jam1` smallint(1) NOT NULL,
   `jam2` smallint(1) NOT NULL,
@@ -39,7 +41,33 @@ CREATE TABLE `absensi` (
   `jam5` smallint(1) NOT NULL,
   `absen` varchar(1) NOT NULL,
   `ket` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `absensi`
+--
+
+INSERT INTO `absensi` (`id`, `idm`, `akun`, `tahun`, `panggil`, `tanggal`, `jam1`, `jam2`, `jam3`, `jam4`, `jam5`, `absen`, `ket`) VALUES
+(1, 1, 'Siswa', '2021', 'Ade N', '2023-02-28', 1, 1, 1, 1, 0, '', ''),
+(2, 5, 'Siswa', '2021', 'Fatem', '2023-02-28', 1, 0, 0, 0, 0, '', ''),
+(3, 7, 'Siswa', '2021', 'Herna', '2023-02-28', 0, 0, 0, 0, 0, 'i', ''),
+(4, 6, 'Siswa', '2021', 'Fuad ', '2023-02-28', 0, 0, 0, 0, 0, 'a', ''),
+(5, 4, 'Siswa', '2021', 'Anggr', '2023-02-28', 1, 1, 1, 1, 1, '', ''),
+(6, 8, 'Siswa', '2021', 'Husnu', '2023-02-28', 0, 0, 0, 0, 0, 's', ''),
+(7, 9, 'Siswa', '2021', 'Jelit', '2023-02-28', 0, 0, 0, 0, 0, 's', ''),
+(8, 10, 'Siswa', '2021', 'Livia', '2023-02-28', 1, 1, 1, 0, 0, '', ''),
+(9, 11, 'Siswa', '2021', 'Nurma', '2023-02-28', 1, 1, 1, 1, 1, '', ''),
+(10, 12, 'Siswa', '2021', 'Piki ', '2023-02-28', 1, 1, 1, 1, 1, '', ''),
+(11, 13, 'Siswa', '2021', 'Raiha', '2023-02-28', 1, 1, 0, 1, 1, '', ''),
+(12, 14, 'Siswa', '2021', 'Restu', '2023-02-28', 1, 1, 1, 1, 1, '', ''),
+(13, 15, 'Siswa', '2021', 'Rizki', '2023-02-28', 1, 1, 0, 0, 1, '', ''),
+(14, 16, 'Siswa', '2021', 'Syifa', '2023-02-28', 1, 1, 1, 0, 0, '', ''),
+(15, 17, 'Siswa', '2021', 'Vivia', '2023-02-28', 1, 1, 1, 1, 1, '', ''),
+(16, 18, 'Siswa', '2021', 'Wafa ', '2023-02-28', 1, 1, 1, 0, 0, '', ''),
+(17, 19, 'Siswa', '2021', 'Wafi ', '2023-02-28', 1, 1, 1, 1, 0, '', ''),
+(18, 20, 'Siswa', '2021', 'Zaki ', '2023-02-28', 1, 1, 1, 1, 1, '', ''),
+(19, 62, 'Siswa', '2021', 'Adi B', '2023-02-28', 0, 0, 0, 0, 0, 'a', ''),
+(20, 21, 'Siswa', '2020', 'Ade T', '2023-02-28', 0, 0, 0, 0, 0, 'a', '');
 
 -- --------------------------------------------------------
 
@@ -56,7 +84,7 @@ CREATE TABLE `admin` (
   `tipe` text NOT NULL,
   `akses` text NOT NULL,
   `ket` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `admin`
@@ -77,12 +105,12 @@ CREATE TABLE `blog` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `kategori` bigint(20) UNSIGNED NOT NULL,
   `ni` bigint(20) UNSIGNED NOT NULL,
-  `autor` varchar(50) NOT NULL,
-  `judul` varchar(255) NOT NULL,
-  `slug` varchar(255) NOT NULL,
-  `image` varchar(255) DEFAULT NULL,
-  `excerpt` text NOT NULL,
-  `body` text NOT NULL,
+  `autor` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `judul` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `excerpt` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `body` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `published` timestamp NULL DEFAULT NULL,
   `created` timestamp NULL DEFAULT NULL,
   `updated` timestamp NULL DEFAULT NULL
@@ -126,10 +154,10 @@ CREATE TABLE `galeri` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `kategori` bigint(20) UNSIGNED NOT NULL,
   `ni` bigint(20) UNSIGNED NOT NULL,
-  `autor` varchar(50) NOT NULL,
-  `judul` varchar(255) NOT NULL,
-  `image` varchar(255) DEFAULT NULL,
-  `caption` text NOT NULL,
+  `autor` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `judul` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `caption` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `published` timestamp NULL DEFAULT NULL,
   `created` timestamp NULL DEFAULT NULL,
   `updated` timestamp NULL DEFAULT NULL
@@ -147,9 +175,17 @@ CREATE TABLE `info` (
   `tgl_ahir` varchar(10) NOT NULL,
   `prioritas` smallint(1) NOT NULL,
   `bagian` varchar(25) NOT NULL,
-  `informasi` text NOT NULL,
+  `tentang` text NOT NULL,
+  `detail` text NOT NULL,
   `ket` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `info`
+--
+
+INSERT INTO `info` (`id`, `tgl_awal`, `tgl_ahir`, `prioritas`, `bagian`, `tentang`, `detail`, `ket`) VALUES
+(1, '2023-02-09', '2023-05-13', 1, 'Yayasan Bugelan', 'asd', 'asdfasdfasdfasdf', '');
 
 -- --------------------------------------------------------
 
@@ -165,7 +201,7 @@ CREATE TABLE `kalender` (
   `acara` text NOT NULL,
   `ket` text NOT NULL,
   `warna` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `kalender`
@@ -184,15 +220,16 @@ INSERT INTO `kalender` (`id`, `jenis`, `tgl_awal`, `tgl_ahir`, `acara`, `ket`, `
 
 CREATE TABLE `kompetensi` (
   `id` int(11) NOT NULL,
-  `ni` text NOT NULL,
+  `idm` text NOT NULL,
   `nama` text NOT NULL,
   `jenis` text NOT NULL,
   `tempat` text NOT NULL,
   `subjek` text NOT NULL,
   `hasil` text NOT NULL,
-  `tahun` text NOT NULL,
+  `tgl_awal` varchar(11) NOT NULL,
+  `tgl_ahir` varchar(11) NOT NULL,
   `ket` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -232,86 +269,86 @@ CREATE TABLE `member` (
   `pass` varchar(100) NOT NULL,
   `arsip` varchar(100) NOT NULL,
   `ket` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `member`
 --
 
 INSERT INTO `member` (`id`, `ni`, `nama`, `panggil`, `jk`, `tempat_lahir`, `tanggal_lahir`, `nik`, `no_kk`, `alamat`, `rt`, `rw`, `kelurahan`, `kecamatan`, `kabupaten`, `kode_pos`, `telepon`, `email`, `tahun`, `nama_ayah`, `tl_ayah`, `pekerjaan_ayah`, `nama_ibu`, `tl_ibu`, `pekerjaan_ibu`, `kesan`, `pesan`, `akun`, `pass`, `arsip`, `ket`) VALUES
-(1, '0084508542', 'Ade Nurafni', '', '', 'Tasikmalaya', '2008-05-16', '3278055605080002', '', 'Bugelan', '3', '10', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Nedi', '1969', 'Buruh', 'Mae', '1972', 'Tidak Bekerja', '', '', 'Siswa', '123', '', ''),
-(4, '0083140286', 'Anggraini Salsabillah', '', 'P', 'Tasikmalaya', '2008-11-04', '3278054411080003', '', 'Bugelan', '2', '6', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2021', 'Ishak', '1970', 'Buruh', 'Tuti Astuti', '1975', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(5, '0087709032', 'Fatema Alzahra', '', 'P', 'Saudi Arabia', '2008-10-20', '3205196010080003', '', 'Perum Dano Asri', '0', '0', 'Cibodas', 'Kec. Cikajang', 'Kota Tasikmalaya', '44171', '', '', '2021', 'Ade Candra', '1966', 'Sudah Meninggal', 'Sri Rahayu', '1966', 'Pns/Tni/Polri', '', '', 'Siswa', '', '', ''),
-(6, '0095932413', 'Fuad Hasyim', '', 'L', 'Malang', '2009-12-06', '3278050612090002', '', 'Bugelan', '4', '6', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2021', 'Karom', '1975', 'Pedagang Kecil', 'Dede Entin Kartini', '1981', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(7, '0081947275', 'Herna Nurajijah', '', 'P', 'Tasikmalaya', '2008-12-09', '3278054912080004', '', 'Bugelan', '5', '6', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2021', 'Ibad Nurul Badri', '1977', 'Buruh', 'Susi', '1983', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(8, '0081383079', 'Husnul Rizal', '', 'L', 'Tasikmalaya', '2008-03-23', '3278052303080004', '', 'Bugelan', '2', '10', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2021', 'Toni', '1984', 'Buruh', 'Reni Pitriani', '1989', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(9, '0093097618', 'Jelita Arkeylla Edgina', '', 'P', 'Tasikmalaya', '2009-01-01', '3278054101090003', '3278052001100029', 'Kp. Pasir Datar', '3', '7', 'Gunung Gede', 'Kec. Kawalu', 'Kota Tasikmalaya', '', '', '', '2021', 'Agus Zamhur', '1979', 'Wiraswasta', 'Rani Nugraha', '0', 'Wiraswasta', '', '', 'Siswa', '', '', ''),
-(10, '0082376651', 'Livia Anggraeni', '', 'P', 'Tasikmalaya', '2008-12-04', '3278054412080001', '', 'Bugelan', '5', '6', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2021', 'Amas', '1965', 'Buruh', 'Diah', '1973', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(11, '0091550550', 'Nurmalasari', '', 'P', 'Tasikmalaya', '2009-01-16', '3278055601090001', '', 'Sukasari', '2', '11', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2021', 'Misbahul Ulum', '1964', 'Wiraswasta', 'Hajar Rohayati', '1979', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(12, '0099909151', 'Piki Putra Pratama', '', 'L', 'Tasikmalaya', '2009-06-22', '3278052206090001', '', 'Cibeas', '1', '10', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2021', 'Yoyo', '1974', 'Buruh', 'Ani', '1980', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(13, '0086763978', 'Raihan Ihsan Ramdani', '', 'L', 'Tasikmalaya', '2008-09-24', '3278052409080001', '', 'Bugelan', '2', '10', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2021', 'Umar', '1970', 'Buruh', 'Itoh Masitoh', '1973', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(14, '0084323178', 'Restu Gumilar', '', 'L', 'Tasikmalaya', '2008-11-26', '3278052611080001', '', 'Bugelan', '3', '10', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2021', 'Rasmana', '1971', 'Buruh', 'Ihat', '1983', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(15, '0095293438', 'Rizki Istiawan', '', 'L', 'Bekasi', '2009-03-12', '3275091203090002', '', 'Jl. Bangka No 67 F Komp. Ppa', '3', '4', 'Jatirasa', 'Kec. Jatiasih', 'Kota Tasikmalaya', '17424', '', '', '2021', 'Nono Sutrisno', '1970', 'Wiraswasta', 'Eris', '1971', 'Pedagang Kecil', '', '', 'Siswa', '', '', ''),
-(16, '0088322948', 'Syifa Rahmi Firmansyah', '', 'P', 'Tasikmalaya', '2008-07-28', '3278056807080002', '', 'Bugelan', '3', '10', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2021', 'Ayep Yayat P', '1982', 'Buruh', 'Epa Nurhayati', '1985', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(17, '0088301140', 'Vivian Attaufunnisa', '', 'P', 'Tasikmalaya', '2008-12-02', '3278054212080001', '', 'Bugelan', '3', '10', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2021', 'Yusup', '1975', 'Buruh', 'Eet Nurasiah', '1981', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(18, '0097704986', 'Wafa Nurfauzan', '', 'L', 'Tasikmalaya', '2009-01-25', '3278052501090002', '', 'Bugelan', '3', '6', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2021', 'Hopid', '1972', 'Buruh', 'Atin Rustini', '1977', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(19, '0095061965', 'Wafi Nurfauziah', '', 'P', 'Tasikmalaya', '2009-01-25', '3278056501090005', '', 'Bugelan', '3', '6', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2021', 'Hopid', '1972', 'Buruh', 'Atin Rustini', '1977', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(20, '0084941959', 'Zaki Muhammad Fauzi', '', 'L', 'Tasikmalaya', '2008-03-04', '3278050403080005', '', 'Bugelan', '3', '10', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2021', 'Wawan Hermawan', '1960', 'Buruh', 'Romlah', '1968', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(21, '0075198228', 'Ade Tegar Maulana', '', 'L', 'Tasikmalaya', '2007-05-11', '3278051105070005', '', 'Bugelan', '2', '10', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2020', 'Maman', '1967', 'Buruh', 'Heni', '1972', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(22, '0075597303', 'Aulia Nurazizah', '', 'P', 'Tasikmalaya', '2007-09-02', '3278054209070001', '', 'Bugelan', '3', '10', 'Gununggede', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2020', 'Yoyo  S', '1966', 'Buruh', 'Lela  Nurlela', '1977', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(23, '0082787492', 'Fatma Nuraliah', '', 'P', 'Tasikmalaya', '2008-01-21', '3278056101080001', '', 'Bugelan', '3', '10', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2020', 'Iin  R', '1976', 'Buruh', 'Epon Komariah', '1977', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(24, '0076319455', 'Hilda Khoirunissa', '', 'P', 'Tasikmalaya', '2007-09-14', '3278055409070003', '', 'Bugelan', '3', '6', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2020', 'Nono Sumarno', '1972', 'Buruh', 'Idah', '1974', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(25, '0089953396', 'Hirsa Nuraisyah', '', 'P', 'Tasikmalaya', '2008-03-04', '3278054403080002', '', 'Bugelan', '3', '6', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2020', 'Idis', '1963', 'Buruh', 'Lela Nurlela', '1973', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(26, '0077304977', 'Irgi Faiz Nurramdhani', '', 'L', 'Tasikmalaya', '2007-09-20', '3278052009070002', '', 'Bugelan', '1', '10', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2020', 'Uus', '1980', 'Buruh', 'Erma', '1987', 'Pedagang Kecil', '', '', 'Siswa', '', '', ''),
-(27, '0088357804', 'Laila Azkia', '', 'P', 'Tasikmalaya', '2008-02-11', '3278055102080002', '', 'Bugelan', '4', '6', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2020', 'Dudung', '1969', 'Buruh', 'Emay', '1976', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(28, '0078041399', 'Muhammad Arul Aulia', '', 'L', 'Tasikmalaya', '2007-02-25', '3278052502070001', '', 'Bugelan', '2', '10', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2020', 'Iwan Rustiawan', '1984', 'Buruh', 'Yulianti', '1988', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(29, '0072504732', 'Nizar Al Ghifari', '', 'L', 'Tasikmalaya', '2007-09-30', '3278053009070004', '', 'Bugelan', '3', '6', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2020', 'Endang Kurnia', '1983', 'Buruh', 'Ai Ina Karlina', '1987', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(30, '0087611265', 'Nuri Alfiani', '', 'P', 'Tasikmalaya', '2008-01-12', '3278055201080001', '3278051801080003', 'Bugelan', '2', '6', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2020', 'Toni', '1971', 'Buruh', 'Lasmini', '1982', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(31, '0071189319', 'Razif Alvian Sidiq', '', 'L', 'Tasikmalaya', '2007-07-24', '3278052407070003', '', 'Cibeas', '1', '10', 'Gununggede', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2020', 'Aep Saepulloh', '1975', 'Buruh', 'Yeni Yuliani', '1979', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(32, '0072607200', 'Rifat Abdul Azis', '', 'L', 'Tasikmalaya', '2007-10-20', '3278052010070002', '', 'Bugelan', '4', '6', 'Bugelan', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2020', 'Jaja Miharja', '1981', 'Wiraswasta', 'Lina Herlina', '1998', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(33, '0082291638', 'Rizki Nugraha', '', 'L', 'Tasikmalaya', '2008-03-13', '3278051303080003', '', 'Bugelan', '3', '10', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2020', 'Dodi Supriyadi', '1989', 'Buruh', 'Elis', '1986', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(34, '0076382239', 'Rusmana', '', 'L', 'Tasikmalaya', '2007-10-04', '3278050410070001', '', 'Bugelan', '5', '6', 'Gununggede', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2020', 'Cucu', '1965', 'Buruh', 'Maryam', '1971', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(35, '0073982934', 'Syahdan Hasbi Asidiqi', '', 'L', 'Tasikmalaya', '2007-09-19', '3278051909070002', '', 'Bugelan', '2', '6', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2020', 'Eni Rohaeni', '1975', 'Buruh', 'Lilis  Syamsiah', '1975', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(36, '0077428633', 'Winda Wahdatul Mukromah', '', 'P', 'Tasikmalaya', '2007-10-03', '3278054310070002', '', 'Bugelan', '4', '6', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2020', 'Mamat', '1971', 'Buruh', 'Dede Suryani', '1973', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(37, '0064263229', 'Abdul Jamil Daris Salam', '', 'L', 'Tasikmalaya', '2006-06-23', '32780523060600021', '', 'Bugelan', '3', '11', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Urip', '1981', 'Buruh', 'Kokom', '1986', 'Buruh', '', '', 'Siswa', '', '', ''),
-(38, '0062676364', 'Abdul Muhamad Jarnuji Napis', '', 'L', 'Tasikmalaya', '2006-08-09', '3206080908060001', '', 'Kp. Lemburgede', '', '', 'Wangunsari', 'Kec. Bantarkalong', 'Kota Tasikmalaya', '', '', '', '2019', 'Arip Rahman Hakim', '1976', 'Wiraswasta', 'Elin', '1984', 'Petani', '', '', 'Siswa', '', '', ''),
-(39, '0066849244', 'Aidil Putra', '', 'L', 'Tasikmalaya', '2006-10-24', '3278052410060003', '', 'Sukasari', '2', '11', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Aa Kurnia', '1976', 'Buruh', 'Titin', '1973', 'Buruh', '', '', 'Siswa', '', '', ''),
-(40, '0067300166', 'Aldi Aryadi Pratama', '', 'L', 'Tasikmalaya', '2006-09-09', '3278050909060004', '3206010303160006', 'Neglasari', '1', '2', 'Pameutingan', 'Kec. Cipatujah', 'Kota Tasikmalaya', '46189', '', '', '2019', 'Heryaman', '1983', 'Wiraswasta', 'Sinta', '1987', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(41, '0068570440', 'Aldi Supriatna', '', 'L', 'Tasikmalaya', '2006-06-05', '3278050506060003', '', 'Cibeas', '1', '10', 'Gununggede', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2022', 'Asep Yudianto', '1980', 'Buruh', 'Ai Resti Andriani', '1984', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(42, '0138638524', 'Amri Abdul Aziz', '', 'L', 'Tasikmalaya', '2006-03-06', '3278050603060004', '', 'Bugelan', '2', '10', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Apep', '1977', 'Buruh', 'Kokom', '1983', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(43, '0074135424', 'Ana Silpia Apipah', '', 'P', 'Tasikmalaya', '2007-08-08', '3278054808070001', '', 'Bugelan', '3', '6', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Abdul Somad', '1972', 'Buruh', 'Tika', '1977', 'Lainnya', '', '', 'Siswa', '', '', ''),
-(44, '0072406611', 'Andini Rahma Pebrianti', '', 'P', 'Tasikmalaya', '2007-02-07', '3278054702070001', '', 'Cibeas', '1', '10', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Syarip Hidayatuloh', '1984', 'Buruh', 'Desi Susanti', '1987', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(45, '0052225485', 'Ayu Lestari Firmansyah', '', 'P', 'Tasikmalaya', '2006-09-05', '3278054509060007', '', 'Bugelan', '3', '10', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Ayep Yayat P', '1982', 'Buruh', 'Epa Nurhayati', '1985', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(46, '0066453869', 'Azka Nugraha', '', 'L', 'Tasikmalaya', '2006-03-30', '3278053003060002', '', 'Bugelan', '3', '10', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Wawan ', '1969', 'Buruh', 'Omah', '1974', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(47, '0071034270', 'Dela Aulia Rahmah', '', 'P', 'Tasikmalaya', '2007-01-24', '3278056401070001', '', 'Bugelan', '3', '6', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Suparman', '1970', 'Pedagang Kecil', 'Adah', '1980', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(48, '0061334652', 'Gagan Nugraha', '', 'L', 'Tasikmalaya', '2006-07-07', '3278050707060002', '', 'Bugelan', '2', '10', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Mamad Rahmat', '1984', 'Buruh', 'Nina Marlina', '1990', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(49, '0062651111', 'Hilma Nurul Arofah', '', 'P', 'Tasikmalaya', '2006-12-29', '3278056912060002', '', 'Bugelan', '3', '11', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Saipul Aripin', '1978', 'Wiraswasta', 'Ida Rosyidah', '1984', 'Pedagang Kecil', '', '', 'Siswa', '', '', ''),
-(50, '0065437884', 'Indri Rahmawati', '', 'P', 'Tasikmalaya', '2006-06-24', '3278056406060003', '', 'Bugelan', '3', '10', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Hoer Apandi', '1952', 'Buruh', 'Julaeha', '1965', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(51, '0074960870', 'Insan Kamil', '', 'L', 'Tasikmalaya', '2007-03-31', '3278063103070002', '', 'Bugelan', '1', '6', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Yosi Ginanjar', '1979', 'Wiraswasta', 'Alis Solihah', '1986', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(52, '0068915077', 'Muhamad Ikbal', '', 'L', 'Tasikmalaya', '2006-12-07', '3278050712060004', '', 'Sukasari', '3', '11', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Dede Sukiman', '1971', 'Buruh', 'Sri Lestari', '1979', 'Buruh', '', '', 'Siswa', '', '', ''),
-(53, '0067963913', 'Neng Teni', '', 'P', 'Lebak', '2006-05-21', '3602106105060001', '', 'Kp Cijeruk Girang ', '5', '4', 'Cibeuti', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Kodir', '1982', 'Karyawan Swasta', 'Ida Maesaroh', '1977', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(54, '0051209869', 'Novan Alparizi', '', 'L', 'Tasikmalaya', '2005-11-20', '3278052011050001', '', 'Bugelan', '3', '10', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Eman', '1963', 'Pedagang Kecil', 'Engkoy', '1966', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(55, '0068415426', 'Parid Ridwan', '', 'L', 'Tasikmalaya', '2006-07-29', '3278052907060006', '', 'Bugelan', '3', '11', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Kindi', '1953', 'Buruh', 'Emin', '1962', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(56, '0076899596', 'Rifdayanti Zulfia', '', 'P', 'Tasikmalaya', '2007-02-28', '32780568020700041', '', 'Bugelan', '2', '3', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Herman', '1968', 'Pedagang Kecil', 'Oon', '1972', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(57, '0214748364', 'Ripan Nugraha', '', 'L', 'Tasikmalaya', '2006-11-15', '3206085511060003', '', 'Kp. Pencutkondang', '', '', 'Wakap', 'Kec. Bantarkalong', 'Kota Tasikmalaya', '', '', '', '2019', 'Ujun', '1974', 'Petani', 'Ujum', '0', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(59, '0072692889', 'Salma Zakiyah', '', 'P', 'Tasikmalaya', '2007-03-31', '3278057103070001', '', 'Bugelan', '2', '6', 'Gununggede', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Dian Haeroni', '1976', 'Buruh', 'Ani Sumarni', '1981', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(60, '0061730037', 'Sofi Sopiawati', '', 'P', 'Tasikmalaya', '2006-06-20', '3278056006060010', '', 'Bugeulan', '3', '6', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Entis Sutisna', '1967', 'Buruh', 'Ita', '1977', 'Lainnya', '', '', 'Siswa', '', '', ''),
-(61, '0079798077', 'Yayu Purnamasari', '', 'P', 'Tasikmalaya', '2007-01-04', '3278054401070003', '3278050803070003', 'Bugelan', '2', '4', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Jojo', '1966', 'Buruh', 'Dede Uyum', '1972', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
-(62, '0083017635', 'Adi Bayu Maulana Putra', '', 'L', 'Tasikmalaya', '2008-04-15', '', '', 'Kp. cisapi 001/007', '', '', '', '', 'Kota Tasikmalaya', '', '', '', '2021', '', '', '', '', '', '', '', '', 'Siswa', '', '', ''),
-(71, 'BGL202201', 'Asep Irfan Helmi, S.T.', '', '', 'Tasikmalaya', '2022-08-15', '', '', 'Kp. Bugelan', '03', '016', 'Kel. Gn Tandala', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Pengurus', '', '', ''),
-(72, 'BGL202202', 'Urfah Hidayah, S. Pd', '', 'P', 'Tasikmalaya', '1928-08-08', '', '', 'Kp. Bugelan', '02', '16', 'Kel. Gn Tandala', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Guru', '', '', ''),
-(73, 'BGL202203', 'Ai Mala Nurmala, S. Pd', '', 'P', 'Tasikmalaya', '2022-08-03', '', '', 'Kp. Bugelan', '01', '016', 'Kel. Gn Tandala', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Guru', '', '', ''),
-(74, 'BGL202204', 'Ai Pristianti, S. Pd', '', 'P', 'Tasikmalaya', '1915-12-28', '', '', 'Kp. Cianjur wetan', '01', '08', 'Kel. Gn Tandala', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Guru', '', '', ''),
-(76, 'BGL202206', 'Sova Patrotul Alawaiyah, S. Pd', '', 'P', 'Tasikmalaya', '1917-08-14', '', '', 'Kp. Pagaden', '02', '01', 'Kel. Gn Tandala', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Guru', '', '', ''),
-(77, 'BGL202207', 'Meida Gunaningsih, S. Pd', '', 'P', 'Tasikmalaya', '1907-01-07', '', '', 'Kp. Cicariang', '02', '09', 'Kel. Karsamenak', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Guru', '', '', ''),
-(78, 'BGL202208', 'Dede Siti Sobariah, S. Pd', '', 'P', 'Tasikmalaya', '1914-02-10', '', '', 'Kp. Gunung Waru', '04', '015', 'Kel. Karsamenak', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Guru', '', '', ''),
-(79, 'BGL202209', 'Andi Purnamasari, S. Pd', '', 'P', 'Tasikmalaya', '1934-01-25', '', '', 'Kp. Pelang', '03', '06', 'Kel. Sukamanah', 'Cipedes', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Guru', '', '', ''),
-(81, 'BGL202211', 'Muhamad Sodik, A. md Kom', '', 'L', 'Tasikmalaya', '2022-08-15', '', '', 'Kp. Legok Oncom,', '01', '07', 'Desa Sukamulya', 'Singaparna', 'Kab. Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Guru', '', '', ''),
-(82, 'BGL202212', 'Parhan Mulyana, S. Pd', '', '', 'Tasikmalaya', '1913-02-17', '', '', 'Kp. Cibuluh', '04', '11', 'Kel. Karanganyar', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Staff', '', '', ''),
-(83, 'BGL202213', 'Suci Nur Amanatillah', '', '', 'Tasikmalaya', '1915-08-05', '', '', 'Kp. Cibogo', '02', '05', 'Kel. Cibeuti', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Staff', '', '', ''),
-(84, 'BGL202214', 'Fitria Adi Rahayu, S. ST', '', 'P', 'Jakarta', '2022-08-23', '', '', 'Kp. Bugelan', '04', '06', 'Kel. Gn Tandala', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Guru', '', '', ''),
-(85, 'BGL202215', 'Abdul Aziz, S.Pd.I', '', 'L', 'Bandung', '1934-01-30', '', '', 'Kp. Karangsari', '05', '05', 'Desa Kujang', 'Cikoneng', 'Kab. Ciamis', '', '', '', '', '', '', '', '', '', '', '', '', 'Guru', '', '', ''),
-(86, 'BGL202216', 'Acep Helmi, S. Pd. I', '', '', 'Tasikmalaya', '2022-08-15', '', '', 'Kp. Bugelan', '03', '016', 'Kel. Gn Tandala', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Pengurus', '', '', '');
+(1, '0084508542', 'Ade Nurafni', 'Ade N', '', 'Tasikmalaya', '2008-05-16', '3278055605080002', '', 'Bugelan', '3', '10', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2021', 'Nedi', '1969', 'Buruh', 'Mae', '1972', 'Ibu Rumah Tangga', '', '', 'Siswa', '123', '', ''),
+(4, '0083140286', 'Anggraini Salsabillah', 'Anggr', 'P', 'Tasikmalaya', '2008-11-04', '3278054411080003', '', 'Bugelan', '2', '6', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2021', 'Ishak', '1970', 'Buruh', 'Tuti Astuti', '1975', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(5, '0087709032', 'Fatema Alzahra', 'Fatem', 'P', 'Saudi Arabia', '2008-10-20', '3205196010080003', '', 'Perum Dano Asri', '0', '0', 'Cibodas', 'Kec. Cikajang', 'Kota Tasikmalaya', '44171', '', '', '2021', 'Ade Candra', '1966', 'Sudah Meninggal', 'Sri Rahayu', '1966', 'Pns/Tni/Polri', '', '', 'Siswa', '', '', ''),
+(6, '0095932413', 'Fuad Hasyim', 'Fuad ', 'L', 'Malang', '2009-12-06', '3278050612090002', '', 'Bugelan', '4', '6', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2021', 'Karom', '1975', 'Pedagang Kecil', 'Dede Entin Kartini', '1981', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(7, '0081947275', 'Herna Nurajijah', 'Herna', 'P', 'Tasikmalaya', '2008-12-09', '3278054912080004', '', 'Bugelan', '5', '6', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2021', 'Ibad Nurul Badri', '1977', 'Buruh', 'Susi', '1983', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(8, '0081383079', 'Husnul Rizal', 'Husnu', 'L', 'Tasikmalaya', '2008-03-23', '3278052303080004', '', 'Bugelan', '2', '10', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2021', 'Toni', '1984', 'Buruh', 'Reni Pitriani', '1989', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(9, '0093097618', 'Jelita Arkeylla Edgina', 'Jelit', 'P', 'Tasikmalaya', '2009-01-01', '3278054101090003', '3278052001100029', 'Kp. Pasir Datar', '3', '7', 'Gunung Gede', 'Kec. Kawalu', 'Kota Tasikmalaya', '', '', '', '2021', 'Agus Zamhur', '1979', 'Wiraswasta', 'Rani Nugraha', '0', 'Wiraswasta', '', '', 'Siswa', '', '', ''),
+(10, '0082376651', 'Livia Anggraeni', 'Livia', 'P', 'Tasikmalaya', '2008-12-04', '3278054412080001', '', 'Bugelan', '5', '6', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2021', 'Amas', '1965', 'Buruh', 'Diah', '1973', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(11, '0091550550', 'Nurmalasari', 'Nurma', 'P', 'Tasikmalaya', '2009-01-16', '3278055601090001', '', 'Sukasari', '2', '11', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2021', 'Misbahul Ulum', '1964', 'Wiraswasta', 'Hajar Rohayati', '1979', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(12, '0099909151', 'Piki Putra Pratama', 'Piki ', 'L', 'Tasikmalaya', '2009-06-22', '3278052206090001', '', 'Cibeas', '1', '10', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2021', 'Yoyo', '1974', 'Buruh', 'Ani', '1980', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(13, '0086763978', 'Raihan Ihsan Ramdani', 'Raiha', 'L', 'Tasikmalaya', '2008-09-24', '3278052409080001', '', 'Bugelan', '2', '10', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2021', 'Umar', '1970', 'Buruh', 'Itoh Masitoh', '1973', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(14, '0084323178', 'Restu Gumilar', 'Restu', 'L', 'Tasikmalaya', '2008-11-26', '3278052611080001', '', 'Bugelan', '3', '10', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2021', 'Rasmana', '1971', 'Buruh', 'Ihat', '1983', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(15, '0095293438', 'Rizki Istiawan', 'Rizki', 'L', 'Bekasi', '2009-03-12', '3275091203090002', '', 'Jl. Bangka No 67 F Komp. Ppa', '3', '4', 'Jatirasa', 'Kec. Jatiasih', 'Kota Tasikmalaya', '17424', '', '', '2021', 'Nono Sutrisno', '1970', 'Wiraswasta', 'Eris', '1971', 'Pedagang Kecil', '', '', 'Siswa', '', '', ''),
+(16, '0088322948', 'Syifa Rahmi Firmansyah', 'Syifa', 'P', 'Tasikmalaya', '2008-07-28', '3278056807080002', '', 'Bugelan', '3', '10', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2021', 'Ayep Yayat P', '1982', 'Buruh', 'Epa Nurhayati', '1985', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(17, '0088301140', 'Vivian Attaufunnisa', 'Vivia', 'P', 'Tasikmalaya', '2008-12-02', '3278054212080001', '', 'Bugelan', '3', '10', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2021', 'Yusup', '1975', 'Buruh', 'Eet Nurasiah', '1981', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(18, '0097704986', 'Wafa Nurfauzan', 'Wafa ', 'L', 'Tasikmalaya', '2009-01-25', '3278052501090002', '', 'Bugelan', '3', '6', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2021', 'Hopid', '1972', 'Buruh', 'Atin Rustini', '1977', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(19, '0095061965', 'Wafi Nurfauziah', 'Wafi ', 'P', 'Tasikmalaya', '2009-01-25', '3278056501090005', '', 'Bugelan', '3', '6', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2021', 'Hopid', '1972', 'Buruh', 'Atin Rustini', '1977', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(20, '0084941959', 'Zaki Muhammad Fauzi', 'Zaki ', 'L', 'Tasikmalaya', '2008-03-04', '3278050403080005', '', 'Bugelan', '3', '10', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2021', 'Wawan Hermawan', '1960', 'Buruh', 'Romlah', '1968', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(21, '0075198228', 'Ade Tegar Maulana', 'Ade T', 'L', 'Tasikmalaya', '2007-05-11', '3278051105070005', '', 'Bugelan', '2', '10', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2020', 'Maman', '1967', 'Buruh', 'Heni', '1972', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(22, '0075597303', 'Aulia Nurazizah', 'Aulia', 'P', 'Tasikmalaya', '2007-09-02', '3278054209070001', '', 'Bugelan', '3', '10', 'Gununggede', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2020', 'Yoyo  S', '1966', 'Buruh', 'Lela  Nurlela', '1977', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(23, '0082787492', 'Fatma Nuraliah', 'Fatma', 'P', 'Tasikmalaya', '2008-01-21', '3278056101080001', '', 'Bugelan', '3', '10', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2020', 'Iin  R', '1976', 'Buruh', 'Epon Komariah', '1977', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(24, '0076319455', 'Hilda Khoirunissa', 'Hilda', 'P', 'Tasikmalaya', '2007-09-14', '3278055409070003', '', 'Bugelan', '3', '6', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2020', 'Nono Sumarno', '1972', 'Buruh', 'Idah', '1974', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(25, '0089953396', 'Hirsa Nuraisyah', 'Hirsa', 'P', 'Tasikmalaya', '2008-03-04', '3278054403080002', '', 'Bugelan', '3', '6', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2020', 'Idis', '1963', 'Buruh', 'Lela Nurlela', '1973', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(26, '0077304977', 'Irgi Faiz Nurramdhani', 'Irgi ', 'L', 'Tasikmalaya', '2007-09-20', '3278052009070002', '', 'Bugelan', '1', '10', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2020', 'Uus', '1980', 'Buruh', 'Erma', '1987', 'Pedagang Kecil', '', '', 'Siswa', '', '', ''),
+(27, '0088357804', 'Laila Azkia', 'Laila', 'P', 'Tasikmalaya', '2008-02-11', '3278055102080002', '', 'Bugelan', '4', '6', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2020', 'Dudung', '1969', 'Buruh', 'Emay', '1976', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(28, '0078041399', 'Muhammad Arul Aulia', 'Muham', 'L', 'Tasikmalaya', '2007-02-25', '3278052502070001', '', 'Bugelan', '2', '10', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2020', 'Iwan Rustiawan', '1984', 'Buruh', 'Yulianti', '1988', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(29, '0072504732', 'Nizar Al Ghifari', 'Nizar', 'L', 'Tasikmalaya', '2007-09-30', '3278053009070004', '', 'Bugelan', '3', '6', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2020', 'Endang Kurnia', '1983', 'Buruh', 'Ai Ina Karlina', '1987', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(30, '0087611265', 'Nuri Alfiani', 'Nuri ', 'P', 'Tasikmalaya', '2008-01-12', '3278055201080001', '3278051801080003', 'Bugelan', '2', '6', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2020', 'Toni', '1971', 'Buruh', 'Lasmini', '1982', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(31, '0071189319', 'Razif Alvian Sidiq', 'Razif', 'L', 'Tasikmalaya', '2007-07-24', '3278052407070003', '', 'Cibeas', '1', '10', 'Gununggede', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2020', 'Aep Saepulloh', '1975', 'Buruh', 'Yeni Yuliani', '1979', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(32, '0072607200', 'Rifat Abdul Azis', 'Rifat', 'L', 'Tasikmalaya', '2007-10-20', '3278052010070002', '', 'Bugelan', '4', '6', 'Bugelan', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2020', 'Jaja Miharja', '1981', 'Wiraswasta', 'Lina Herlina', '1998', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(33, '0082291638', 'Rizki Nugraha', 'Rizki', 'L', 'Tasikmalaya', '2008-03-13', '3278051303080003', '', 'Bugelan', '3', '10', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2020', 'Dodi Supriyadi', '1989', 'Buruh', 'Elis', '1986', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(34, '0076382239', 'Rusmana', 'Rusma', 'L', 'Tasikmalaya', '2007-10-04', '3278050410070001', '', 'Bugelan', '5', '6', 'Gununggede', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2020', 'Cucu', '1965', 'Buruh', 'Maryam', '1971', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(35, '0073982934', 'Syahdan Hasbi Asidiqi', 'Syahd', 'L', 'Tasikmalaya', '2007-09-19', '3278051909070002', '', 'Bugelan', '2', '6', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2020', 'Eni Rohaeni', '1975', 'Buruh', 'Lilis  Syamsiah', '1975', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(36, '0077428633', 'Winda Wahdatul Mukromah', 'Winda', 'P', 'Tasikmalaya', '2007-10-03', '3278054310070002', '', 'Bugelan', '4', '6', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2020', 'Mamat', '1971', 'Buruh', 'Dede Suryani', '1973', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(37, '0064263229', 'Abdul Jamil Daris Salam', 'Abdul', 'L', 'Tasikmalaya', '2006-06-23', '32780523060600021', '', 'Bugelan', '3', '11', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Urip', '1981', 'Buruh', 'Kokom', '1986', 'Buruh', '', '', 'Siswa', '', '', ''),
+(38, '0062676364', 'Abdul Muhamad Jarnuji Napis', 'Abdul', 'L', 'Tasikmalaya', '2006-08-09', '3206080908060001', '', 'Kp. Lemburgede', '', '', 'Wangunsari', 'Kec. Bantarkalong', 'Kota Tasikmalaya', '', '', '', '2019', 'Arip Rahman Hakim', '1976', 'Wiraswasta', 'Elin', '1984', 'Petani', '', '', 'Siswa', '', '', ''),
+(39, '0066849244', 'Aidil Putra', 'Aidil', 'L', 'Tasikmalaya', '2006-10-24', '3278052410060003', '', 'Sukasari', '2', '11', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Aa Kurnia', '1976', 'Buruh', 'Titin', '1973', 'Buruh', '', '', 'Siswa', '', '', ''),
+(40, '0067300166', 'Aldi Aryadi Pratama', 'Aldi ', 'L', 'Tasikmalaya', '2006-09-09', '3278050909060004', '3206010303160006', 'Neglasari', '1', '2', 'Pameutingan', 'Kec. Cipatujah', 'Kota Tasikmalaya', '46189', '', '', '2019', 'Heryaman', '1983', 'Wiraswasta', 'Sinta', '1987', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(41, '0068570440', 'Aldi Supriatna', 'Aldi ', 'L', 'Tasikmalaya', '2006-06-05', '3278050506060003', '', 'Cibeas', '1', '10', 'Gununggede', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2022', 'Asep Yudianto', '1980', 'Buruh', 'Ai Resti Andriani', '1984', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(42, '0138638524', 'Amri Abdul Aziz', 'Amri ', 'L', 'Tasikmalaya', '2006-03-06', '3278050603060004', '', 'Bugelan', '2', '10', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Apep', '1977', 'Buruh', 'Kokom', '1983', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(43, '0074135424', 'Ana Silpia Apipah', 'Ana S', 'P', 'Tasikmalaya', '2007-08-08', '3278054808070001', '', 'Bugelan', '3', '6', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Abdul Somad', '1972', 'Buruh', 'Tika', '1977', 'Lainnya', '', '', 'Siswa', '', '', ''),
+(44, '0072406611', 'Andini Rahma Pebrianti', 'Andin', 'P', 'Tasikmalaya', '2007-02-07', '3278054702070001', '', 'Cibeas', '1', '10', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Syarip Hidayatuloh', '1984', 'Buruh', 'Desi Susanti', '1987', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(45, '0052225485', 'Ayu Lestari Firmansyah', 'Ayu L', 'P', 'Tasikmalaya', '2006-09-05', '3278054509060007', '', 'Bugelan', '3', '10', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Ayep Yayat P', '1982', 'Buruh', 'Epa Nurhayati', '1985', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(46, '0066453869', 'Azka Nugraha', 'Azka ', 'L', 'Tasikmalaya', '2006-03-30', '3278053003060002', '', 'Bugelan', '3', '10', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Wawan ', '1969', 'Buruh', 'Omah', '1974', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(47, '0071034270', 'Dela Aulia Rahmah', 'Dela ', 'P', 'Tasikmalaya', '2007-01-24', '3278056401070001', '', 'Bugelan', '3', '6', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Suparman', '1970', 'Pedagang Kecil', 'Adah', '1980', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(48, '0061334652', 'Gagan Nugraha', 'Gagan', 'L', 'Tasikmalaya', '2006-07-07', '3278050707060002', '', 'Bugelan', '2', '10', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Mamad Rahmat', '1984', 'Buruh', 'Nina Marlina', '1990', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(49, '0062651111', 'Hilma Nurul Arofah', 'Hilma', 'P', 'Tasikmalaya', '2006-12-29', '3278056912060002', '', 'Bugelan', '3', '11', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Saipul Aripin', '1978', 'Wiraswasta', 'Ida Rosyidah', '1984', 'Pedagang Kecil', '', '', 'Siswa', '', '', ''),
+(50, '0065437884', 'Indri Rahmawati', 'Indri', 'P', 'Tasikmalaya', '2006-06-24', '3278056406060003', '', 'Bugelan', '3', '10', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Hoer Apandi', '1952', 'Buruh', 'Julaeha', '1965', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(51, '0074960870', 'Insan Kamil', 'Insan', 'L', 'Tasikmalaya', '2007-03-31', '3278063103070002', '', 'Bugelan', '1', '6', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Yosi Ginanjar', '1979', 'Wiraswasta', 'Alis Solihah', '1986', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(52, '0068915077', 'Muhamad Ikbal', 'Muham', 'L', 'Tasikmalaya', '2006-12-07', '3278050712060004', '', 'Sukasari', '3', '11', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Dede Sukiman', '1971', 'Buruh', 'Sri Lestari', '1979', 'Buruh', '', '', 'Siswa', '', '', ''),
+(53, '0067963913', 'Neng Teni', 'Neng ', 'P', 'Lebak', '2006-05-21', '3602106105060001', '', 'Kp Cijeruk Girang ', '5', '4', 'Cibeuti', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Kodir', '1982', 'Karyawan Swasta', 'Ida Maesaroh', '1977', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(54, '0051209869', 'Novan Alparizi', 'Novan', 'L', 'Tasikmalaya', '2005-11-20', '3278052011050001', '', 'Bugelan', '3', '10', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Eman', '1963', 'Pedagang Kecil', 'Engkoy', '1966', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(55, '0068415426', 'Parid Ridwan', 'Parid', 'L', 'Tasikmalaya', '2006-07-29', '3278052907060006', '', 'Bugelan', '3', '11', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Kindi', '1953', 'Buruh', 'Emin', '1962', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(56, '0076899596', 'Rifdayanti Zulfia', 'Rifda', 'P', 'Tasikmalaya', '2007-02-28', '32780568020700041', '', 'Bugelan', '2', '3', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Herman', '1968', 'Pedagang Kecil', 'Oon', '1972', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(57, '0214748364', 'Ripan Nugraha', 'Ripan', 'L', 'Tasikmalaya', '2006-11-15', '3206085511060003', '', 'Kp. Pencutkondang', '', '', 'Wakap', 'Kec. Bantarkalong', 'Kota Tasikmalaya', '', '', '', '2019', 'Ujun', '1974', 'Petani', 'Ujum', '0', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(59, '0072692889', 'Salma Zakiyah', 'Salma', 'P', 'Tasikmalaya', '2007-03-31', '3278057103070001', '', 'Bugelan', '2', '6', 'Gununggede', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Dian Haeroni', '1976', 'Buruh', 'Ani Sumarni', '1981', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(60, '0061730037', 'Sofi Sopiawati', 'Sofi ', 'P', 'Tasikmalaya', '2006-06-20', '3278056006060010', '', 'Bugeulan', '3', '6', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Entis Sutisna', '1967', 'Buruh', 'Ita', '1977', 'Lainnya', '', '', 'Siswa', '', '', ''),
+(61, '0079798077', 'Yayu Purnamasari', 'Yayu ', 'P', 'Tasikmalaya', '2007-01-04', '3278054401070003', '3278050803070003', 'Bugelan', '2', '4', 'Gunung Tandala', 'Kec. Kawalu', 'Kota Tasikmalaya', '46182', '', '', '2019', 'Jojo', '1966', 'Buruh', 'Dede Uyum', '1972', 'Tidak Bekerja', '', '', 'Siswa', '', '', ''),
+(62, '0083017635', 'Adi Bayu Maulana Putra', 'Adi B', 'L', 'Tasikmalaya', '2008-04-15', '', '', 'Kp. cisapi 001/007', '', '', '', '', 'Kota Tasikmalaya', '', '', '', '2021', '', '', '', '', '', '', '', '', 'Siswa', '', '', ''),
+(71, 'BGL202201', 'Asep Irfan Helmi, S.T.', 'Asep ', '', 'Tasikmalaya', '2022-08-15', '', '', 'Kp. Bugelan', '03', '016', 'Kel. Gn Tandala', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Pengurus', '', '', 'Kepala Sekolah'),
+(72, 'BGL202202', 'Urfah Hidayah, S. Pd', 'Urfah', 'P', 'Tasikmalaya', '1928-08-08', '', '', 'Kp. Bugelan', '02', '16', 'Kel. Gn Tandala', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Guru', '', '', ''),
+(73, 'BGL202203', 'Ai Mala Nurmala, S. Pd', 'Ai Ma', 'P', 'Tasikmalaya', '2022-08-03', '', '', 'Kp. Bugelan', '01', '016', 'Kel. Gn Tandala', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Guru', '', '', ''),
+(74, 'BGL202204', 'Ai Pristianti, S. Pd', 'Ai Pr', 'P', 'Tasikmalaya', '1915-12-28', '', '', 'Kp. Cianjur wetan', '01', '08', 'Kel. Gn Tandala', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Guru', '', '', ''),
+(76, 'BGL202206', 'Sova Patrotul Alawaiyah, S. Pd', 'Sova ', 'P', 'Tasikmalaya', '1917-08-14', '', '', 'Kp. Pagaden', '02', '01', 'Kel. Gn Tandala', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Guru', '', '', ''),
+(77, 'BGL202207', 'Meida Gunaningsih, S. Pd', 'Meida', 'P', 'Tasikmalaya', '1907-01-07', '', '', 'Kp. Cicariang', '02', '09', 'Kel. Karsamenak', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Guru', '', '', ''),
+(78, 'BGL202208', 'Dede Siti Sobariah, S. Pd', 'Dede ', 'P', 'Tasikmalaya', '1914-02-10', '', '', 'Kp. Gunung Waru', '04', '015', 'Kel. Karsamenak', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Guru', '', '', ''),
+(79, 'BGL202209', 'Andi Purnamasari, S. Pd', 'Andi ', 'P', 'Tasikmalaya', '1934-01-25', '', '', 'Kp. Pelang', '03', '06', 'Kel. Sukamanah', 'Cipedes', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Guru', '', '', ''),
+(81, 'BGL202211', 'Muhamad Sodik, A. md Kom', 'Muham', 'L', 'Tasikmalaya', '2022-08-15', '', '', 'Kp. Legok Oncom,', '01', '07', 'Desa Sukamulya', 'Singaparna', 'Kab. Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Guru', '', '', ''),
+(82, 'BGL202212', 'Parhan Mulyana, S. Pd', 'Parha', '', 'Tasikmalaya', '1913-02-17', '', '', 'Kp. Cibuluh', '04', '11', 'Kel. Karanganyar', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Staff', '', '', ''),
+(83, 'BGL202213', 'Suci Nur Amanatillah', 'Suci ', '', 'Tasikmalaya', '1915-08-05', '', '', 'Kp. Cibogo', '02', '05', 'Kel. Cibeuti', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Staff', '', '', ''),
+(84, 'BGL202214', 'Fitria Adi Rahayu, S. ST', 'Fitri', 'P', 'Jakarta', '2022-08-23', '', '', 'Kp. Bugelan', '04', '06', 'Kel. Gn Tandala', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Guru', '', '', ''),
+(85, 'BGL202215', 'Abdul Aziz, S.Pd.I', 'Abdul', '', 'Bandung', '1934-01-30', '', '', 'Kp. Karangsari', '05', '05', 'Desa Kujang', 'Cikoneng', 'Kab. Ciamis', '', '', '', '', '', '', '', '', '', '', '', '', 'Guru', '', '', 'Wali Kelas 9,Kesiswaan,TIK'),
+(86, 'BGL202216', 'Acep Helmi, S. Pd. I', 'Acep ', '', 'Tasikmalaya', '2022-08-15', '', '', 'Kp. Bugelan', '03', '016', 'Kel. Gn Tandala', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Pengurus', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -323,12 +360,12 @@ CREATE TABLE `pengantar` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `kategori` bigint(20) UNSIGNED NOT NULL,
   `ni` bigint(20) UNSIGNED NOT NULL,
-  `autor` varchar(50) NOT NULL,
-  `judul` varchar(255) NOT NULL,
-  `slug` varchar(255) NOT NULL,
-  `image` varchar(255) DEFAULT NULL,
-  `excerpt` text NOT NULL,
-  `body` text NOT NULL,
+  `autor` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `judul` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `excerpt` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `body` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `published` timestamp NULL DEFAULT NULL,
   `created` timestamp NULL DEFAULT NULL,
   `updated` timestamp NULL DEFAULT NULL
@@ -356,14 +393,14 @@ CREATE TABLE `profil` (
   `tema` text NOT NULL,
   `kontak` text NOT NULL,
   `ket` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `profil`
 --
 
 INSERT INTO `profil` (`id`, `sekolah`, `npsn`, `yayasan`, `no_izin`, `alamat`, `map`, `telepon`, `email`, `motto`, `periode`, `kepala`, `tema`, `kontak`, `ket`) VALUES
-(3, 'SMPT Bugelan', '', 'Yayasan Bugelan', '', 'Bugelan, Gunungtandala, Kec. Kawalu, Kab. Tasikmalaya, Jawa Barat 46182', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.5795261836697!2d108.21595821528517!3d-7.40091927492719!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e65f93c35b67209%3A0x6071526de8e0ade1!2sSMP%20Terpadu%20Bugelan!5e0!3m2!1sen!2sid!4v1676433713981!5m2!1sen!2sid', '(0812) 9000 4840', 'bugelan.smpt@gmail.com', 'Impian tidak akan terwujud dengan sendirinya. Kamu harus segera bangun dan berupaya untuk mewujudkannya', '2022', 'Asep Irfan Helmi, S.T.', '', '', '');
+(3, 'SMP Terpadu Bugelan', '', 'Yayasan Bugelan', '5.3/0575/SK-PEND/DPMPTSP/2022', 'Bugelan, Gunungtandala, Kec. Kawalu, Kab. Tasikmalaya, Jawa Barat 46182', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.5795261836697!2d108.21595821528517!3d-7.40091927492719!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e65f93c35b67209%3A0x6071526de8e0ade1!2sSMP%20Terpadu%20Bugelan!5e0!3m2!1sen!2sid!4v1676433713981!5m2!1sen!2sid', '(0812) 9000 4840', 'bugelan.smpt@gmail.com', 'Impian tidak akan terwujud dengan sendirinya. Kamu harus segera bangun dan berupaya untuk mewujudkannya', '2022', 'Asep Irfan Helmi, S.T.', '', '', '');
 
 --
 -- Indexes for dumped tables
@@ -441,7 +478,7 @@ ALTER TABLE `profil`
 -- AUTO_INCREMENT for table `absensi`
 --
 ALTER TABLE `absensi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `admin`
@@ -465,7 +502,7 @@ ALTER TABLE `galeri`
 -- AUTO_INCREMENT for table `info`
 --
 ALTER TABLE `info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `kalender`
@@ -477,7 +514,7 @@ ALTER TABLE `kalender`
 -- AUTO_INCREMENT for table `kompetensi`
 --
 ALTER TABLE `kompetensi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `member`

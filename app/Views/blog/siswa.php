@@ -13,49 +13,29 @@ $this->section('content');
     <div class="col">
         <article class="blog-post">
             <h2 class="blog-post-title">Siswa SMPT Bugelan</h2>
-            <p class="blog-post-meta mb-5">Periode 2022-2023</p>
+            <p class="blog-post-meta mb-5">Periode <?= $profil['periode'] . '-' . ($profil['periode'] + 1) ?></p>
 
             <table class="table table-hover align-middle">
                 <tr>
                     <th>Pic</th>
                     <th class="d-none d-lg-table-cell">No. Induk</th>
                     <th>Nama</th>
-                    <th class="d-none d-lg-table-cell">Kelas</th>
+                    <th class="d-none d-md-table-cell">Kelas</th>
                     <th>Keaktifan</th>
                 </tr>
-                <tr>
-                    <td><a href="" data-bs-toggle="modal" data-bs-target="#detailInfo"><img src="<?= base_url() ?>/img/profile/no.png" class="w5 rounded-circle"></a></td>
-                    <td class="d-none d-lg-table-cell">09457822</td>
-                    <td>Ahmad Hasyim</td>
-                    <td class="d-none d-lg-table-cell">9</td>
-                    <td>
-                        <div class="progress">
-                            <div class="progress-bar bg-success w-25" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td><img src="<?= base_url() ?>/img/profile/no.png" class="w5 rounded-circle"></td>
-                    <td class="d-none d-lg-table-cell">03664485</td>
-                    <td>David Backham</td>
-                    <td class="d-none d-lg-table-cell">9</td>
-                    <td>
-                        <div class="progress">
-                            <div class="progress-bar bg-success w-50" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td><img src="<?= base_url() ?>/img/profile/no.png" class="w5 rounded-circle"></td>
-                    <td class="d-none d-lg-table-cell">06558899</td>
-                    <td>Ade Sudarma</td>
-                    <td class="d-none d-lg-table-cell">9</td>
-                    <td>
-                        <div class="progress">
-                            <div class="progress-bar bg-success w-75" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">40%</div>
-                        </div>
-                    </td>
-                </tr>
+                <?php foreach ($siswa as $row) : ?>
+                    <tr>
+                        <td><a href="" data-bs-toggle="modal" data-bs-target="#detailInfo"><img src="<?= uploaded(($row) ? $row['id'] . '.png' : '', '/img/profile') ?>" class="w5 rounded-circle"></a></td>
+                        <td class="d-none d-lg-table-cell"><?= $row['ni'] ?></td>
+                        <td><?= $row['nama'] ?></td>
+                        <td class="d-none d-md-table-cell"><?= kelas($row['tahun']) ?></td>
+                        <td>
+                            <div class="progress">
+                                <div class="progress-bar bg-success w-25" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                            </div>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
             </table>
         </article>
     </div>

@@ -124,19 +124,19 @@
                         </h6>
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link <?= $title <> 'Biodata' ?: 'active' ?>" href="/member/biodata/<?= session()->get('idm') ?>">
+                                <a class="nav-link <?= $title <> 'Biodata' ?: 'active' ?>" href="/member/biodata/<?= session()->get('id') ?>">
                                     <span data-feather="database"></span>
                                     Biodata
                                 </a>
                             </li>
                             <li class="nav-item <?= (!is_numeric(session()->get('member')) || session()->get('member') < tahun(9)) ?: 'd-none' ?>">
-                                <a class="nav-link <?= $title <> 'Kompetensi' ?: 'active' ?>" href="/member/kompetensi">
+                                <a class="nav-link <?= $title <> 'Kompetensi' ?: 'active' ?>" href="/member/kompetensi/<?= session()->get('id') ?>">
                                     <span data-feather="award"></span>
                                     Kompetensi
                                 </a>
                             </li>
                             <li class="nav-item <?= (session()->get('member') > tahun(10)) ?: 'd-none' ?>">
-                                <a class="nav-link <?= $title <> 'Nilai' ?: 'active' ?>" href="/member/nilai">
+                                <a class="nav-link <?= $title <> 'Nilai' ?: 'active' ?>" href="/member/nilai/<?= session()->get('id') ?>">
                                     <span data-feather="check-square"></span>
                                     Nilai
                                 </a>

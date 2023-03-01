@@ -14,19 +14,19 @@ $this->section('content');
                     Nama
                 </div>
                 <div class="col-8">
-                    : Hijaz Abdullah
+                    : <?= $siswa['nama'] ?>
                 </div>
                 <div class="col-4">
                     Wali
                 </div>
                 <div class="col-8">
-                    : Abdul Aziz Abu Kafa
+                    : <?= $siswa['nama_ayah'] ?>
                 </div>
                 <div class="col-4">
                     Kelas
                 </div>
                 <div class="col-8">
-                    : IX
+                    : <?= kelas($siswa['tahun']) ?>
                 </div>
             </div>
         </div>

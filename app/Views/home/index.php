@@ -99,8 +99,8 @@ $this->section('content');
         <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
             <div class="col p-4 d-flex flex-column position-static">
                 <strong class="d-inline-block mb-2 text-success">Prakata Kepala Sekolah</strong>
-                <h3 class="mb-0">Asep Irfan Helmi, S.T</h3>
-                <div class="mb-1 text-muted">Senin, 18 Juli 2022</div>
+                <h3 class="mb-0"><?= $profil['kepala'] ?></h3>
+                <div class="mb-1 text-muted"><?= date_format(date_create($profil['periode'] . '-07-01'), 'l, j M Y') ?></div>
                 <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
                 <a href="/prakata" class="stretched-link">Lanjut baca</a>
             </div>

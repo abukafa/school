@@ -89,18 +89,33 @@ $routes->get('/password', 'OfficeUser::changePass');
 $routes->post('/password/update', 'OfficeUser::updatePass');
 
 $routes->get('/member/biodata/(:num)', 'MemberBiodata::index/$1');
+$routes->post('/member/biodata/(:num)', 'MemberBiodata::save/$1');
 
 $routes->get('/member/kompetensi', 'MemberKompetensi::index');
+$routes->post('/member/kompetensi', 'MemberKompetensi::save');
+$routes->post('/member/kompetensi/(:num)', 'MemberKompetensi::save/$1');
+$routes->delete('/member/kompetensi/(:num)', 'MemberKompetensi::delete/$1');
+$routes->get('/member/kompetensi-get/(:num)', 'MemberKompetensi::get/$1');
+$routes->get('/member/kompetensi/(:num)', 'MemberKompetensi::member/$1');
 
 $routes->get('/member/nilai', 'MemberNilai::index');
+$routes->get('/member/nilai/(:num)', 'MemberNilai::siswa/$1');
 
 $routes->get('/data/absensi', 'AdminAbsensi::index');
+$routes->get('/data/absensi/(:any)', 'AdminAbsensi::index/$1');
+$routes->post('/data/absen/(:num)', 'AdminAbsensi::absen/$1');
+$routes->get('/data/ceklis/(:any)/(:num)', 'AdminAbsensi::ceklis/$1/$2');
 
 $routes->get('/data/blog', 'AdminBlog::index');
 
 $routes->get('/data/galeri', 'AdminGaleri::index');
 
 $routes->get('/data/info', 'AdminInfo::index');
+$routes->post('/data/info', 'AdminInfo::save');
+$routes->post('/data/info/(:num)', 'AdminInfo::save/$1');
+$routes->get('/data/info/(:num)', 'AdminInfo::get/$1');
+$routes->delete('/data/info/(:num)', 'AdminInfo::delete/$1');
+$routes->post('/data/info-prior/(:num)', 'AdminInfo::prioritas/$1');
 
 /*
  * --------------------------------------------------------------------

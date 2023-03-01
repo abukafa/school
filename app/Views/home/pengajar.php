@@ -7,53 +7,27 @@ $this->section('content');
     <div class="col">
         <article class="blog-post text-center">
             <h2 class="blog-post-title">Staff Pengajar</h2>
-            <p class="blog-post-meta mb-5">Periode 2022-2023</p>
+            <p class="blog-post-meta mb-5">Periode <?= $profil['periode'] . '-' . ($profil['periode'] + 1) ?></p>
         </article>
         <div class="row">
-            <div class="col-md-4 col-lg-3 mb-4">
-                <div class="card p-2">
-                    <a href="" data-bs-toggle="modal" data-bs-target="#detailInfo"><img src="img/profile/no.png" class="w-100 h-100"></a>
-
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Nama Guru, S.Pd</h5>
-                        <span class="badge rounded-pill bg-primary">Pelajaran</span>
-                        <span class="badge rounded-pill bg-primary">Kesiswaan</span>
+            <?php foreach ($guru as $key => $row) : ?>
+                <div class="col-md-4 col-lg-3 mb-4">
+                    <div class="card p-2">
+                        <a href="" data-bs-toggle="modal" data-bs-target="#detailInfo" class="modalDetail" data-id="<?= $row['id'] ?>">
+                            <img src="<?= uploaded(($row) ? $row['id'] . '.png' : '', '/img/profile') ?>" class="rounded mb-2 w-100 h-100" />
+                        </a>
+                        <div class="card-body text-center">
+                            <h5 class="card-title"><?= $row['nama'] ?></h5>
+                            <?php
+                            $ket = explode(',', $row['ket']);
+                            for ($i = 0; $i < count($ket); $i++) {
+                            ?>
+                                <span class="badge rounded-pill bg-primary"><?= $ket[$i] ?></span>
+                            <?php } ?>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4 col-lg-3 mb-4">
-                <div class="card p-2">
-                    <a href="" data-bs-toggle="modal" data-bs-target="#detailInfo"><img src="img/profile/no.png" class="w-100 h-100"></a>
-
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Nama Guru, S.Pd</h5>
-                        <span class="badge rounded-pill bg-primary">Pelajaran</span>
-                        <span class="badge rounded-pill bg-primary">Kesiswaan</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-lg-3 mb-4">
-                <div class="card p-2">
-                    <a href="" data-bs-toggle="modal" data-bs-target="#detailInfo"><img src="img/profile/no.png" class="w-100 h-100"></a>
-
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Nama Guru, S.Pd</h5>
-                        <span class="badge rounded-pill bg-primary">Pelajaran</span>
-                        <span class="badge rounded-pill bg-primary">Kesiswaan</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-lg-3 mb-4">
-                <div class="card p-2">
-                    <a href="" data-bs-toggle="modal" data-bs-target="#detailInfo"><img src="img/profile/no.png" class="w-100 h-100"></a>
-
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Nama Guru, S.Pd</h5>
-                        <span class="badge rounded-pill bg-primary">Pelajaran</span>
-                        <span class="badge rounded-pill bg-primary">Kesiswaan</span>
-                    </div>
-                </div>
-            </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </div>
@@ -62,23 +36,22 @@ $this->section('content');
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="detailLabel">Informasi</h5>
+                <h5 class="modal-title" id="detailLabel">Portofolio</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="text-center">
-                    <img src="<?= base_url() ?>/img/profile/no.png" class="img w-50 rounded-circle mb-4">
-                    <h3>Bambang Sujatmika</h3>
-                    <span class="badge rounded-pill bg-primary">Matematika</span>
-                    <span class="badge rounded-pill bg-primary">Wali Kls 7</span>
+                    <img id="pic" src="" class="img rounded-circle mb-4 w-50" />
+                    <h3 id="nama"></h3>
+                    <div id="tugas"></div>
                 </div>
                 <div class="row my-4">
-                    <div class="col-6 text-end">Tgl Lahir</div>
-                    <div class="col-6">12 Jan 1985</div>
-                    <div class="col-6 text-end">Asal</div>
-                    <div class="col-6">Cihideung</div>
-                    <div class="col-6 text-end">Status</div>
-                    <div class="col-6">Menikah</div>
+                    <div class="col-6 text-end">Tgl Lahir :</div>
+                    <div id="tgl_lhr" id class="col-6"></div>
+                    <div class="col-6 text-end">Asal :</div>
+                    <div id="asal" class="col-6"></div>
+                    <div class="col-6 text-end">E-mail :</div>
+                    <div id="email" class="col-6"></div>
                 </div>
                 <div class="mb-4">
                     <h5 class="text-center mb-3">Pendidikan</h5>
@@ -114,5 +87,31 @@ $this->section('content');
 </div>
 
 <?= $this->include('template/foot-galeri') ?>
+
+<script>
+    $('.modalDetail').on('click', function() {
+        const id = $(this).data('id')
+        $.ajax({
+            url: '/admin/member/' + id,
+            method: 'get',
+            dataType: 'json',
+            success: function(data) {
+                $('#nama').html(data.member.nama)
+                $('#pic').attr('src', '<?= uploaded("' + id + '.png", "/img/profile") ?>')
+                if (data.member.ket) {
+                    const string = data.member.ket
+                    const array = string.split(',')
+                    const count = array.length
+                    for (i = 0; i < count; i++) {
+                        $('#tugas').append('<span class="badge rounded-pill bg-primary">' + array[i] + '</span>')
+                    }
+                }
+                $('#tgl_lahir').html(data.member.taggal_lahir)
+                $('#asal').html(data.member.kecamatan)
+                $('#email').html(data.member.email)
+            }
+        });
+    });
+</script>
 
 <?php $this->endSection();  ?>

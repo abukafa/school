@@ -990,7 +990,7 @@ $calendar->addEvents($events);
     <div class="col">
         <article class="blog-post text-center">
             <h2 class="blog-post-title">Kalender Pendidikan</h2>
-            <p class="blog-post-meta mb-5">Periode 2022-2023</p>
+            <p class="blog-post-meta mb-5">Periode <?= $profil['periode'] . '-' . ($profil['periode'] + 1) ?></p>
         </article>
 
         <div class="row">

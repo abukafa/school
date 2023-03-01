@@ -11,6 +11,84 @@
 
     <!-- Bootstrap core CSS -->
     <link href="<?= base_url() ?>/css/bootstrap.min.css" rel="stylesheet">
+    <script src="<?= base_url() ?>/js/jquery.min.js"></script>
+
+    <style>
+        .head-3 {
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 0.1em;
+            font-size: 0.65rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .head-6 {
+            font-size: 0.3rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .address {
+            font-size: 0.3rem;
+        }
+
+        @media (min-width: 576px) {
+            .head-3 {
+                font-size: 0.75rem;
+            }
+
+            .head-6 {
+                font-size: 0.3rem;
+            }
+
+            .address {
+                font-size: 0.3rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .head-3 {
+                font-size: 1rem;
+            }
+
+            .head-6 {
+                font-size: 0.5rem;
+            }
+
+            .address {
+                font-size: 0.35rem;
+            }
+        }
+
+        @media (min-width: 992px) and (max-width: 1199px) {
+            .head-3 {
+                font-size: 1.25rem;
+            }
+
+            .head-6 {
+                font-size: 0.75rem;
+            }
+
+            .address {
+                font-size: 0.5rem;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .head-3 {
+                font-size: 1.5rem;
+            }
+
+            .head-6 {
+                font-size: 1rem;
+            }
+
+            .address {
+                font-size: 0.75rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -76,7 +154,21 @@
 
     <header>
         <div class="container">
-            <img src="<?= base_url() ?>/img/logo/kop.png" class="img my-2" width="100%" alt="">
+            <div class="row d-flex justify-content-between my-2">
+                <div class="col-3 text-start align-middle">
+                    <img src="<?= base_url() ?>/img/logo/yayasan.png" class="img my-2" width="50%" alt="">
+                </div>
+                <div class="col-6 text-center mt-2">
+                    <div class="head-6"><strong><?= strtoupper($profil['yayasan']) ?></strong></div>
+                    <div class="head-3"><?= strtoupper($profil['sekolah']) ?></div>
+                    <div class="head-6">Izin Operasional No : <?= $profil['no_izin'] ?></div class="h6">
+                    <div class="address">Alamat : <?= $profil['alamat'] ?></div>
+                    <div class="address">Tlp : <?= $profil['telepon'] . ' E-mail : ' . $profil['email'] ?></div>
+                </div>
+                <div class="col-3 text-end align-middle">
+                    <img src="<?= base_url() ?>/img/logo/sekolah.png" class="img my-2" width="40%" alt="">
+                </div>
+            </div>
 
             <nav class="navbar navbar-expand-lg navbar-dark bg-success" aria-label="Tenth navbar example">
                 <div class="container">
@@ -113,11 +205,13 @@
                             <li class="nav-item">
                                 <a class="nav-link<?= $title == 'Galeri' ? ' active' : '' ?>" href="/galeri">Galeri</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link<?= $title == 'Siswa' ? ' active' : '' ?>" href="/siswa">Siswa</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link<?= $title == 'Alumni' ? ' active' : '' ?>" href="/alumni">Alumni</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link<?= $title == 'Siswa' || $title == 'Alumni' ? ' active' : '' ?> dropdown-toggle" href="" id="drop-info" data-bs-toggle="dropdown" aria-expanded="false">Member</a>
+                                <ul class="dropdown-menu" aria-labelledby="drop-info">
+                                    <li><a class="dropdown-item" href="/siswa">Siswa</a></li>
+                                    <li><a class="dropdown-item" href="/alumni">Alumni</a></li>
+                                    <li><a class="dropdown-item" href="/member">Login</a></li>
+                                </ul>
                             </li>
                         </ul>
                     </div>
@@ -144,19 +238,19 @@
                         <div class="col-md-4 mb-4">
                             <h3 class="title"><i class="icon-heart"></i> Motto Sekolah</h3>
                             <hr>
-                            <p>"Impian tidak akan terwujud dengan sendirinya. Kamu harus segera bangun dan berupaya untuk mewujudkannya."</p>
+                            <p>"<?= $profil['motto'] ?>."</p>
                             <br>
                         </div>
                         <div class="col-md-4 mb-4">
                             <h3 class="title"><i class="icon-th-list"></i> Kontak Kami</h3>
                             <hr>
-                            Alamat : Bugelan, Gunungtandala, Kec. Kawalu, Kab. Tasikmalaya, Jawa Barat 46182<br>
-                            No. Telp : (0812) 9000 4840 <br>
-                            E-mail : <i>bugelan.smpt@gmail.com</i>
+                            Alamat : <?= $profil['alamat'] ?><br>
+                            No. Telp : <?= $profil['telepon'] ?> <br>
+                            E-mail : <i><?= $profil['email'] ?></i>
                         </div>
                         <div class="col-md-4 my-2">
                             <div class="">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.5795261836697!2d108.21595821528517!3d-7.40091927492719!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e65f93c35b67209%3A0x6071526de8e0ade1!2sSMP%20Terpadu%20Bugelan!5e0!3m2!1sen!2sid!4v1676433713981!5m2!1sen!2sid" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                <iframe src="<?= $profil['map'] ?>" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                             </div>
                         </div>
                     </div>
@@ -166,12 +260,11 @@
 
         <footer class="container mt-4 text-muted">
             <p class="d-md-inline d-none float-end">Code by <a href="https://semangkamedia.epizy.com">Semangkamedia</a></p>
-            <p>&copy; 2023 SMP Terpadu Bugelan. &middot; <a href="https://abukafa.github.io">Support</a></p>
+            <p>&copy; 2023 <?= $profil['sekolah'] ?>. &middot; <a href="https://abukafa.github.io">Support</a></p>
         </footer>
     </main>
 
     <script src="<?= base_url() ?>/js/bootstrap.bundle.min.js"></script>
-    <script src="<?= base_url() ?>/js/jquery.min.js"></script>
     <script src="<?= base_url() ?>/js/feather.min.js"></script>
     <script>
         feather.replace({

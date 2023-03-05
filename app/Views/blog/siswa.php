@@ -12,8 +12,30 @@ $this->section('content');
 <div class="row g-5 mt-2 px-2">
     <div class="col">
         <article class="blog-post">
-            <h2 class="blog-post-title">Siswa SMPT Bugelan</h2>
-            <p class="blog-post-meta mb-5">Periode <?= $profil['periode'] . '-' . ($profil['periode'] + 1) ?></p>
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap ">
+                <div class="col-6">
+                    <h2 class="blog-post-title">Siswa SMPT Bugelan</h2>
+                    <p class="blog-post-meta mb-5">Periode <?= $profil['periode'] . '-' . ($profil['periode'] + 1) ?></p>
+                </div>
+                <div class="col-6 text-end pt-2">
+                    <button type="button" class="btn btn-sm btn-outline-success dropdown-toggle" id="dropdownFilter" data-bs-toggle="dropdown" aria-expanded="true">
+                        <span data-feather="user"></span>
+                        Kelas
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownFilter" data-popper-placement="bottom-start" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(0px, 40px, 0px);">
+                        <li>
+                            <h6 class="dropdown-header">Tampilkan Data</h6>
+                        </li>
+                        <li><a class="dropdown-item" href="/siswa/<?= tahun(7) ?>">Kelas VII</a></li>
+                        <li><a class="dropdown-item" href="/siswa/<?= tahun(8) ?>">Kelas VIII</a></li>
+                        <li><a class="dropdown-item" href="/siswa/<?= tahun(9) ?>">Kelas IX</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="/siswa">Semua Data</a></li>
+                    </ul>
+                </div>
+            </div>
 
             <table class="table table-hover align-middle">
                 <tr>

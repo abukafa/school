@@ -48,7 +48,9 @@ $routes->get('/blog', 'Home::blog');
 $routes->get('/blog/(:any)', 'Home::detail/$1');
 $routes->get('/galeri', 'Home::galeri');
 $routes->get('/siswa', 'Home::siswa');
+$routes->get('/siswa/(:any)', 'Home::siswa/$1');
 $routes->get('/alumni', 'Home::alumni');
+$routes->get('/alumni/(:any)', 'Home::alumni/$1');
 
 $routes->get('/admin', 'Login::admin');
 $routes->get('/member', 'Login::member');
@@ -107,6 +109,11 @@ $routes->post('/data/absen/(:num)', 'AdminAbsensi::absen/$1');
 $routes->get('/data/ceklis/(:any)/(:num)', 'AdminAbsensi::ceklis/$1/$2');
 
 $routes->get('/data/blog', 'AdminBlog::index');
+$routes->get('/data/blog/(:num)', 'AdminBlog::detail/$1');
+$routes->post('/data/blog/(:num)', 'AdminBlog::save/$1');
+$routes->delete('/data/blog/(:num)', 'AdminBlog::delete/$1');
+$routes->get('/data/publish/(:num)', 'AdminBlog::publish/$1');
+$routes->post('/data/save/(:num)', 'AdminBlog::saveToGaleri/$1');
 
 $routes->get('/data/galeri', 'AdminGaleri::index');
 

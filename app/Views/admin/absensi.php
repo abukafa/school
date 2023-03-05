@@ -24,7 +24,7 @@ $this->section('content');
         </ul>
     </div>
     <h4 class="my-3 text-center">Kelas <?= tahun($member[0]['tahun']) ?></h4>
-    <table class="table table-bordered text-center align-middle">
+    <table class="table table-bordered table-hover text-center align-middle">
         <tr class="bg-light">
             <th rowspan="2">Nama</th>
             <th colspan="5">Kehadiran</th>

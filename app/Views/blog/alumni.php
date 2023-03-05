@@ -6,8 +6,26 @@ $this->section('content');
 <div class="row g-5 mt-2 px-2">
     <div class="col">
         <article class="blog-post">
-            <h2 class="blog-post-title">Alumni SMPT Bugelan</h2>
-            <p class="blog-post-meta mb-5">Update <?= $profil['periode'] ?></p>
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap ">
+                <div class="col-6">
+                    <h2 class="blog-post-title">Alumni SMPT Bugelan</h2>
+                    <p class="blog-post-meta mb-5">Update <?= $profil['periode'] ?></p>
+                </div>
+                <div class="col-6 text-end pt-2">
+                    <button type="button" class="btn btn-sm btn-outline-success dropdown-toggle" id="dropdownFilter" data-bs-toggle="dropdown" aria-expanded="true">
+                        <span data-feather="calendar"></span>
+                        Tahun
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownFilter" data-popper-placement="bottom-start" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(0px, 40px, 0px);">
+                        <?php
+                        $prd = $profil['periode'];
+                        for ($i = $prd; $i > 2014; $i--) {
+                        ?>
+                            <li><a class="dropdown-item" href="/alumni/<?= $i - 3 ?>"><?= $i ?></a></li>
+                        <?php } ?>
+                    </ul>
+                </div>
+            </div>
 
             <table class="table table-hover align-middle">
                 <tr>

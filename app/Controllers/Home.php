@@ -148,14 +148,19 @@ class Home extends BaseController
         return view('blog/siswa', $data);
     }
 
-    public function alumni()
+    public function alumni($thn = NULL)
     {
         $profil = $this->profilModel->first();
-        $tahun = $profil['periode'] - 2;
+        $tahun = $profil['periode'] - 3;
+        if ($thn == NULL) {
+            $alumni = $this->memberModel->where('akun', 'siswa')->where('tahun', $tahun)->orderBy('nama')->findAll();
+        } else {
+            $alumni = $this->memberModel->where('akun', 'siswa')->where('tahun', $thn)->orderBy('nama')->findAll();
+        }
         $data = [
             'title' => 'Alumni',
             'profil' => $profil,
-            'alumni' => $this->memberModel->where('akun', 'siswa')->where('tahun < ', $tahun)->orderBy('nama')->findAll()
+            'alumni' => $alumni
         ];
         return view('blog/alumni', $data);
     }

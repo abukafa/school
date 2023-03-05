@@ -14,5 +14,5 @@ class BlogModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['kategori', 'ni', 'autor', 'judul', 'slug', 'image', 'excerpt', 'body', 'published', 'created', 'updated'];
+    protected $allowedFields    = ['kategori', 'idm', 'autor', 'judul', 'image', 'galeri', 'excerpt', 'body', 'created', 'publish'];
 }

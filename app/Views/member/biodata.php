@@ -38,24 +38,26 @@ flash_alert();
     <form action="<?= (!$member) ? '/admin/biodata' : ((session()->get('member')) ? '/member/biodata/' : '/admin/biodata/') . $member['id'] ?>" method="post">
         <div class="row mb-5">
             <div class="<?= (session()->get('member')) ? 'd-none' : ''  ?>">
-                <div class='col-md-6 mb-5'>
-                    <label class='form-label' for='akun'>Jenis Akun</label>
-                    <select type='text' class='form-select' name='akun' id='akun'>
-                        <option><?= ($member) ? $member['akun'] : '' ?></option>
-                        <option>Guru</option>
-                        <option>Staff</option>
-                        <option>Pengurus</option>
-                        <option>Siswa</option>
-                    </select>
-                </div>
-                <div class='col-md-6 mb-2'>
-                    <label class='form-label' for='pass'>Passcode</label>
-                    <div class="input-group">
-                        <input type='text' class='form-control' name='id' id='id' value="<?= ($member) ? $member['id'] : '' ?>">
-                        <input type='text' class='form-control' name='pass' id='pass' value="<?= ($member) ? $member['pass'] : '' ?>">
+                <div class="row">
+                    <div class='col-md-6 mb-2'>
+                        <label class='form-label' for='akun'>Jenis Akun</label>
+                        <select type='text' class='form-select' name='akun' id='akun'>
+                            <option><?= ($member) ? $member['akun'] : '' ?></option>
+                            <option>Guru</option>
+                            <option>Staff</option>
+                            <option>Pengurus</option>
+                            <option>Siswa</option>
+                        </select>
+                    </div>
+                    <div class='col-md-6 mb-2'>
+                        <label class='form-label' for='pass'>Passcode</label>
+                        <div class="input-group">
+                            <input type='text' class='form-control' name='id' id='id' value="<?= ($member) ? $member['id'] : '' ?>" readonly>
+                            <input type='text' class='form-control' name='pass' id='pass' value="<?= ($member) ? $member['pass'] : '' ?>">
+                        </div>
                     </div>
                 </div>
-                <div class='col-12 mb-2'>
+                <div class='col-md-12 mb-2'>
                     <label id="label-virtual-select" for='ket'>Keterangan</label>
                     <select multiple name="ket" id="virtual-select" placeholder="<?= ($member) ? $member['ket'] : '' ?>" data-search="false" data-silent-initial-value-set="true">
                         <option>Kepala Sekolah</option>

@@ -992,25 +992,46 @@ $calendar->addEvents($events);
             <h2 class="blog-post-title">Kalender Pendidikan</h2>
             <p class="blog-post-meta mb-5">Periode <?= $profil['periode'] . '-' . ($profil['periode'] + 1) ?></p>
         </article>
-
+        <?php
+        $y1 = $profil['periode'];
+        $y2 = $y1 + 1;
+        ?>
         <div class="row">
-            <div class="col-lg-4 mb-4">
-                <?= $calendar->draw(date('Y-1-1'), 'green'); ?>
+            <div class="col-xl-3 col-md-4 col-sm-6 mb-4">
+                <?= $calendar->draw(date($y1 . '-7-1'), 'green'); ?>
             </div>
-            <div class="col-lg-4 mb-4">
-                <?= $calendar->draw(date('Y-2-1'), 'green'); ?>
+            <div class="col-xl-3 col-md-4 col-sm-6 mb-4">
+                <?= $calendar->draw(date($y1 . '-8-1'), 'green'); ?>
             </div>
-            <div class="col-lg-4 mb-4">
-                <?= $calendar->draw(date('Y-3-1'), 'green'); ?>
+            <div class="col-xl-3 col-md-4 col-sm-6 mb-4">
+                <?= $calendar->draw(date($y1 . '-9-1'), 'green'); ?>
             </div>
-            <div class="col-lg-4 mb-4">
-                <?= $calendar->draw(date('Y-4-1'), 'green'); ?>
+            <div class="col-xl-3 col-md-4 col-sm-6 mb-4">
+                <?= $calendar->draw(date($y1 . '-10-1'), 'green'); ?>
             </div>
-            <div class="col-lg-4 mb-4">
-                <?= $calendar->draw(date('Y-5-1'), 'green'); ?>
+            <div class="col-xl-3 col-md-4 col-sm-6 mb-4">
+                <?= $calendar->draw(date($y1 . '-11-1'), 'green'); ?>
             </div>
-            <div class="col-lg-4 mb-4">
-                <?= $calendar->draw(date('Y-6-1'), 'green'); ?>
+            <div class="col-xl-3 col-md-4 col-sm-6 mb-4">
+                <?= $calendar->draw(date($y1 . '-12-1'), 'green'); ?>
+            </div>
+            <div class="col-xl-3 col-md-4 col-sm-6 mb-4">
+                <?= $calendar->draw(date($y2 . '-1-1'), 'green'); ?>
+            </div>
+            <div class="col-xl-3 col-md-4 col-sm-6 mb-4">
+                <?= $calendar->draw(date($y2 . '-2-1'), 'green'); ?>
+            </div>
+            <div class="col-xl-3 col-md-4 col-sm-6 mb-4">
+                <?= $calendar->draw(date($y2 . '-3-1'), 'green'); ?>
+            </div>
+            <div class="col-xl-3 col-md-4 col-sm-6 mb-4">
+                <?= $calendar->draw(date($y2 . '-4-1'), 'green'); ?>
+            </div>
+            <div class="col-xl-3 col-md-4 col-sm-6 mb-4">
+                <?= $calendar->draw(date($y2 . '-5-1'), 'green'); ?>
+            </div>
+            <div class="col-xl-3 col-md-4 col-sm-6 mb-4">
+                <?= $calendar->draw(date($y2 . '-6-1'), 'green'); ?>
             </div>
         </div>
     </div>

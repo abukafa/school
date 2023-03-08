@@ -1,26 +1,21 @@
+<?php
+
+use App\Models\BlogModel;
+
+$blogModel = new BlogModel();
+$galeri = $blogModel->where('galeri', true)->limit(4)->orderBy('rand()')->get()->getResultArray();
+?>
+
 <h3 class="pt-4 my-4 fst-italic border-top text-success">
     Galeri Sekolah
 </h3>
 
 <div class="row">
-    <div class="col-md-3 mb-2">
-        <div class="card">
-            <img src="img/photo/g01.jpeg" class="rounded" alt="">
+    <?php foreach ($galeri as $col) : ?>
+        <div class="col-md-3 mb-2">
+            <div class="card" style="overflow: hidden;">
+                <a href="/galeri"><img src="img/galeri/<?= $col['image'] ?>" class="rounded img" style="height:250px;min-width:100%"></a>
+            </div>
         </div>
-    </div>
-    <div class="col-md-3 mb-2">
-        <div class="card">
-            <img src="img/photo/g02.jpeg" class="rounded" alt="">
-        </div>
-    </div>
-    <div class="col-md-3 mb-2">
-        <div class="card">
-            <img src="img/photo/g03.jpeg" class="rounded" alt="">
-        </div>
-    </div>
-    <div class="col-md-3 mb-2">
-        <div class="card">
-            <img src="img/photo/g04.jpeg" class="rounded" alt="">
-        </div>
-    </div>
+    <?php endforeach; ?>
 </div>

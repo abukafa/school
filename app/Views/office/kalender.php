@@ -92,7 +92,7 @@ flash_alert();
                     <div class='mb-2'>
                         <label class='form-label' for='jenis'>Jenis Acara</label>
                         <div class="input-group">
-                            <select class="form-select" name="jenis" id="jenis">
+                            <select class="form-select" name="jenis" id="jenis" required>
                                 <option value="">.. pilih ..</option>
                                 <option>Libur Sekolah</option>
                                 <option>Penilaian Semester</option>
@@ -107,19 +107,19 @@ flash_alert();
                     </div>
                     <div class='mb-2'>
                         <label class='form-label' for='tgl_awal'>Tanggal Awal</label>
-                        <input type='text' class='form-control' name='tgl_awal' id='tgl_awal'>
+                        <input type='text' class='form-control' name='tgl_awal' id='tgl_awal' required>
                     </div>
                     <div class='mb-2'>
                         <label class='form-label' for='tgl_ahir'>Tanggal Akhir</label>
-                        <input type='text' class='form-control' name='tgl_ahir' id='tgl_ahir'>
+                        <input type='text' class='form-control' name='tgl_ahir' id='tgl_ahir' required>
                     </div>
                     <div class='mb-2'>
-                        <label class='form-label' for='acara'>Acara</label>
-                        <input type='text' class='form-control' name='acara' id='acara'>
+                        <label class='form-label' for='acara'>Display</label>
+                        <input type='text' class='form-control' name='acara' id='acara' required>
                     </div>
                     <div class='mb-2'>
-                        <label class='form-label' for='ket'>Keterangan</label>
-                        <input type='text' class='form-control' name='ket' id='ket'>
+                        <label class='form-label' for='ket'>Penjelasan</label>
+                        <input type='text' class='form-control' name='ket' id='ket' required>
                     </div>
                 </div>
                 <div class="modal-footer">

@@ -95,53 +95,46 @@ $this->section('content');
             </div>
         </div>
     </div>
-    <div class="col-lg-6">
-        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-            <div class="col p-4 d-flex flex-column position-static">
-                <strong class="d-inline-block mb-2 text-success">Prakata Kepala Sekolah</strong>
-                <h3 class="mb-0"><?= $profil['kepala'] ?></h3>
-                <div class="mb-1 text-muted"><?= date_format(date_create($profil['periode'] . '-07-01'), 'l, j M Y') ?></div>
-                <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                <a href="/prakata" class="stretched-link">Lanjut baca</a>
+    <?php foreach ($blog as $item) :
+        if ($item['kategori'] == 'prakata') { ?>
+            <div class="col-lg-6">
+                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <strong class="d-inline-block mb-2 text-success">Prakata Kepala Sekolah</strong>
+                        <h3 class="mb-0"><?= $profil['kepala'] ?></h3>
+                        <div class="mb-1 text-muted"><?= date_format(date_create($profil['periode'] . '-07-01'), 'l, j M Y') ?></div>
+                        <p class="mb-auto"><?= substr($item['excerpt'], 0, 100) ?></p>
+                        <a href="/prakata" class="stretched-link">Lanjut baca</a>
+                    </div>
+                    <div class="col-auto d-md-block d-none">
+                        <img src="img/photo/kepsek.jpg" width="200" height="250" style="min-height:100%;">
+                    </div>
+                </div>
             </div>
-            <div class="col-auto d-md-block d-none">
-                <img src="img/photo/kepsek.jpg" width="200" height="250" alt="">
-            </div>
-        </div>
-    </div>
+    <?php }
+    endforeach; ?>
 </div>
 
 <div class="row g-5 mt-3">
     <div class="col-md-8">
-        <h3 class="pb-4 mb-4 fst-italic border-bottom text-success">
+        <h3 class="pb-2 mb-2 fst-italic text-success">
             Blog Terbaru
         </h3>
-
-        <article class="blog-post">
-            <h2 class="blog-post-title">Sample blog post</h2>
-            <p class="blog-post-meta">January 1, 2021 by <a href="#">Mark</a></p>
-
-            <p>This blog post shows a few different types of content that’s supported and styled with Bootstrap. Basic typography, lists, tables, images, code, and more are all supported as expected.</p>
-            <p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
-
-
-            <p>This is some additional paragraph placeholder content. It's a slightly shorter version of the other highly repetitive body text used throughout.</p>
-        </article>
-
-        <hr class="my-4">
-
-        <article class="blog-post">
-            <h2 class="blog-post-title">New feature</h2>
-            <p class="blog-post-meta">December 14, 2020 by <a href="#">Chris</a></p>
-
-            <p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
-            <ul>
-                <li>First list item</li>
-                <li>Second list item with a longer description</li>
-                <li>Third list item to close it out</li>
-            </ul>
-            <p>This is some additional paragraph placeholder content. It's a slightly shorter version of the other highly repetitive body text used throughout.</p>
-        </article>
+        <?php $no = 1;
+        $spec_data = array_slice($blog, -3);
+        foreach ($spec_data as $row) :
+        ?>
+            <hr class="my-4">
+            <article class="blog-post">
+                <a href="/blog/<?= $row['id'] ?>" style="text-decoration:none;">
+                    <h2 class="blog-post-title"><?= $row['judul'] ?></h2>
+                </a>
+                <em class="blog-post-meta"><?= date_format(date_create($row['created']), 'l, j M Y') ?> by <a href="#"><?= $row['autor'] ?></a></em>
+                <br><br>
+                <p style="text-align: justify;"><?= substr($row['excerpt'], 0, 500) ?>...</p>
+            </article>
+        <?php $no++;
+        endforeach; ?>
     </div>
 
     <div class="col-md-4">

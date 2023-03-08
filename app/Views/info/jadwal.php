@@ -85,7 +85,7 @@ $this->section('content');
                             TIK
                         </div>
                         <div class="col-3 border border-white bg-light-success py-1">
-                            PKN
+                            BTQ
                         </div>
                         <div class="col-3 border border-white bg-light-warning py-1">
                             09.30
@@ -97,31 +97,31 @@ $this->section('content');
                             10.00
                         </div>
                         <div class="col-3 border border-white bg-light-success py-1">
+                            IPS
+                        </div>
+                        <div class="col-3 border border-white bg-light-success py-1">
                             PAI
                         </div>
                         <div class="col-3 border border-white bg-light-success py-1">
-                            TIK
-                        </div>
-                        <div class="col-3 border border-white bg-light-success py-1">
-                            PKN
+                            BTQ
                         </div>
                         <div class="col-3 border border-white bg-light-success py-1">
                             10.30
                         </div>
                         <div class="col-3 border border-white bg-light-success py-1">
+                            IPS
+                        </div>
+                        <div class="col-3 border border-white bg-light-success py-1">
                             PAI
                         </div>
                         <div class="col-3 border border-white bg-light-success py-1">
-                            TIK
-                        </div>
-                        <div class="col-3 border border-white bg-light-success py-1">
-                            PKN
+                            BTQ
                         </div>
                         <div class="col-3 border border-white bg-light-success py-1">
                             11.00
                         </div>
                         <div class="col-3 border border-white bg-light-success py-1">
-                            PKN
+                            BTQ
                         </div>
                         <div class="col-3 border border-white bg-light-success py-1">
                             PAI
@@ -133,7 +133,7 @@ $this->section('content');
                             11.30
                         </div>
                         <div class="col-3 border border-white bg-light-success py-1">
-                            PKN
+                            BTQ
                         </div>
                         <div class="col-3 border border-white bg-light-success py-1">
                             IPS
@@ -151,7 +151,7 @@ $this->section('content');
                             12.30
                         </div>
                         <div class="col-3 border border-white bg-light-success py-1">
-                            PKN
+                            BTQ
                         </div>
                         <div class="col-3 border border-white bg-light-success py-1">
                             IPS
@@ -280,7 +280,7 @@ $this->section('content');
                             TIK
                         </div>
                         <div class="col-3 col-lg-4 border border-white bg-light-success py-1">
-                            PKN
+                            BTQ
                         </div>
                         <div class="col-3 col-lg-4 border border-white bg-light-success py-1">
                             MTK
@@ -292,7 +292,7 @@ $this->section('content');
                             MTK
                         </div>
                         <div class="col-3 col-lg-4 border border-white bg-light-success py-1">
-                            PKN
+                            BTQ
                         </div>
                         <div class="col-3 col-lg-4 border border-white bg-light-success py-1">
                             SBK
@@ -310,7 +310,7 @@ $this->section('content');
                             MTK
                         </div>
                         <div class="col-3 col-lg-4 border border-white bg-light-success py-1">
-                            PKN
+                            BTQ
                         </div>
                         <div class="col-3 col-lg-4 border border-white bg-light-success py-1">
                             SBK
@@ -511,7 +511,7 @@ $this->section('content');
                             07.00
                         </div>
                         <div class="col-9 border border-white bg-light-warning py-1">
-                            UPACARA BENDERA
+                            DHUHA & TAUSIYAH
                         </div>
                         <div class="col-3 border border-white bg-light-success py-1">
                             07.30
@@ -544,7 +544,7 @@ $this->section('content');
                             B.INDO
                         </div>
                         <div class="col-3 border border-white bg-light-success py-1">
-                            MTK
+                            PKN
                         </div>
                         <div class="col-3 border border-white bg-light-success py-1">
                             IPA
@@ -556,7 +556,7 @@ $this->section('content');
                             B.ING
                         </div>
                         <div class="col-3 border border-white bg-light-success py-1">
-                            MTK
+                            PKN
                         </div>
                         <div class="col-3 border border-white bg-light-success py-1">
                             IPA
@@ -577,7 +577,7 @@ $this->section('content');
                             B.INDO
                         </div>
                         <div class="col-3 border border-white bg-light-success py-1">
-                            MTK
+                            PKN
                         </div>
                         <div class="col-3 border border-white bg-light-success py-1">
                             10.30
@@ -589,7 +589,7 @@ $this->section('content');
                             B.INDO
                         </div>
                         <div class="col-3 border border-white bg-light-success py-1">
-                            MTK
+                            PKN
                         </div>
                         <div class="col-3 border border-white bg-light-success py-1">
                             11.00
@@ -601,13 +601,13 @@ $this->section('content');
                             B.INDO
                         </div>
                         <div class="col-3 border border-white bg-light-success py-1">
-                            MTK
+                            PKN
                         </div>
                         <div class="col-3 border border-white bg-light-success py-1">
                             11.30
                         </div>
                         <div class="col-3 border border-white bg-light-success py-1">
-                            MTK
+                            PKN
                         </div>
                         <div class="col-3 border border-white bg-light-success py-1">
                             B.ING
@@ -625,7 +625,7 @@ $this->section('content');
                             12.30
                         </div>
                         <div class="col-3 border border-white bg-light-success py-1">
-                            MTK
+                            PKN
                         </div>
                         <div class="col-3 border border-white bg-light-success py-1">
                             B.ING

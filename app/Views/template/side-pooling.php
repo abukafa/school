@@ -1,24 +1,33 @@
-<div class="p-4 mb-3 bg-light rounded">
-    <h4 class="fst-italic">Pooling Penilaian</h4>
+<?php
+
+use App\Models\PoolingModel;
+
+$poolingModel = new PoolingModel();
+$pool = $poolingModel->findAll();
+$r = rand(0, count($pool) - 1);
+?>
+
+<div class="p-4 mb-3 bg-light rounded" id="pooling-next">
+    <h4 class="fst-italic">Pooling Penilaian <?= $pool[$r]['jenis'] ?></h4>
     <hr>
-    <form action="" method="post">
-        <label class="mb-2">Bagaimana Perkembangan <strong>Sikap</strong> Ananda selama belajar di SMPT Bugelan?</label>
+    <form action="/pooling/<?= $pool[$r]['id'] ?>" method="get">
+        <label class="mb-2"><?= $pool[$r]['pertanyaan'] ?></label>
         <fieldset class="mb-3">
             <div class="form-check">
-                <input type="radio" name="radios" class="form-check-input" id="exampleRadio1">
-                <label class="form-check-label" for="exampleRadio1">Semakin Baik</label>
+                <input type="radio" name="pooling" class="form-check-input" id="a" value="a">
+                <label class="form-check-label" for="a">Semakin Baik</label>
             </div>
             <div class="form-check">
-                <input type="radio" name="radios" class="form-check-input" id="exampleRadio2">
-                <label class="form-check-label" for="exampleRadio2">Baik</label>
+                <input type="radio" name="pooling" class="form-check-input" id="b" value="b">
+                <label class="form-check-label" for="b">Baik</label>
             </div>
             <div class="form-check">
-                <input type="radio" name="radios" class="form-check-input" id="exampleRadio2">
-                <label class="form-check-label" for="exampleRadio2">Biasa Saja</label>
+                <input type="radio" name="pooling" class="form-check-input" id="c" value="c">
+                <label class="form-check-label" for="c">Biasa Saja</label>
             </div>
             <div class="form-check">
-                <input type="radio" name="radios" class="form-check-input" id="exampleRadio2">
-                <label class="form-check-label" for="exampleRadio2">Kurang Baik</label>
+                <input type="radio" name="pooling" class="form-check-input" id="d" value="d">
+                <label class="form-check-label" for="d">Kurang Baik</label>
             </div>
         </fieldset>
         <button type="submit" class="btn btn-success">Simpan</button>

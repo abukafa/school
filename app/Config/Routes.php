@@ -51,6 +51,7 @@ $routes->get('/siswa', 'Home::siswa');
 $routes->get('/siswa/(:any)', 'Home::siswa/$1');
 $routes->get('/alumni', 'Home::alumni');
 $routes->get('/alumni/(:any)', 'Home::alumni/$1');
+$routes->get('/pooling/(:num)', 'Home::pooling/$1');
 
 $routes->get('/admin', 'Login::admin');
 $routes->get('/member', 'Login::member');
@@ -62,6 +63,7 @@ $routes->get('/dashboard', 'OfficeDashboard::index');
 $routes->get('/admin/profil', 'OfficeDashboard::profil');
 $routes->post('/admin/profil', 'OfficeDashboard::save');
 
+$routes->get('/admin/mem-kom/(:num)', 'OfficeMember::memkom/$1');
 $routes->get('/admin/member', 'OfficeMember::get');
 $routes->get('/admin/member/(:num)', 'OfficeMember::get/$1');
 $routes->get('/admin/guru', 'OfficeMember::guru');
@@ -98,18 +100,21 @@ $routes->post('/member/kompetensi', 'MemberKompetensi::save');
 $routes->post('/member/kompetensi/(:num)', 'MemberKompetensi::save/$1');
 $routes->delete('/member/kompetensi/(:num)', 'MemberKompetensi::delete/$1');
 $routes->get('/member/kompetensi-get/(:num)', 'MemberKompetensi::get/$1');
+$routes->get('/member/kompetensi-get-idm/(:num)', 'MemberKompetensi::getByIdm/$1');
 $routes->get('/member/kompetensi/(:num)', 'MemberKompetensi::member/$1');
 
 $routes->get('/member/nilai', 'MemberNilai::index');
 $routes->get('/member/nilai/(:num)', 'MemberNilai::siswa/$1');
 
 $routes->get('/data/absensi', 'AdminAbsensi::index');
+$routes->get('/data/absensi-get-idm/(:any)', 'AdminAbsensi::getByIdm/$1');
 $routes->get('/data/absensi/(:any)', 'AdminAbsensi::index/$1');
 $routes->post('/data/absen/(:num)', 'AdminAbsensi::absen/$1');
 $routes->get('/data/ceklis/(:any)/(:num)', 'AdminAbsensi::ceklis/$1/$2');
 
 $routes->get('/data/blog', 'AdminBlog::index');
 $routes->get('/data/blog/(:num)', 'AdminBlog::detail/$1');
+$routes->get('/data/blog-get/(:num)', 'AdminBlog::get/$1');
 $routes->post('/data/blog/(:num)', 'AdminBlog::save/$1');
 $routes->delete('/data/blog/(:num)', 'AdminBlog::delete/$1');
 $routes->get('/data/publish/(:num)', 'AdminBlog::publish/$1');

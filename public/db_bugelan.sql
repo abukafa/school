@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 06, 2023 at 12:03 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.0.25
+-- Generation Time: Mar 08, 2023 at 07:37 AM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -41,49 +41,48 @@ CREATE TABLE `absensi` (
   `jam5` smallint(1) NOT NULL,
   `absen` varchar(1) NOT NULL,
   `ket` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `absensi`
 --
 
 INSERT INTO `absensi` (`id`, `idm`, `akun`, `tahun`, `panggil`, `tanggal`, `jam1`, `jam2`, `jam3`, `jam4`, `jam5`, `absen`, `ket`) VALUES
-(1, 1, 'Siswa', '2021', 'Ade N', '2023-02-28', 1, 1, 1, 1, 0, '', ''),
-(2, 5, 'Siswa', '2021', 'Fatem', '2023-02-28', 1, 0, 0, 0, 0, '', ''),
-(3, 7, 'Siswa', '2021', 'Herna', '2023-02-28', 0, 0, 0, 0, 0, 'i', ''),
-(4, 6, 'Siswa', '2021', 'Fuad ', '2023-02-28', 0, 0, 0, 0, 0, 'a', ''),
-(5, 4, 'Siswa', '2021', 'Anggr', '2023-02-28', 1, 1, 1, 1, 1, '', ''),
-(6, 8, 'Siswa', '2021', 'Husnu', '2023-02-28', 0, 0, 0, 0, 0, 's', ''),
-(7, 9, 'Siswa', '2021', 'Jelit', '2023-02-28', 0, 0, 0, 0, 0, 's', ''),
-(8, 10, 'Siswa', '2021', 'Livia', '2023-02-28', 1, 1, 1, 0, 0, '', ''),
-(9, 11, 'Siswa', '2021', 'Nurma', '2023-02-28', 1, 1, 1, 1, 1, '', ''),
-(10, 12, 'Siswa', '2021', 'Piki ', '2023-02-28', 1, 1, 1, 1, 1, '', ''),
-(11, 13, 'Siswa', '2021', 'Raiha', '2023-02-28', 1, 1, 0, 1, 1, '', ''),
-(12, 14, 'Siswa', '2021', 'Restu', '2023-02-28', 1, 1, 1, 1, 1, '', ''),
-(13, 15, 'Siswa', '2021', 'Rizki', '2023-02-28', 1, 1, 0, 0, 1, '', ''),
-(14, 16, 'Siswa', '2021', 'Syifa', '2023-02-28', 1, 1, 1, 0, 0, '', ''),
-(15, 17, 'Siswa', '2021', 'Vivia', '2023-02-28', 1, 1, 1, 1, 1, '', ''),
-(16, 18, 'Siswa', '2021', 'Wafa ', '2023-02-28', 1, 1, 1, 0, 0, '', ''),
-(17, 19, 'Siswa', '2021', 'Wafi ', '2023-02-28', 1, 1, 1, 1, 0, '', ''),
-(18, 20, 'Siswa', '2021', 'Zaki ', '2023-02-28', 1, 1, 1, 1, 1, '', ''),
-(19, 62, 'Siswa', '2021', 'Adi B', '2023-02-28', 0, 0, 0, 0, 0, 'a', ''),
-(20, 21, 'Siswa', '2020', 'Ade T', '2023-02-28', 0, 0, 0, 0, 0, 'a', ''),
-(21, 21, 'Siswa', '2020', 'Ade T', '2023-03-04', 0, 0, 0, 0, 0, 'a', ''),
-(22, 22, 'Siswa', '2020', 'Aulia', '2023-03-04', 0, 0, 0, 0, 0, 's', ''),
-(23, 23, 'Siswa', '2020', 'Fatma', '2023-03-04', 1, 1, 1, 1, 1, '', ''),
-(24, 24, 'Siswa', '2020', 'Hilda', '2023-03-04', 1, 1, 1, 1, 1, '', ''),
-(25, 25, 'Siswa', '2020', 'Hirsa', '2023-03-04', 1, 1, 1, 1, 1, '', ''),
-(26, 26, 'Siswa', '2020', 'Irgi ', '2023-03-04', 1, 1, 1, 1, 1, '', ''),
-(27, 27, 'Siswa', '2020', 'Laila', '2023-03-04', 1, 1, 1, 1, 1, '', ''),
-(28, 28, 'Siswa', '2020', 'Muham', '2023-03-04', 1, 1, 1, 1, 1, '', ''),
-(29, 29, 'Siswa', '2020', 'Nizar', '2023-03-04', 1, 1, 1, 1, 1, '', ''),
-(30, 30, 'Siswa', '2020', 'Nuri ', '2023-03-04', 1, 1, 1, 1, 1, '', ''),
-(31, 31, 'Siswa', '2020', 'Razif', '2023-03-04', 1, 1, 1, 1, 0, '', ''),
-(32, 32, 'Siswa', '2020', 'Rifat', '2023-03-04', 1, 1, 1, 1, 0, '', ''),
-(33, 33, 'Siswa', '2020', 'Rizki', '2023-03-04', 1, 1, 1, 0, 0, '', ''),
-(34, 34, 'Siswa', '2020', 'Rusma', '2023-03-04', 1, 1, 1, 1, 0, '', ''),
-(35, 35, 'Siswa', '2020', 'Syahd', '2023-03-04', 1, 1, 1, 1, 1, '', ''),
-(36, 36, 'Siswa', '2020', 'Winda', '2023-03-04', 1, 1, 1, 1, 1, '', '');
+(1, 1, 'Siswa', '2021', 'Ade N', '2023-03-07', 1, 1, 1, 1, 1, '', '4'),
+(2, 5, 'Siswa', '2021', 'Fatem', '2023-03-07', 1, 1, 1, 1, 0, '', '1'),
+(3, 7, 'Siswa', '2021', 'Herna', '2023-03-07', 0, 0, 0, 0, 0, 'i', '0'),
+(4, 6, 'Siswa', '2021', 'Fuad ', '2023-03-07', 0, 0, 0, 0, 0, 'i', ''),
+(5, 4, 'Siswa', '2021', 'Anggr', '2023-03-07', 1, 1, 1, 1, 1, '', '3'),
+(6, 8, 'Siswa', '2021', 'Husnu', '2023-03-07', 1, 1, 0, 0, 0, '', ''),
+(8, 10, 'Siswa', '2021', 'Livia', '2023-03-07', 0, 0, 0, 0, 0, '', ''),
+(10, 12, 'Siswa', '2021', 'Piki ', '2023-03-07', 1, 1, 1, 1, 1, '', '5'),
+(11, 13, 'Siswa', '2021', 'Raiha', '2023-03-07', 1, 1, 0, 1, 1, '', '4'),
+(12, 14, 'Siswa', '2021', 'Restu', '2023-03-07', 1, 1, 1, 1, 1, '', '5'),
+(14, 16, 'Siswa', '2021', 'Syifa', '2023-03-07', 1, 1, 1, 0, 0, '', '3'),
+(15, 17, 'Siswa', '2021', 'Vivia', '2023-03-07', 1, 1, 1, 1, 1, '', '5'),
+(16, 18, 'Siswa', '2021', 'Wafa ', '2023-03-07', 1, 1, 1, 0, 0, '', '3'),
+(17, 19, 'Siswa', '2021', 'Wafi ', '2023-03-07', 1, 1, 1, 1, 0, '', '4'),
+(18, 20, 'Siswa', '2021', 'Zaki ', '2023-03-07', 1, 1, 1, 1, 1, '', '5'),
+(19, 62, 'Siswa', '2021', 'Adi B', '2023-03-07', 0, 0, 0, 0, 0, 'a', '0'),
+(20, 21, 'Siswa', '2020', 'Ade T', '2023-03-07', 0, 0, 0, 0, 0, 'a', '0'),
+(22, 22, 'Siswa', '2020', 'Aulia', '2023-03-07', 0, 0, 0, 0, 0, 's', '0'),
+(23, 23, 'Siswa', '2020', 'Fatma', '2023-03-07', 1, 1, 1, 1, 1, '', '5'),
+(24, 24, 'Siswa', '2020', 'Hilda', '2023-03-07', 1, 1, 1, 1, 1, '', '5'),
+(25, 25, 'Siswa', '2020', 'Hirsa', '2023-03-07', 1, 1, 1, 1, 1, '', '5'),
+(26, 26, 'Siswa', '2020', 'Irgi ', '2023-03-07', 1, 1, 1, 1, 1, '', '5'),
+(27, 27, 'Siswa', '2020', 'Laila', '2023-03-07', 1, 1, 1, 1, 1, '', '5'),
+(28, 28, 'Siswa', '2020', 'Muham', '2023-03-07', 1, 1, 1, 1, 1, '', '5'),
+(29, 29, 'Siswa', '2020', 'Nizar', '2023-03-07', 1, 1, 1, 1, 1, '', '5'),
+(30, 30, 'Siswa', '2020', 'Nuri ', '2023-03-07', 1, 1, 1, 1, 1, '', '5'),
+(31, 31, 'Siswa', '2020', 'Razif', '2023-03-07', 1, 1, 1, 1, 0, '', '4'),
+(32, 32, 'Siswa', '2020', 'Rifat', '2023-03-07', 1, 1, 1, 1, 0, '', '4'),
+(34, 34, 'Siswa', '2020', 'Rusma', '2023-03-07', 1, 1, 1, 1, 0, '', '4'),
+(35, 35, 'Siswa', '2020', 'Syahd', '2023-03-07', 1, 1, 1, 1, 1, '', '5'),
+(36, 36, 'Siswa', '2020', 'Winda', '2023-03-07', 1, 1, 1, 1, 1, '', '5'),
+(37, 15, 'Siswa', '2021', 'Rizki', '2023-03-07', 0, 0, 0, 0, 0, 'i', ''),
+(40, 11, 'Siswa', '2021', 'Nurma', '2023-03-07', 0, 0, 0, 0, 0, 'i', ''),
+(41, 9, 'Siswa', '2021', 'Jelit', '2023-03-07', 1, 1, 1, 1, 1, '', ''),
+(43, 41, 'Siswa', '2022', 'Aldi ', '2023-03-07', 0, 0, 0, 0, 0, 's', '');
 
 -- --------------------------------------------------------
 
@@ -100,16 +99,16 @@ CREATE TABLE `admin` (
   `tipe` text NOT NULL,
   `akses` text NOT NULL,
   `ket` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`id`, `uname`, `pass`, `idm`, `nama`, `tipe`, `akses`, `ket`) VALUES
-(1, 'abu.kafa', '$2y$10$6J.gtIwGc4svpgxJtLWSNOqxvpN3aG.XpG9.Vz6e6VEryUxgDPGfW', 85, 'Abdul Aziz, S.Pd.I', 'Programmer', 'Office', ''),
-(32, 'adm01', '$2y$10$C9E0QZnpdxTur6ZoXPpRMeqE8xnhM3JsNRi5JeKXGNhpjJCw4MuzW', 62, 'Adi Bayu Maulana Putra', 'Administrator', 'Absensi', ''),
-(33, 'adm02', '$2y$10$t4d51VYeOcCTIN.7AoQN6.s4fnf/iPEn5ENP8X3U3SayguyR.eFIe', 1, 'Ade Nurafni', 'Administrator', 'Absensi, Blog', '');
+(1, 'abu.kafa', '$2y$10$6J.gtIwGc4svpgxJtLWSNOqxvpN3aG.XpG9.Vz6e6VEryUxgDPGfW', 85, 'Abdul Aziz, S.Pd.I', 'Programmer', 'Office,Absensi,Blog,Galeri,Informasi', ''),
+(34, 'admin.afni', '$2y$10$IO.SUnDexItgwF7ogZrb3.rbERNKYTz9SKQrknPNvAHFqKR/Kwfny', 1, 'Ade Nurafni', 'Administrator', 'Absensi,Blog,Galeri,Informasi', ''),
+(35, 'admin.fatema', '$2y$10$tkT2zDJoYP3llQQzoY.hPuKg7eokBq/nKd7lbNAPT9bxdMHPiV2zm', 5, 'Fatema Alzahra', 'Administrator', 'Absensi,Blog,Galeri,Informasi', '');
 
 -- --------------------------------------------------------
 
@@ -119,14 +118,14 @@ INSERT INTO `admin` (`id`, `uname`, `pass`, `idm`, `nama`, `tipe`, `akses`, `ket
 
 CREATE TABLE `blog` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `kategori` varchar(20) NOT NULL,
+  `kategori` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `idm` int(11) NOT NULL,
-  `autor` varchar(50) NOT NULL,
-  `judul` varchar(255) NOT NULL,
-  `image` varchar(255) DEFAULT NULL,
+  `autor` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `judul` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `galeri` smallint(1) DEFAULT NULL,
-  `excerpt` text NOT NULL,
-  `body` text NOT NULL,
+  `excerpt` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `body` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created` timestamp NULL DEFAULT NULL,
   `publish` smallint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -136,24 +135,14 @@ CREATE TABLE `blog` (
 --
 
 INSERT INTO `blog` (`id`, `kategori`, `idm`, `autor`, `judul`, `image`, `galeri`, `excerpt`, `body`, `created`, `publish`) VALUES
-(4, '1', 1, 'Penulis', 'Dolores suscipit quod.', '1678022399_9d06c692b9aeac7b24f5.jpeg', NULL, 'Quia nobis laudantium est. Et nobis laborum maiores ut et sed. Reiciendis officiis qui voluptas corrupti laudantium cupiditate ut facilis.Beatae sint quia ut non consequatur nihil ullam. Blanditiis qu', '<div>Quia nobis laudantium est. Et nobis laborum maiores ut et sed. Reiciendis officiis qui voluptas corrupti laudantium cupiditate ut facilis.<br><br></div><div>Beatae sint quia ut non consequatur nihil ullam. Blanditiis qui similique autem beatae excepturi porro. Dicta maiores sequi nobis hic aut aut sunt. Laboriosam aut sapiente sint a quidem molestias doloremque voluptas.<br><br></div><div>Blanditiis consequatur in nam neque et. Perspiciatis voluptate tenetur in voluptatem. Aspernatur beatae quas nam aspernatur ipsa.<br><br></div><div>Est quod nisi ipsum et mollitia sequi exercitationem. Alias dolor id autem. Eum quam accusamus occaecati minus autem architecto assumenda quis.<br><br></div><div>Provident est aut expedita quisquam fuga et. Velit praesentium assumenda laboriosam numquam id minus.<br><br></div><div>Animi nihil iusto animi ea natus accusantium. Quaerat sit quo officiis. Neque omnis numquam rerum qui dolores id totam.<br><br></div><div>Eligendi vero dignissimos facilis vel. Est earum est et natus est.<br><br></div><div>Nemo quia magni inventore saepe necessitatibus quo. Quisquam explicabo temporibus quia omnis. Aut fugit omnis voluptatem earum ea earum. Rerum aut exercitationem ut.<br><br></div><div>Mollitia sed laborum et explicabo ipsa repellendus et. Neque est sed amet et in temporibus officia.<br><br></div><div>Eum eum accusantium temporibus dolore. Fugiat ea ullam dolorum. Aut enim quia sit ipsam.<br><br></div>', '2022-05-21 18:33:44', 1),
-(7, '3', 1, 'Penulis', 'Aspernatur est consequuntur eos voluptas.', '1678024712_45578bd681598ccb8985.png', 1, '', '', '2022-05-21 18:33:44', 1),
-(9, '3', 2, 'Penulis', 'Est quia magni est nulla omnis sint.', '1678057144_e7062c877e671cc6392f.png', 1, 'hilang', '<div>hilang</div>', '2022-05-21 18:33:45', NULL),
-(10, '1', 4, 'Penulis', 'Placeat dolore enim atque libero et laudantium aut.', '1678025333_85359b24abb8f60e75b5.png', NULL, 'Officiis reiciendis quia repellendus itaque. Quas sed quia eum temporibus. Ratione quia suscipit quos. Earum eaque fugiat nisi repellendus repudiandae praesentium.Aliquam aut autem molestiae tempora. ', '<div>Officiis reiciendis quia repellendus itaque. Quas sed quia eum temporibus. Ratione quia suscipit quos. Earum eaque fugiat nisi repellendus repudiandae praesentium.<br><br></div><div>Aliquam aut autem molestiae tempora. Delectus corrupti natus et eum facilis quo. Consequuntur molestiae ea porro sunt qui velit. Labore accusantium consequatur explicabo neque et quia.<br><br></div><div>Dolore atque similique beatae debitis qui maxime voluptates minima. Id ea rem et aliquam distinctio praesentium consequatur repellendus.<br><br></div><div>Pariatur qui non velit adipisci libero nam quo. Aut necessitatibus qui dolores adipisci. Amet sunt dolorem voluptas.<br><br></div><div>Velit non qui quasi ea asperiores cupiditate. Vero adipisci culpa est quidem voluptas voluptatibus. Corporis consequatur delectus atque consequuntur quaerat.<br><br></div><div>Repudiandae cum voluptatem incidunt sit. Reprehenderit illo vel rem voluptatem maiores dolores. Magni error officia nisi illum ullam mollitia.<br><br></div><div>Sunt id tempore aspernatur error. Sed dolore corrupti non ut sed et ut. Voluptatem aspernatur delectus assumenda assumenda. Facilis consequuntur totam mollitia nisi.<br><br></div>', '2022-05-21 18:33:45', NULL),
-(11, '3', 4, 'Penulis', 'Dolorem ratione quia ex aut voluptas unde.', NULL, NULL, 'Libero est omnis deleniti qui. Rerum minima animi vel asperiores dolor dolores. Eos quaerat voluptatibus ducimus deserunt voluptas corrupti.', '<p>Aspernatur esse non qui vero voluptas et. Nam voluptatum porro perspiciatis voluptates dolorum iure perspiciatis repellat. Esse cumque et ipsum sunt quos vitae libero. Dolores quasi totam ut ipsum.</p><p>Ut laboriosam et error exercitationem ipsam laboriosam excepturi. Ullam consequatur illo quam illum quis sunt cupiditate suscipit. Soluta nostrum aliquam ut fuga esse est delectus. Voluptatem corrupti et tempore corrupti.</p><p>Molestiae ullam provident quidem autem facilis quae. Possimus aut neque fuga numquam sint eveniet. Et incidunt provident nisi in occaecati. Reiciendis quae vel quia itaque nobis quasi eos.</p><p>At quaerat ipsa fugiat qui et amet sunt dignissimos. Incidunt eos eaque consectetur voluptates tenetur. Delectus laudantium molestias neque ut. Accusantium eos hic quo magni ut quo in.</p><p>Repellat sapiente magnam cum voluptatem dolor. Minima assumenda facere provident dolores repellendus voluptatem eaque. Voluptas nemo eligendi incidunt et necessitatibus earum qui. Consequuntur deleniti impedit repellendus totam.</p><p>Est veritatis doloremque voluptas maiores. Voluptatem est dolor ducimus dicta excepturi quam molestias. Est molestiae quidem earum commodi quisquam deleniti asperiores impedit. Ad beatae voluptate veritatis occaecati expedita quod.</p><p>Autem eos et et illo. Vel vel explicabo minus provident autem corporis molestias. Magnam repudiandae qui et ut. Est nihil sit laborum autem molestias.</p><p>Perspiciatis quod repellat aut molestias sit tempora quam. Sed doloribus et qui explicabo hic et. Neque perferendis repudiandae repellendus ipsa.</p><p>Neque laborum quam fuga similique unde est. Molestiae nulla rerum delectus sit omnis. Et amet fuga molestiae. Et vel sed sit numquam voluptates non dolorum.</p>', '2022-05-21 18:33:45', NULL),
-(12, '3', 3, 'Penulis', 'Est quaerat minus quia.', NULL, NULL, 'Ducimus ad iusto rerum impedit non. Quod doloribus illum vel quasi. Sed dolorem quae laudantium. Necessitatibus omnis sed pariatur nostrum at.', '<p>Quia cum voluptatem aut illum animi. Mollitia distinctio sit commodi sint. Et aut qui quae velit corporis consequuntur et. Tempore quod fugit sunt non nihil.</p><p>Totam incidunt reiciendis deleniti eveniet pariatur ratione. Et quia quis ea est qui non quidem illum. Minima sequi explicabo enim quas adipisci qui doloremque.</p><p>Molestias ut iste tempora placeat quis placeat. Consequatur commodi fugiat fuga consequatur magnam earum. Ea fuga dicta facilis velit qui repudiandae corporis.</p><p>Adipisci recusandae id officiis odio maiores. Officia amet voluptas cumque natus in. Ratione alias corrupti asperiores eum corrupti laborum sint. Aspernatur mollitia aliquam delectus iusto unde necessitatibus laborum. Quae non ea quas culpa ut.</p><p>Est molestiae illo reiciendis sed sit. Consectetur sit minus consequuntur voluptatem. Iure et quis et. Voluptas impedit architecto animi recusandae ut animi autem.</p><p>Molestiae aspernatur aliquam quibusdam ipsa voluptas voluptatem ipsa. Est voluptas sit distinctio. Minima voluptate aut fuga quis repellendus suscipit temporibus aliquid. Maiores ut aut mollitia qui odio enim ea reprehenderit.</p><p>Inventore dolores atque tenetur ratione ea commodi accusantium. Quo sapiente dolorem possimus beatae delectus sit. Mollitia voluptates laborum commodi aut.</p>', '2022-05-21 18:33:45', NULL),
-(13, '2', 3, 'Penulis', 'Dicta quidem aut optio molestias ut vel.', NULL, NULL, 'Sit et voluptas laboriosam nesciunt iusto velit quasi perferendis. Tempore omnis rerum est. Non ad facere iure omnis.', '<p>Ut magni iusto consequuntur et velit quia temporibus rem. Omnis reprehenderit eos tenetur voluptatem. Qui sit similique placeat repellat eum dolor sed consequuntur. Ipsum quas esse animi optio.</p><p>Dignissimos eos alias voluptatem perferendis voluptates et. Sed reprehenderit blanditiis magni. Minus molestiae eos aut vitae.</p><p>Sequi quasi praesentium ut eius ea culpa provident dolore. Eaque rem dolorem nostrum illum voluptatem modi et. Mollitia amet mollitia enim officia et repudiandae aut. Et est sit labore ipsam distinctio porro minus magnam. Aut odit nostrum est aut est.</p><p>Molestiae occaecati tempore aut voluptatum dolore. Iure voluptatem dolores mollitia sunt veniam. Beatae autem exercitationem earum ea nisi. Delectus hic voluptas quis enim ea.</p><p>Incidunt minus iure ut ab et id. Delectus libero quam quo ad. Quis illum voluptates voluptate aliquid. Similique cupiditate ut et. Aut doloremque ut doloremque unde illum.</p><p>Sit quae veritatis hic ea et. Aspernatur eos accusantium nesciunt. Dolore doloribus voluptas odio mollitia sunt incidunt unde.</p><p>Exercitationem culpa facilis quis. Eius hic sunt exercitationem eos. Quasi tempore eveniet impedit animi tempore. Nemo facilis sit quis nihil corporis vel.</p><p>Adipisci eius non eos pariatur fugit nobis vero ipsam. At cumque explicabo et ea quia omnis. Earum dolores vero voluptas tenetur rem quam maxime qui.</p><p>Natus beatae est accusantium. Necessitatibus eius laudantium modi itaque repellendus. Beatae ut ad libero aperiam. Dolorem sunt odio ipsa nulla accusamus est praesentium.</p><p>Eos doloremque dicta ut deserunt id. Molestiae quis dolor exercitationem tenetur est quidem. Unde eius voluptas odio qui est impedit. Dolores explicabo minima nemo aut sed corrupti iusto. Aspernatur possimus et praesentium dignissimos nemo beatae.</p>', '2022-05-21 18:33:45', NULL),
-(14, '2', 2, 'Penulis', 'Adipisci ex dolorum.', '1677986865_de1fe7aa724f016e1f53.png', NULL, 'Aliquam laboriosam voluptatem accusamus ratione consectetur dicta pariatur. Ducimus aut ea aut fugit tempora quo aut. Provident esse ut quis animi corrupti excepturi. Ipsa unde qui in excepturi.Non mo', '<div>Aliquam laboriosam voluptatem accusamus ratione consectetur dicta pariatur. Ducimus aut ea aut fugit tempora quo aut. Provident esse ut quis animi corrupti excepturi. Ipsa unde qui in excepturi.<br><br></div><div>Non molestiae quis aut nam nihil. Et sit rerum commodi eveniet est aut magni. Dolor consequatur sunt hic consectetur omnis. Fuga eum est vero aut deserunt.<br><br></div><div>Dolor architecto et maiores necessitatibus voluptas sapiente. Iure dolore ut non ducimus ab. Aliquid porro non quae cum deserunt unde qui et. Dolorem eaque at esse aspernatur.<br><br></div><div>Repellat sed impedit accusantium facere corrupti. Vero excepturi laborum neque accusamus unde consequatur. Officia ratione vel perspiciatis qui. Voluptatem qui voluptatem porro et non. Velit corporis eveniet ab ipsum id.<br><br></div><div>Dicta distinctio repellendus vero consequatur expedita excepturi. Ut dolores laborum facilis velit harum. Ut delectus suscipit beatae quis aut laborum explicabo.<br><br></div><div>Minima voluptatem et qui modi doloremque sit voluptatibus. Porro ea eos ut quibusdam sed distinctio rem. Cupiditate eos rerum distinctio deserunt iure. Quis quam qui consequatur ut laudantium deserunt quia. Culpa culpa numquam praesentium voluptas necessitatibus vel.<br><br></div><div>Unde sint quidem iusto debitis minus est soluta soluta. Accusantium illo cum magnam est quia. Sint dolor dolores aut ut fuga voluptatem nemo nemo. Aut impedit dolorem fugiat ea.<br><br></div><div>Voluptates repudiandae sit enim tempora natus non. Incidunt ex et excepturi amet quo voluptas. Et molestiae quasi dicta quod est eos optio. Ipsum aut ut id. Et labore aut ipsa sed est eligendi.<br><br></div><div>Asperiores corrupti voluptatem repudiandae eum voluptatibus alias et. Sunt aliquam voluptatibus neque eveniet assumenda suscipit.<br><br></div>', '2022-05-21 18:33:45', NULL),
-(15, '1', 2, 'Penulis', 'Sit voluptate nihil sunt.', NULL, NULL, 'Sit iusto commodi architecto ullam quos laudantium. Praesentium eveniet voluptatem est et. Delectus rerum nisi architecto maxime earum. Sed aperiam est doloribus eius. Porro sint iste tenetur harum.', '<p>Nostrum id dolorem dignissimos voluptas similique autem. Rerum ipsa consequuntur illo sequi sunt temporibus aut. Quisquam error libero dolor est voluptatibus.</p><p>Modi hic possimus omnis nulla quo est. Architecto modi eum soluta ex. Vitae nihil aspernatur et culpa laborum vero id. Sit ea consectetur consequuntur est rerum illum non. Est praesentium praesentium earum nihil consequatur natus.</p><p>Voluptas quaerat nulla magnam saepe quidem harum molestias. Numquam maiores eum laborum quis repudiandae eos dolorem. Qui deleniti et est iusto incidunt ut quo.</p><p>Nihil deserunt fugit et in molestias. Et sed ullam ut magni. Cum nihil rerum sunt assumenda assumenda commodi error.</p><p>Facilis tenetur vel enim est impedit minima in. Esse praesentium aut sequi nihil architecto autem eum. Atque magnam ducimus sint. Sunt quidem velit rem placeat molestiae.</p><p>Neque explicabo voluptatem minima nostrum et. Ipsa autem est tenetur beatae sit iure pariatur aut. Sunt necessitatibus autem facere nihil. Dignissimos dolores nobis voluptatibus nam deleniti aspernatur et.</p>', '2022-05-21 18:33:45', NULL),
-(16, '1', 1, 'Penulis', 'Quibusdam consequatur repellendus.', NULL, NULL, 'Saepe odit perferendis commodi dolorem maxime dolores. Fugit dolor possimus facere dolore molestiae delectus laudantium. Et excepturi exercitationem ipsam delectus.', '<p>Sint aperiam non animi cum. Soluta repellendus sint aliquam non qui deleniti. Doloribus ipsum aut est tempore quia. Quis natus corrupti ut neque.</p><p>Esse vel perferendis ea consequuntur quae. Velit quidem illo accusamus sint saepe et ut quibusdam. Sunt sapiente occaecati voluptatem qui nobis perspiciatis. Consequatur delectus aut ratione perferendis voluptatem recusandae voluptate esse.</p><p>Qui quis ea minima nostrum. Ipsam id est aliquam maxime. Est reprehenderit ab nam. Quasi a mollitia sint voluptatem cumque.</p><p>Voluptatem ut nihil ad. Omnis hic dolorum adipisci fugiat repellendus saepe et. Explicabo unde est exercitationem magnam.</p><p>Nostrum vel id et molestiae explicabo ut et. Itaque laudantium molestias aut sequi modi quam nobis dolor. Dolores non quo voluptatem vero. Dignissimos in fugiat nihil voluptates.</p><p>Consequatur eum necessitatibus tempore a enim voluptatem deserunt. Sed aut molestias doloremque temporibus eos vel. Nihil sed sed velit enim sunt.</p><p>Cupiditate autem quidem odio qui. Repellendus similique ut inventore voluptas totam modi. Sint consequatur doloremque officia fuga.</p><p>Ipsa velit saepe tempore laboriosam animi quis atque. Similique dicta officiis accusantium. Ut sapiente dolores in quis distinctio odio.</p>', '2022-05-21 18:33:45', NULL),
-(17, '1', 2, 'Penulis', 'Suscipit aliquam qui inventore sunt est asperiores sit odio.', NULL, NULL, 'Consequatur cupiditate et iure commodi quis. Animi voluptatem necessitatibus inventore tempora. Porro neque veniam porro totam fugiat.', '<p>Iusto non veniam rerum eum. Quis at officia sint dolor. Et suscipit qui velit eum. Voluptatem fugiat culpa odit ut nihil.</p><p>Odio distinctio nihil voluptatem sapiente labore architecto. Commodi ipsum perspiciatis eaque mollitia eius maxime deserunt. Quia et est quis quaerat. Beatae unde voluptas minus rem distinctio saepe. Eius odio voluptatibus laudantium omnis nihil voluptatem tempora.</p><p>Cumque qui mollitia quia animi. Et odio totam quae porro. Ut veritatis est temporibus dolor beatae id.</p><p>Tempore beatae similique at ex sapiente nisi itaque. Pariatur quisquam sint id beatae ut tenetur. Et dolores quisquam eum totam officiis.</p><p>Est consectetur non dolores labore. Praesentium consectetur dicta quidem debitis incidunt earum. Ipsam sunt nobis molestiae ut voluptatem consequatur.</p><p>Asperiores sed explicabo corrupti ratione tempora ipsam at et. Ut voluptatem sed omnis blanditiis dolor. Qui itaque ut eligendi ea. Velit facilis ipsa eius placeat dolor alias.</p><p>In autem rem vel perspiciatis optio. Earum rem veritatis quam aut reprehenderit veniam. Placeat deleniti aut rerum esse quo quibusdam natus.</p><p>Et ea totam eligendi placeat impedit. Quaerat ut quidem eos repudiandae facere sed voluptatem nam. At enim distinctio aut voluptatem quis. Earum eius qui et.</p>', '2022-05-21 18:33:45', NULL),
-(18, '1', 3, 'Penulis', 'Quo temporibus soluta iusto.', NULL, NULL, 'Sunt qui sit et quis consequatur laboriosam. Eveniet ex et nam voluptas optio fuga. Ut quis ad reiciendis repellat magnam et consequatur. Rem nisi maxime consectetur iusto facere quo omnis.', '<p>Dignissimos non id ipsum deleniti inventore atque dicta dolores. Pariatur nostrum reiciendis veritatis maiores quis aliquam dignissimos. Libero magni et vero sunt mollitia. Facilis iste eius alias qui.</p><p>Quaerat quae inventore voluptas officiis. Consequatur aut itaque temporibus natus. Aut autem rerum dolore. Sit quas perspiciatis dolores quia dolor sint adipisci recusandae.</p><p>Molestiae illum labore est tenetur. Est reiciendis similique explicabo ad sapiente incidunt sed. Odio adipisci minima ut iure aut et et.</p><p>Assumenda repellat quaerat soluta molestiae molestiae dolorum facere. Ea illum velit nulla.</p><p>Illum architecto ut consequatur magni. Corrupti cupiditate assumenda soluta molestiae quo. Suscipit ut doloribus inventore similique. Quia rerum quibusdam sit ut architecto et. Dicta ut temporibus voluptas nulla perferendis sit quo.</p><p>Atque qui repudiandae tenetur incidunt non quo. Quo ea quibusdam aut.</p><p>Quos error a consectetur adipisci exercitationem occaecati reiciendis. Excepturi magnam blanditiis delectus quia qui. Autem at fuga nostrum corporis laudantium laborum. Non vero adipisci quasi beatae delectus.</p><p>Officia aut aut quod rem. Molestiae culpa non nihil sint voluptate occaecati. Ea corrupti excepturi tempore veritatis temporibus. Omnis quae sunt est laborum dolor animi rem eos.</p><p>Sit quod animi qui incidunt commodi qui dolorem consequatur. Maiores temporibus omnis id enim. Consequuntur nihil et quos. Cum est eos quasi.</p>', '2022-05-21 18:33:45', NULL),
-(19, '3', 4, 'Penulis', 'Qui a sapiente nostrum mollitia illum.', NULL, NULL, 'Quia error rerum nesciunt. Accusantium corrupti ut aspernatur et. Voluptatem nam maxime quibusdam. Fugit optio placeat eum laboriosam.', '<p>Nesciunt labore laudantium tenetur. Magnam sapiente provident dolor qui animi quia. Expedita iste quibusdam nostrum in.</p><p>Officia inventore consequatur modi similique. Facere exercitationem saepe aut explicabo nihil dicta culpa. Perferendis incidunt aperiam nihil fuga ducimus quia. Dolorum ad dolorum mollitia hic enim vitae nemo.</p><p>Fugiat nemo saepe provident vel deserunt labore. Totam eveniet facilis debitis. Cum voluptate eos autem aspernatur explicabo itaque veritatis. Animi molestiae reprehenderit est quam. Totam nulla itaque ratione qui qui laboriosam fugiat.</p><p>Voluptatibus aperiam consequatur tempore. Quos consectetur natus qui quibusdam sunt. Culpa consequatur eveniet beatae voluptas. Et est tempora nisi quia ab rem.</p><p>Possimus natus tempora repudiandae est ab maiores velit. Reiciendis quibusdam dolorum dolorem ut dolorem dolores quia. Similique voluptatibus blanditiis qui. Cum quia harum eaque alias facere.</p><p>Autem nam consequatur minus rerum in hic. Sint quo aut et quia suscipit id iure. Itaque repellendus ut sapiente praesentium ut ratione pariatur optio. Nulla ut et voluptatem perspiciatis est deserunt necessitatibus veritatis.</p>', '2022-05-21 18:33:45', NULL),
-(20, '1', 3, 'Penulis', 'Molestiae aliquid placeat sint qui ea dolores harum.', NULL, NULL, 'Sit quia sit ex ut earum doloremque ut. At error nam occaecati adipisci quaerat. Quibusdam culpa repellendus ratione tenetur totam et. Cumque laborum nesciunt doloremque repellendus natus nihil.', '<p>Perspiciatis temporibus unde numquam. Quod maxime enim assumenda culpa aut quis ea dolorem. Commodi qui voluptatem iusto saepe cumque. Voluptates et blanditiis sed voluptatem.</p><p>Sit est accusantium recusandae nihil dignissimos. Dolores quasi sunt suscipit. Ipsum modi ut inventore aut quod accusantium ea.</p><p>Placeat voluptatem possimus architecto aut. Excepturi consequuntur aut beatae et rerum vel odio voluptas. Laboriosam eveniet quia recusandae mollitia quos et. Doloremque saepe temporibus quo eum.</p><p>Dolores et et consectetur. Dolorem labore error consequatur molestiae voluptatum nihil excepturi. Culpa voluptatem iusto impedit et.</p><p>Et totam architecto quisquam ipsum dolores unde. Aut minus temporibus natus modi nobis id sed at. Dolore tempora quod sed dolorum molestias nam laudantium. Ab vel aspernatur autem occaecati. Aut rem cum architecto quia impedit.</p><p>Iusto facere rerum in non ab unde dolore. Quas veritatis at qui deserunt. Voluptas quibusdam reprehenderit veniam temporibus nostrum. Consequuntur quia excepturi et aliquam quae dignissimos.</p><p>Quisquam consequatur soluta cupiditate. Commodi ut debitis blanditiis dolores autem velit ut. Maiores iure quis aliquam natus.</p><p>Sed autem ut laboriosam asperiores nulla quia explicabo necessitatibus. Odit quia illo omnis ab deleniti ut maiores aut. Voluptas a sapiente omnis vel et. Nihil omnis quia illum et quo nemo quo. Dignissimos animi corrupti nobis qui ipsa.</p><p>Asperiores odit dolor temporibus quidem libero aut. Et nihil nisi ipsa sit ipsa eos. Commodi quidem libero maxime natus dicta. Eum sunt corporis tenetur cupiditate excepturi et minus.</p>', '2022-05-21 18:33:45', NULL),
-(21, '3', 4, 'Penulis', 'Membuat wibesite menggunakan Laravel', 'post-image/oU2HdcNeem9gwl5GV1NM48B05FbEoHFzDrw4MypU.jpg', NULL, 'Lorem ipsum dolor sit amet consectetur adipisicing...', '<div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores id dicta, quos vel magni similique libero, quasi corporis perspiciatis molestiae quis officiis maiores quaerat expedita modi maxime fuga sint hic in repellendus explicabo! Maxime magni adipisci ad non, veniam cum repellat necessitatibus quos alias, fuga delectus. Facere libero unde vel quia nobis facilis! Velit enim repellat, quis qui vitae illum assumenda quia, eveniet eaque, cum quas pariatur! Quo amet dolores explicabo qui porro, commodi libero sint accusantium reiciendis tempore velit, veniam, similique impedit veritatis. Quaerat, adipisci asperiores, optio ducimus provident culpa fuga suscipit iure illo impedit nam sapiente nemo perferendis nesciunt, molestias alias eum soluta dicta sed tempora et. Eligendi esse aut, tempore nulla commodi molestias animi placeat, sed a eius necessitatibus natus, cumque optio quis autem totam tempora pariatur. Amet temporibus, doloribus suscipit, provident dolorem modi voluptates libero harum laborum mollitia velit possimus omnis consectetur eum laudantium quo. Odio distinctio officiis sunt velit incidunt cupiditate optio, architecto quod aspernatur eos deserunt? Enim praesentium quo qui explicabo minus excepturi corporis dicta, quisquam a sit dolorum exercitationem ex animi saepe cupiditate error velit reprehenderit numquam maxime. Quisquam expedita, aperiam laborum quae qui, modi tempora molestiae nobis temporibus quis ducimus vel enim excepturi id adipisci et! Incidunt obcaecati voluptatum quis sed, eum officiis quasi repudiandae nulla deleniti, autem asperiores pariatur eligendi praesentium corrupti eos enim delectus aliquam sequi odio mollitia laudantium illo voluptatibus assumenda ex. Eveniet dolor quia ut esse dolorem nostrum placeat numquam ad, perferendis voluptas aut? Vitae quibusdam tenetur quae voluptatum fugit est suscipit nobis vel at sint, sequi eum aspernatur velit pariatur illo? Facilis quibusdam aspernatur praesentium qui excepturi porro quam temporibus inventore culpa tenetur? Et delectus error esse, non quos placeat cum modi, laboriosam, ducimus architecto facilis laudantium a expedita? Sapiente quasi possimus quos eius nesciunt, ratione esse.</div>', '2022-05-21 18:52:57', NULL),
-(23, '3', 4, 'Penulis', 'Computer Sciences', 'post-image/nKCTZUZymenuTeWyPRXoGywvlGo1dU9tJItyKjZM.jpg', NULL, 'Lorem ipsum dolor sit amet consectetur adipisicing...', '<div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus id nam ea itaque harum quidem suscipit dolorum fugiat, repudiandae nostrum adipisci laudantium explicabo necessitatibus, error maxime, ad incidunt quasi molestias? Delectus, doloremque dolor est, cupiditate fugiat tempore quas atque labore saepe ullam in quibusdam, tenetur officiis voluptatum ad ducimus repellat natus eligendi assumenda dolore quam inventore laudantium rerum distinctio. Quibusdam dicta laudantium nemo doloribus velit rerum? Explicabo dolorem ex similique? Minima voluptatibus delectus, et in corrupti nobis aliquid molestiae doloremque, cumque modi nulla porro eveniet fuga perferendis nemo rem id eaque reprehenderit ea ratione quo. Sed earum eum quas atque dolorum iure pariatur ratione itaque, illum consequuntur vitae. Provident in earum minus quaerat odit, ipsa quibusdam itaque voluptatem praesentium explicabo tempora quia inventore quis cupiditate nulla! Ipsum a voluptates, iusto ratione earum perferendis quas vel hic quo accusamus aperiam adipisci perspiciatis blanditiis, inventore id! Iste nulla hic voluptate, accusamus dolore deserunt magnam sequi dicta, ipsam, officia maiores. Tempore cumque accusantium autem numquam ea similique sequi ipsam qui dolor molestias. Natus numquam cum sunt in dolore nihil, possimus fugiat? Et unde aliquid doloremque optio est sed, sapiente debitis vel a, earum voluptatibus at temporibus, corrupti culpa dolore quam voluptatem ab nam.</div>', '2022-05-21 21:44:31', NULL),
-(24, '2', 1, 'Penulis', 'Et possimus est.', NULL, NULL, 'Omnis repellendus nemo ab suscipit debitis harum. Quasi fuga et minus possimus porro ex. Omnis architecto velit delectus quis est. Veritatis expedita aspernatur aut consequatur aut aut et.Commodi eius', '<div><strong>Omnis repellendus nemo ab suscipit debitis harum. Quasi fuga et minus possimus porro ex. Omnis architecto velit delectus quis est. Veritatis expedita aspernatur aut consequatur aut aut et.</strong><br><br></div><div>Commodi eius id perspiciatis. Doloribus cumque amet voluptates voluptatem qui. Nesciunt ut iure commodi rerum. Quidem temporibus nisi et hic sit dicta. Tempora odio facere nihil alias autem.<br><br></div><div>Assumenda aperiam qui voluptates incidunt assumenda. Omnis rem necessitatibus quis officiis atque voluptates error. Perferendis et eos sunt sapiente voluptatum rerum.<br><br></div><div>Tempora necessitatibus accusamus omnis eos voluptate. Magni qui quis placeat hic accusantium voluptatem sed mollitia.<br><br></div><div>Cumque nihil at quam quia sunt. Aliquam voluptatum est ut eos dolor. Nulla voluptatem reiciendis eos cum.<br><br></div>', '2023-03-03 17:00:00', NULL),
-(25, '3', 5, 'Penulis', 'Ini sudah di update', NULL, NULL, 'Dolore nemo recusandae sit non. Est eum ex nesciunt inventore mollitia omnis saepe omnis. Saepe sunt sit ipsum consequatur non veritatis.Molestiae cum aspernatur aut illum deserunt ipsa voluptatem min', '<div><strong>Dolore nemo recusandae sit non. Est eum ex nesciunt inventore mollitia omnis saepe omnis. Saepe sunt sit ipsum consequatur non veritatis.<br></strong><br></div><div>Molestiae cum aspernatur aut illum deserunt ipsa voluptatem minima. Aut possimus officiis aliquam ipsa suscipit deserunt. Ab assumenda et deserunt officiis totam. Aut pariatur id aliquid asperiores excepturi.<br><br></div><div>Libero ut repellat placeat aut esse nesciunt omnis. Consequatur autem eos molestiae. Libero voluptatibus ipsa nemo inventore aut maiores et. Non sunt voluptatem in consequatur dolores numquam voluptatum.<br><br></div><div>Autem nesciunt voluptates officiis architecto doloremque iusto. Qui deleniti eius sint saepe aperiam culpa. Molestiae aut necessitatibus explicabo ipsum illum.<br><br></div><div>Animi dolorem dolor voluptatibus nesciunt. Qui tempora omnis veritatis aspernatur expedita vero tempora. Quis aliquam itaque est aliquid hic qui ipsum. Nobis rerum suscipit repellat quisquam officia dolor autem.<br><br></div>', '2023-03-03 17:00:00', NULL);
+(4, 'Dunia Islam', 85, 'Nama Penulis', 'Contoh Judul Blog Dunia Islam', '1678238941_b0f1660739637ab8f764.jpg', NULL, 'Aspernatur esse non qui vero voluptas et. Nam voluptatum porro perspiciatis voluptates dolorum iure perspiciatis repellat. Esse cumque et ipsum sunt quos vitae libero. Dolores quasi totam ut ipsum.Ut ', '<div>Aspernatur esse non qui vero voluptas et. Nam voluptatum porro perspiciatis voluptates dolorum iure perspiciatis repellat. Esse cumque et ipsum sunt quos vitae libero. Dolores quasi totam ut ipsum.<br><br></div><div><strong>Ut laboriosam et error exercitationem ipsam laboriosam excepturi. Ullam consequatur illo quam illum quis sunt cupiditate suscipit. Soluta nostrum aliquam ut fuga esse est delectus. Voluptatem corrupti et tempore corrupti.</strong><br><br></div><div>Molestiae ullam provident quidem autem facilis quae. Possimus aut neque fuga numquam sint eveniet. Et incidunt provident nisi in occaecati. Reiciendis quae vel quia itaque nobis quasi eos.<br><br></div><div>At quaerat ipsa fugiat qui et amet sunt dignissimos. Incidunt eos eaque consectetur voluptates tenetur. Delectus laudantium molestias neque ut. Accusantium eos hic quo magni ut quo in.<br><br></div><div>Repellat sapiente magnam cum voluptatem dolor. Minima assumenda facere provident dolores repellendus voluptatem eaque. Voluptas nemo eligendi incidunt et necessitatibus earum qui. Consequuntur deleniti impedit repellendus totam.<br><br></div><div>Est veritatis doloremque voluptas maiores. Voluptatem est dolor ducimus dicta excepturi quam molestias. Est molestiae quidem earum commodi quisquam deleniti asperiores impedit. Ad beatae voluptate veritatis occaecati expedita quod.<br><br></div><div>Autem eos et et illo. Vel vel explicabo minus provident autem corporis molestias. Magnam repudiandae qui et ut. Est nihil sit laborum autem molestias.<br><br></div><div>Perspiciatis quod repellat aut molestias sit tempora quam. Sed doloribus et qui explicabo hic et. Neque perferendis repudiandae repellendus ipsa.<br><br></div><div>Neque laborum quam fuga similique unde est. Molestiae nulla rerum delectus sit omnis. Et amet fuga molestiae. Et vel sed sit numquam voluptates non dolorum.</div>', '2022-05-21 18:33:44', 1),
+(7, 'Pendidikan', 85, 'Penulis', 'Contoh Judul Blog Pendidikan', '1678240255_ddd254acd846bbced94d.jpg', 1, 'Aspernatur esse non qui vero voluptas et. Nam voluptatum porro perspiciatis voluptates dolorum iure perspiciatis repellat. Esse cumque et ipsum sunt quos vitae libero. Dolores quasi totam ut ipsum.Ut ', '<div>Aspernatur esse non qui vero voluptas et. Nam voluptatum porro perspiciatis voluptates dolorum iure perspiciatis repellat. Esse cumque et ipsum sunt quos vitae libero. Dolores quasi totam ut ipsum.<br><br></div><div>Ut laboriosam et error exercitationem ipsam laboriosam excepturi. Ullam consequatur illo quam illum quis sunt cupiditate suscipit. Soluta nostrum aliquam ut fuga esse est delectus. Voluptatem corrupti et tempore corrupti.<br><br></div><div>Molestiae ullam provident quidem autem facilis quae. Possimus aut neque fuga numquam sint eveniet. Et incidunt provident nisi in occaecati. Reiciendis quae vel quia itaque nobis quasi eos.<br><br></div><div>At quaerat ipsa fugiat qui et amet sunt dignissimos. Incidunt eos eaque consectetur voluptates tenetur. Delectus laudantium molestias neque ut. Accusantium eos hic quo magni ut quo in.<br><br></div><div>Repellat sapiente magnam cum voluptatem dolor. Minima assumenda facere provident dolores repellendus voluptatem eaque. Voluptas nemo eligendi incidunt et necessitatibus earum qui. Consequuntur deleniti impedit repellendus totam.<br><br></div><div>Est veritatis doloremque voluptas maiores. Voluptatem est dolor ducimus dicta excepturi quam molestias. Est molestiae quidem earum commodi quisquam deleniti asperiores impedit. Ad beatae voluptate veritatis occaecati expedita quod.<br><br></div><div>Autem eos et et illo. Vel vel explicabo minus provident autem corporis molestias. Magnam repudiandae qui et ut. Est nihil sit laborum autem molestias.<br><br></div><div>Perspiciatis quod repellat aut molestias sit tempora quam. Sed doloribus et qui explicabo hic et. Neque perferendis repudiandae repellendus ipsa.<br><br></div><div>Neque laborum quam fuga similique unde est. Molestiae nulla rerum delectus sit omnis. Et amet fuga molestiae. Et vel sed sit numquam voluptates non dolorum.</div>', '2022-05-21 18:33:44', 1),
+(9, 'Organisasi', 85, 'Nama Penulis', 'Contoh Judul Blog Organisasi', '1678239046_272831500820639a2183.jpg', 1, 'Quia cum voluptatem aut illum animi. Mollitia distinctio sit commodi sint. Et aut qui quae velit corporis consequuntur et. Tempore quod fugit sunt non nihil.Totam incidunt reiciendis deleniti eveniet ', '<div>Quia cum voluptatem aut illum animi. Mollitia distinctio sit commodi sint. Et aut qui quae velit corporis consequuntur et. Tempore quod fugit sunt non nihil.<br><br></div><div><strong>Totam incidunt reiciendis deleniti eveniet pariatur ratione. Et quia quis ea est qui non quidem illum. Minima sequi explicabo enim quas adipisci qui doloremque.<br></strong><br></div><div>Molestias ut iste tempora placeat quis placeat. Consequatur commodi fugiat fuga consequatur magnam earum. Ea fuga dicta facilis velit qui repudiandae corporis.<br><br></div><div>Adipisci recusandae id officiis odio maiores. Officia amet voluptas cumque natus in. Ratione alias corrupti asperiores eum corrupti laborum sint. Aspernatur mollitia aliquam delectus iusto unde necessitatibus laborum. Quae non ea quas culpa ut.<br><br></div><div>Est molestiae illo reiciendis sed sit. Consectetur sit minus consequuntur voluptatem. Iure et quis et. Voluptas impedit architecto animi recusandae ut animi autem.<br><br></div><div>Molestiae aspernatur aliquam quibusdam ipsa voluptas voluptatem ipsa. Est voluptas sit distinctio. Minima voluptate aut fuga quis repellendus suscipit temporibus aliquid. Maiores ut aut mollitia qui odio enim ea reprehenderit.<br><br></div><div>Inventore dolores atque tenetur ratione ea commodi accusantium. Quo sapiente dolorem possimus beatae delectus sit. Mollitia voluptates laborum commodi aut.</div>', '2022-05-21 18:33:45', NULL),
+(10, 'Kesehatan', 85, 'Nama Penulis', 'Contoh Judul Blog Kesehatan', '1678239091_b636dc3f2dcf3e22d5d5.jpg', 1, 'Officiis reiciendis quia repellendus itaque. Quas sed quia eum temporibus. Ratione quia suscipit quos. Earum eaque fugiat nisi repellendus repudiandae praesentium.Aliquam aut autem molestiae tempora. ', '<div>Officiis reiciendis quia repellendus itaque. Quas sed quia eum temporibus. Ratione quia suscipit quos. Earum eaque fugiat nisi repellendus repudiandae praesentium.<br><br></div><div>Aliquam aut autem molestiae tempora. Delectus corrupti natus et eum facilis quo. Consequuntur molestiae ea porro sunt qui velit. Labore accusantium consequatur explicabo neque et quia.<br><br></div><div>Dolore atque similique beatae debitis qui maxime voluptates minima. Id ea rem et aliquam distinctio praesentium consequatur repellendus.<br><br></div><div>Pariatur qui non velit adipisci libero nam quo. Aut necessitatibus qui dolores adipisci. Amet sunt dolorem voluptas.<br><br></div><div>Velit non qui quasi ea asperiores cupiditate. Vero adipisci culpa est quidem voluptas voluptatibus. Corporis consequatur delectus atque consequuntur quaerat.<br><br></div><div>Repudiandae cum voluptatem incidunt sit. Reprehenderit illo vel rem voluptatem maiores dolores. Magni error officia nisi illum ullam mollitia.<br><br></div><div>Sunt id tempore aspernatur error. Sed dolore corrupti non ut sed et ut. Voluptatem aspernatur delectus assumenda assumenda. Facilis consequuntur totam mollitia nisi.<br><br></div>', '2022-05-21 18:33:45', NULL),
+(11, 'Kesehatan', 85, 'Penulis', 'Contoh Judul Blog', '1678240312_9b40157e47cb4d0c50cd.jpg', 1, 'Aspernatur esse non qui vero voluptas et. Nam voluptatum porro perspiciatis voluptates dolorum iure perspiciatis repellat. Esse cumque et ipsum sunt quos vitae libero. Dolores quasi totam ut ipsum.Ut ', '<div>Aspernatur esse non qui vero voluptas et. Nam voluptatum porro perspiciatis voluptates dolorum iure perspiciatis repellat. Esse cumque et ipsum sunt quos vitae libero. Dolores quasi totam ut ipsum.<br><br></div><div>Ut laboriosam et error exercitationem ipsam laboriosam excepturi. Ullam consequatur illo quam illum quis sunt cupiditate suscipit. Soluta nostrum aliquam ut fuga esse est delectus. Voluptatem corrupti et tempore corrupti.<br><br></div><div>Molestiae ullam provident quidem autem facilis quae. Possimus aut neque fuga numquam sint eveniet. Et incidunt provident nisi in occaecati. Reiciendis quae vel quia itaque nobis quasi eos.<br><br></div><div>At quaerat ipsa fugiat qui et amet sunt dignissimos. Incidunt eos eaque consectetur voluptates tenetur. Delectus laudantium molestias neque ut. Accusantium eos hic quo magni ut quo in.<br><br></div><div>Repellat sapiente magnam cum voluptatem dolor. Minima assumenda facere provident dolores repellendus voluptatem eaque. Voluptas nemo eligendi incidunt et necessitatibus earum qui. Consequuntur deleniti impedit repellendus totam.<br><br></div><div>Est veritatis doloremque voluptas maiores. Voluptatem est dolor ducimus dicta excepturi quam molestias. Est molestiae quidem earum commodi quisquam deleniti asperiores impedit. Ad beatae voluptate veritatis occaecati expedita quod.<br><br></div><div>Autem eos et et illo. Vel vel explicabo minus provident autem corporis molestias. Magnam repudiandae qui et ut. Est nihil sit laborum autem molestias.<br><br></div><div>Perspiciatis quod repellat aut molestias sit tempora quam. Sed doloribus et qui explicabo hic et. Neque perferendis repudiandae repellendus ipsa.<br><br></div><div>Neque laborum quam fuga similique unde est. Molestiae nulla rerum delectus sit omnis. Et amet fuga molestiae. Et vel sed sit numquam voluptates non dolorum.<br><br></div>', '2022-05-21 18:33:45', NULL),
+(26, 'profil', 0, 'Abu Kafa', 'Profil SMP Terpadu Bugelan', '1678241185_1d28078c8127268d256d.jpeg', NULL, 'Sekolah ini berdiri tanggal 22 November 1985, SMP Negeri 2 Jaten terletak di jalan raya Solo-Sragen Km. 9, akses untuk mencapai sekolah ini sangat mudah baik bagi para siswa maupun orang tua siswa serta praktisi pendidikan. Dengan luas tanah 20.000m² SMP Negeri 2 Jaten adalah sekolah yang cukup luas dan memaksimalkan untuk menanam berbagai jenis tanaman yang cocok di daerah Jaten.SMP Negeri 2 Jaten terletak di Dusun Grumbul Sawit, Desa Sroyo, Kecamatan Jaten, Kabupaten Karanganyar, sebelah selatan sekolah berupa sawah, pabrik tekstil Kusuma Mulya, sebelah timur perkampungan yang salah satu penduduknya mempunyai usaha daur ulang drum, jrigen untuk tempat sampah, pot tanaman, tandon air, dan ada usaha las bubut. Sebelah utara sekolah terdapat pabrik tekstil Agung Tex yang lumayan besar produksinya dan sudah diekspor ke Luar Negeri, sebelah barat SMP ada showroom dan bengkel Nasmoco.SMP Negeri 2 Jaten pada tahun 2016 masuk juara 1 Adiwiyata tingkat Kabupaten. Pada tahun 2019 SMP Negeri 2 Jaten lolos juara 1 Adiwiyata tingkat Provinsi. Tahun 2021 SMP Negeri 2 Jaten masuk nominasi menjadi sekolah Adiwiyata tingkat Nasional dan sedang mempersiapkan agar bisa menjadi juara kembali.', '<div>Sekolah ini berdiri tanggal 22 November 1985, SMP Negeri 2 Jaten terletak di jalan raya Solo-Sragen Km. 9, akses untuk mencapai sekolah ini sangat mudah baik bagi para siswa maupun orang tua siswa serta praktisi pendidikan. Dengan luas tanah 20.000m² SMP Negeri 2 Jaten adalah sekolah yang cukup luas dan memaksimalkan untuk menanam berbagai jenis tanaman yang cocok di daerah Jaten.</div><div><br><br>SMP Negeri 2 Jaten terletak di Dusun Grumbul Sawit, Desa Sroyo, Kecamatan Jaten, Kabupaten Karanganyar, sebelah selatan sekolah berupa sawah, pabrik tekstil Kusuma Mulya, sebelah timur perkampungan yang salah satu penduduknya mempunyai usaha daur ulang drum, jrigen untuk tempat sampah, pot tanaman, tandon air, dan ada usaha las bubut. Sebelah utara sekolah terdapat pabrik tekstil Agung Tex yang lumayan besar produksinya dan sudah diekspor ke Luar Negeri, sebelah barat SMP ada showroom dan bengkel Nasmoco.</div><div><br><br>SMP Negeri 2 Jaten pada tahun 2016 masuk juara 1 Adiwiyata tingkat Kabupaten. Pada tahun 2019 SMP Negeri 2 Jaten lolos juara 1 Adiwiyata tingkat Provinsi. Tahun 2021 SMP Negeri 2 Jaten masuk nominasi menjadi sekolah Adiwiyata tingkat Nasional dan sedang mempersiapkan agar bisa menjadi juara kembali.</div>', '2023-03-08 02:03:25', 0),
+(27, 'prakata', 0, 'Nama Penulis', 'Prakata Kepala Sekolah', '1678241284_d22f46d8f28b64b748c6.jpeg', NULL, 'SMP Negeri 2 Jaten, merupakan salah satu Sekolah Menengah Pertama Negeri yang ada di Kabupaten Karanganyar, Provinsi Jawa Tengah, Indonesia. SMP Negeri 02 Jaten adalah sekolah yang berwawasan lingkungan yaitu tempat dimana siswa-siswi mendapat segala ilmu pengetahuan, norma dan etika dalam kehidupan yang tidak lupa akan pentingnya tanggung jawab dalam penyelamatan lingkungan hidup. Sama dengan SMP pada umumnya di Indonesia, masa pendidikan sekolah di SMP Negeri 2 Jaten ditempuh dalam waktu tiga tahun pelajaran, mulai dari Kelas VII sampai Kelas IX. Sekolah ini memiliki karakteristik Sekolah yang berwawasan lingkungan dengan jargon yang terkenal yaitu berkibar, hijau, jaya. SMP Negeri 2 Jaten telah menapakkan jalan yang benar dan menjadi pionir awal dalam mendidik siswa memelihara lingkungan. Bahkan SMP Negeri 2 Bandar telah mendapat berbagai penghargaan di tingkat Kabupaten, Provinsi maupun tingkat Nasional seperti Green School Awards, dan Sekolah Adiwiyata Nasional pada tahun 2016.', '<div><strong>SMP Negeri 2 Jaten</strong>, merupakan salah satu Sekolah Menengah Pertama Negeri yang ada di Kabupaten Karanganyar, Provinsi Jawa Tengah, <a href=\"https://id.wikipedia.org/wiki/Indonesia\">Indonesia</a>. SMP Negeri 02 Jaten adalah sekolah yang berwawasan lingkungan yaitu tempat dimana siswa-siswi mendapat segala ilmu pengetahuan, norma dan etika dalam kehidupan yang tidak lupa akan pentingnya tanggung jawab dalam penyelamatan lingkungan hidup. Sama dengan SMP pada umumnya di Indonesia, masa pendidikan sekolah di SMP Negeri 2 Jaten ditempuh dalam waktu tiga tahun pelajaran, mulai dari Kelas VII sampai Kelas IX. Sekolah ini memiliki karakteristik Sekolah yang berwawasan lingkungan dengan jargon yang terkenal yaitu berkibar, hijau, jaya. SMP Negeri 2 Jaten telah menapakkan jalan yang benar dan menjadi pionir awal dalam mendidik siswa memelihara lingkungan. Bahkan SMP Negeri 2 Bandar telah mendapat berbagai penghargaan di tingkat Kabupaten, Provinsi maupun tingkat Nasional seperti Green School Awards, dan Sekolah Adiwiyata Nasional pada tahun 2016.</div>', '2023-03-08 02:03:04', 0),
+(28, 'program', 0, 'Nama Penulis', 'Program Unggulan SMP Terpadu Bugelan', '1678241411_4b3b0897af2f3e7794de.jpeg', 1, '1. PerpustakaanPerpustakaan di SMPN N 2 Jaten memiliki beragam koleksi buku, baik buku siswa, buku bacaan, buku referensi, makalah, surat kabar dan seterusnya. Untuk fasilitas penunjang di perpustakaan SMPN N 2 Jaten terdiri dari komputer, ruang baca yang cukup luas , TV, VCD/ DVD Player.2. Laboratorium IPALaboratorium IPA merupakan salah satu laboratorium untuk praktik siswa di SMP N 2 Jaten dengan ditunjang dengan prasarana yang cukup memadai, alat praktikum fisika yang lengkap, alat penunjang Fisika, beragam jenis alat praktikum biologi, dan alat penujang biologi.3. Laboratorium MultimediaSemakin berkembangnya teknologi informasi, maka para siswa SMP N 2 Jaten dituntut untuk mempelajari dan mengembangkan bakat diri di bidang multimedia, untuk itu SMP N 2 Jaten memiliki Laboratorium Multimedia.4. KesenianWilayah karisidenan Surakarta identik dengan budayanya yang sangat kental, salah satunya adalah kesenian tradisional yaitu musik (Studio Musik) dan juga seni tari. SMP N 2 Jaten memiliki peralatan kesenian dan juga ruang khusu seni musk dan seni tari yang cukup luas bagi siswa SMP N 2 Jaten untuk praktik belajar kesenian musik dan seni tari. SMP N 2 Jaten juga menyediakan sarana dan prasarana untuk seni musik supaya para siswa dapat mengembangkan bakat diri di bidang seni olah vokal.5. Laboratorium KomputerPerkembangan teknologi informasi yang begitu pesat, menuntut semua sekolah termasuk SMP N 2 Jaten untuk memiliki Laboratorium Komputer.', '<div><strong><br>1. Perpustakaan</strong></div><div><br>Perpustakaan di SMPN N 2 Jaten memiliki beragam koleksi buku, baik buku siswa, buku bacaan, buku referensi, makalah, surat kabar dan seterusnya. Untuk fasilitas penunjang di perpustakaan SMPN N 2 Jaten terdiri dari komputer, ruang baca yang cukup luas , TV, VCD/ DVD Player.</div><div><strong><br>2. Laboratorium IPA</strong></div><div><br>Laboratorium IPA merupakan salah satu laboratorium untuk praktik siswa di SMP N 2 Jaten dengan ditunjang dengan prasarana yang cukup memadai, alat praktikum fisika yang lengkap, alat penunjang Fisika, beragam jenis alat praktikum biologi, dan alat penujang biologi.</div><div><strong><br>3. Laboratorium Multimedia</strong></div><div><br>Semakin berkembangnya teknologi informasi, maka para siswa SMP N 2 Jaten dituntut untuk mempelajari dan mengembangkan bakat diri di bidang multimedia, untuk itu SMP N 2 Jaten memiliki Laboratorium Multimedia.</div><div><strong><br>4. Kesenian</strong></div><div><br>Wilayah karisidenan Surakarta identik dengan budayanya yang sangat kental, salah satunya adalah kesenian tradisional yaitu musik (Studio Musik) dan juga seni tari. SMP N 2 Jaten memiliki peralatan kesenian dan juga ruang khusu seni musk dan seni tari yang cukup luas bagi siswa SMP N 2 Jaten untuk praktik belajar kesenian musik dan seni tari. SMP N 2 Jaten juga menyediakan sarana dan prasarana untuk seni musik supaya para siswa dapat mengembangkan bakat diri di bidang seni olah vokal.</div><div><strong><br>5. Laboratorium Komputer</strong></div><div><br>Perkembangan teknologi informasi yang begitu pesat, menuntut semua sekolah termasuk SMP N 2 Jaten untuk memiliki Laboratorium Komputer.</div>', '2023-03-08 02:03:11', 0);
 
 -- --------------------------------------------------------
 
@@ -170,14 +159,17 @@ CREATE TABLE `info` (
   `tentang` text NOT NULL,
   `detail` text NOT NULL,
   `ket` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `info`
 --
 
 INSERT INTO `info` (`id`, `tgl_awal`, `tgl_ahir`, `prioritas`, `bagian`, `tentang`, `detail`, `ket`) VALUES
-(1, '2023-02-09', '2023-05-13', 1, 'Yayasan Bugelan', 'asd', 'asdfasdfasdfasdf', '');
+(3, '2023-03-11', '2023-03-11', 0, 'Kesiswaan', 'Ekskul Pramuka', 'Ekstra Kurikuler Pramuka SMPT Bugelan', ''),
+(4, '2023-03-25', '2023-03-25', 0, 'Kesiswaan', 'Ekskul Paskibra', 'Ekstrakurikuler Pelatihan Pasukan Pengibar Bendera', ''),
+(5, '2023-03-18', '2023-03-18', 1, 'OSIS', 'Nonton Film Pahlawan Nasional', 'Nonton Bareng Film Pahlawan Nasional', ''),
+(6, '2023-04-01', '2023-04-01', 0, 'Kesiswaan', 'Bimbingan Konseling', 'Sharing, Evaluasi, Bimbingan dan motivasi Belajar & Berorganisasi', '');
 
 -- --------------------------------------------------------
 
@@ -193,7 +185,7 @@ CREATE TABLE `kalender` (
   `acara` text NOT NULL,
   `ket` text NOT NULL,
   `warna` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `kalender`
@@ -221,7 +213,15 @@ CREATE TABLE `kompetensi` (
   `tgl_awal` varchar(11) NOT NULL,
   `tgl_ahir` varchar(11) NOT NULL,
   `ket` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `kompetensi`
+--
+
+INSERT INTO `kompetensi` (`id`, `idm`, `nama`, `jenis`, `tempat`, `subjek`, `hasil`, `tgl_awal`, `tgl_ahir`, `ket`) VALUES
+(4, '85', 'Abdul Aziz, S.Pd.I', 'Pendidikan', 'MA Nurussalam', 'IPS', '3.2', '2023-02-09', '2023-05-13', ''),
+(5, '85', 'Abdul Aziz, S.Pd.I', 'Non Formal', 'Udemy', 'Data Scientist', '8', '2023-02-26', '2023-03-08', '');
 
 -- --------------------------------------------------------
 
@@ -261,7 +261,7 @@ CREATE TABLE `member` (
   `pass` varchar(100) NOT NULL,
   `arsip` varchar(100) NOT NULL,
   `ket` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `member`
@@ -330,7 +330,7 @@ INSERT INTO `member` (`id`, `ni`, `nama`, `panggil`, `jk`, `tempat_lahir`, `tang
 (71, 'BGL202201', 'Asep Irfan Helmi, S.T.', 'Asep ', '', 'Tasikmalaya', '2022-08-15', '', '', 'Kp. Bugelan', '03', '016', 'Kel. Gn Tandala', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Pengurus', '', '', 'Kepala Sekolah'),
 (72, 'BGL202202', 'Urfah Hidayah, S. Pd', 'Urfah', '', 'Tasikmalaya', '1928-08-08', '', '', 'Kp. Bugelan', '02', '16', 'Kel. Gn Tandala', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Guru', '', '', 'Bendahara,Wali Kelas 7,PAI'),
 (73, 'BGL202203', 'Ai Mala Nurmala, S. Pd', 'Ai Ma', '', 'Tasikmalaya', '2022-08-03', '', '', 'Kp. Bugelan', '01', '016', 'Kel. Gn Tandala', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Guru', '', '', 'Kurikulum,Wali Kelas 8,IPS'),
-(74, 'BGL202204', 'Ai Pristianti, S. Pd', 'Ai Pr', 'P', 'Tasikmalaya', '1915-12-28', '', '', 'Kp. Cianjur wetan', '01', '08', 'Kel. Gn Tandala', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Guru', '', '', ''),
+(74, 'BGL202204', 'Ai Pristianti, S. Pd', 'Ai Pr', '', 'Tasikmalaya', '1915-12-28', '', '', 'Kp. Cianjur wetan', '01', '08', 'Kel. Gn Tandala', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Guru', '', '', 'PKN'),
 (76, 'BGL202206', 'Sova Patrotul Alawaiyah, S. Pd', 'Sova ', 'P', 'Tasikmalaya', '1917-08-14', '', '', 'Kp. Pagaden', '02', '01', 'Kel. Gn Tandala', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Guru', '', '', ''),
 (77, 'BGL202207', 'Meida Gunaningsih, S. Pd', 'Meida', 'P', 'Tasikmalaya', '1907-01-07', '', '', 'Kp. Cicariang', '02', '09', 'Kel. Karsamenak', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Guru', '', '', ''),
 (78, 'BGL202208', 'Dede Siti Sobariah, S. Pd', 'Dede ', 'P', 'Tasikmalaya', '1914-02-10', '', '', 'Kp. Gunung Waru', '04', '015', 'Kel. Karsamenak', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Guru', '', '', ''),
@@ -339,8 +339,37 @@ INSERT INTO `member` (`id`, `ni`, `nama`, `panggil`, `jk`, `tempat_lahir`, `tang
 (82, 'BGL202212', 'Parhan Mulyana, S. Pd', 'Parha', '', 'Tasikmalaya', '1913-02-17', '', '', 'Kp. Cibuluh', '04', '11', 'Kel. Karanganyar', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Staff', '', '', ''),
 (83, 'BGL202213', 'Suci Nur Amanatillah', 'Suci ', '', 'Tasikmalaya', '1915-08-05', '', '', 'Kp. Cibogo', '02', '05', 'Kel. Cibeuti', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Staff', '', '', ''),
 (84, 'BGL202214', 'Fitria Adi Rahayu, S. ST', 'Fitri', 'P', 'Jakarta', '2022-08-23', '', '', 'Kp. Bugelan', '04', '06', 'Kel. Gn Tandala', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Guru', '', '', ''),
-(85, 'BGL202215', 'Abdul Aziz, S.Pd.I', 'Abdul', '', 'Bandung', '1934-01-30', '', '', 'Kp. Karangsari', '05', '05', 'Desa Kujang', 'Cikoneng', 'Kab. Ciamis', '', '', '', '', '', '', '', '', '', '', '', '', 'Guru', '', '', 'Wali Kelas 9,Kesiswaan,TIK'),
-(86, 'BGL202216', 'Acep Helmi, S. Pd. I', 'Acep ', '', 'Tasikmalaya', '2022-08-15', '', '', 'Kp. Bugelan', '03', '016', 'Kel. Gn Tandala', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '', '', '', '', '', '', '', '', '', 'Pengurus', '', '', 'Kesiswaan');
+(85, 'BGL202215', 'Abdul Aziz', 'Abdul', 'Laki-laki', 'Bandung', '1934-01-30', '3278051504080002', '9998051504080002', 'Jln. Raya Margaluyu NO. 301', '05', '05', 'Desa Kujang', 'Cikoneng', 'Ciamis', '46261', '+6287733807998', 'hikam.abukafa@gmail.com', '2022', '', '', '', '', '', '', 'Mengesankan', 'Rajinlah Belajar', 'Guru', 'memberbugelan', 'JADWAL LIFESKILL.pdf', 'Wali Kelas 9,TIK'),
+(86, 'BGL202216', 'Acep Helmi, S. Pd. I', 'Acep ', 'Laki-laki', 'Tasikmalaya', '2022-08-15', '', '', 'Kp. Bugelan', '03', '016', 'Kel. Gn Tandala', 'Kawalu', 'Kota Tasikmalaya', '', '', '', '2014', '', '', '', '', '', '', '', '', 'Pengurus', '', '', 'Kesiswaan');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pooling`
+--
+
+CREATE TABLE `pooling` (
+  `id` int(11) NOT NULL,
+  `jenis` varchar(25) NOT NULL,
+  `pertanyaan` varchar(255) NOT NULL,
+  `a` int(11) NOT NULL,
+  `b` int(11) NOT NULL,
+  `c` int(11) NOT NULL,
+  `d` int(11) NOT NULL,
+  `ket` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pooling`
+--
+
+INSERT INTO `pooling` (`id`, `jenis`, `pertanyaan`, `a`, `b`, `c`, `d`, `ket`) VALUES
+(1, 'Siswa', 'Bagaimana Perkembangan Sikap Ananda selama belajar di SMPT Bugelan?', 2, 0, 1, 1, 'Sikap'),
+(2, 'Siswa', 'Bagaimana Perkembangan Kecerdasan Ananda selama belajar di SMPT Bugelan?', 0, 2, 2, 0, 'Cerdas'),
+(3, 'Siswa', 'Bagaimana Perkembangan Keterampilan Ananda selama belajar di SMPT Bugelan?', 0, 1, 1, 0, 'Terampil'),
+(4, 'Guru', 'Bagaimana Kinerja Guru & Pengajar di SMPT Bugelan?', 0, 2, 0, 0, ''),
+(5, 'KBM', 'Bagaimana Kegiatan Belajar Mengajar di SMPT Bugelan?', 1, 1, 0, 0, ''),
+(6, 'Sekolah', 'Bagaimana Kontribusi Sekolah di Kp. Bugelan saat ini?', 0, 0, 0, 0, '');
 
 -- --------------------------------------------------------
 
@@ -364,14 +393,14 @@ CREATE TABLE `profil` (
   `tema` text NOT NULL,
   `kontak` text NOT NULL,
   `ket` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `profil`
 --
 
 INSERT INTO `profil` (`id`, `sekolah`, `npsn`, `yayasan`, `no_izin`, `alamat`, `map`, `telepon`, `email`, `motto`, `periode`, `kepala`, `tema`, `kontak`, `ket`) VALUES
-(3, 'SMP Terpadu Bugelan', '', 'Yayasan Bugelan', '5.3/0575/SK-PEND/DPMPTSP/2022', 'Bugelan, Gunungtandala, Kec. Kawalu, Kab. Tasikmalaya, Jawa Barat 46182', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.5795261836697!2d108.21595821528517!3d-7.40091927492719!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e65f93c35b67209%3A0x6071526de8e0ade1!2sSMP%20Terpadu%20Bugelan!5e0!3m2!1sen!2sid!4v1676433713981!5m2!1sen!2sid', '(0812) 9000 4840', 'bugelan.smpt@gmail.com', 'Impian tidak akan terwujud dengan sendirinya. Kamu harus segera bangun dan berupaya untuk mewujudkannya', '2022', 'Asep Irfan Helmi, S.T.', '', '', '');
+(3, 'SMP Terpadu Bugelan', '', 'Yayasan Bugelan', '5.3/0575/SK-PEND/DPMPTSP/2022', 'Bugelan, Gunungtandala, Kec. Kawalu, Kab. Tasikmalaya, Jawa Barat 46182', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.5795261836697!2d108.21595821528517!3d-7.40091927492719!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e65f93c35b67209%3A0x6071526de8e0ade1!2sSMP%20Terpadu%20Bugelan!5e0!3m2!1sen!2sid!4v1676433713981!5m2!1sen!2sid', '(0812) 9000 4840', 'bugelan.smpt@gmail.com', 'Impian tidak akan terwujud dengan sendirinya. Kamu harus segera bangun dan berupaya untuk mewujudkannya', '2022', 'Asep Irfan Helmi, S.T.', '', '087733807998', '');
 
 --
 -- Indexes for dumped tables
@@ -422,6 +451,12 @@ ALTER TABLE `member`
   ADD UNIQUE KEY `nisn` (`ni`) USING HASH;
 
 --
+-- Indexes for table `pooling`
+--
+ALTER TABLE `pooling`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `profil`
 --
 ALTER TABLE `profil`
@@ -435,43 +470,49 @@ ALTER TABLE `profil`
 -- AUTO_INCREMENT for table `absensi`
 --
 ALTER TABLE `absensi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `blog`
 --
 ALTER TABLE `blog`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `info`
 --
 ALTER TABLE `info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `kalender`
 --
 ALTER TABLE `kalender`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `kompetensi`
 --
 ALTER TABLE `kompetensi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+
+--
+-- AUTO_INCREMENT for table `pooling`
+--
+ALTER TABLE `pooling`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `profil`

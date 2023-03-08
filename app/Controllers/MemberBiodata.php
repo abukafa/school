@@ -25,6 +25,13 @@ class MemberBiodata extends BaseController
 
     public function save($id = NULL)
     {
+        if ($id == NULL) {
+            $ket = $this->request->getPost('ket');
+        } else {
+            $ket = $this->request->getPost('ket');
+            $old = $this->memberModel->find($id);
+            $ket = $ket ?: $old['ket'];
+        }
         $data = [
             'ni' => $this->request->getPost('ni'),
             'nama' => $this->request->getPost('nama'),
@@ -55,7 +62,7 @@ class MemberBiodata extends BaseController
             'akun' => $this->request->getPost('akun'),
             'pass' => $this->request->getPost('pass'),
             'arsip' => $this->request->getPost('arsip'),
-            'ket' => $this->request->getPost('ket')
+            'ket' => $ket
         ];
         if ($id == NULL) {
             $this->memberModel->insert($data);

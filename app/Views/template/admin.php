@@ -59,7 +59,8 @@
                                 Dashboard
                             </a>
                         </li>
-                        <div class="<?= (session()->get('akses') && session()->get('akses') == 'Office') ?: 'd-none' ?>">
+                        <?php $akses = !session()->get('akses') ? [] : explode(',', session()->get('akses')) ?>
+                        <div class="<?= ($akses && in_array('Office', $akses)) ?: 'd-none' ?>">
                             <li class="nav-item">
                                 <a class="nav-link <?= $title <> 'Profil' ?: 'active' ?>" href="/admin/profil">
                                     <span data-feather="file"></span>
@@ -144,31 +145,31 @@
                         </ul>
                     </div>
 
-                    <div id="admin" class="<?= (session()->get('akses')) ?: 'd-none' ?>">
+                    <div id="admin" class="<?= ($akses <> []) ?: 'd-none' ?>">
                         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 my-4 text-muted">
                             <span>Administrator</span>
                             <span data-feather="coffee"></span>
                         </h6>
                         <ul class="nav flex-column">
-                            <li class="nav-item">
+                            <li class="nav-item <?= (in_array('Absensi', $akses)) ?: 'd-none' ?>">
                                 <a class="nav-link <?= $title <> 'Absensi' ?: 'active' ?>" href="/data/absensi">
                                     <span data-feather="activity"></span>
                                     Absensi
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item <?= (in_array('Blog', $akses)) ?: 'd-none' ?>">
                                 <a class="nav-link <?= $title <> 'Blog' ?: 'active' ?>" href="/data/blog">
                                     <span data-feather="align-right"></span>
                                     Blog
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item <?= (in_array('Galeri', $akses)) ?: 'd-none' ?>">
                                 <a class="nav-link <?= $title <> 'Galeri' ?: 'active' ?>" href="/data/galeri">
                                     <span data-feather="image"></span>
                                     Galeri
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item <?= (in_array('Informasi', $akses)) ?: 'd-none' ?>">
                                 <a class="nav-link <?= $title <> 'Info' ?: 'active' ?>" href="/data/info">
                                     <span data-feather="info"></span>
                                     Informasi

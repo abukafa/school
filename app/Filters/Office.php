@@ -10,7 +10,8 @@ class Office implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)
     {
-        if (!session()->get('akses') || session()->get('akses') !== 'Office') {
+        $akses = !session()->get('akses') ? [] : explode(',', session()->get('akses'));
+        if (!in_array('Office', $akses)) {
             return redirect()->to('/dashboard');
         }
     }

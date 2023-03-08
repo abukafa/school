@@ -91,15 +91,15 @@ flash_alert();
                 <div class="modal-body">
                     <div class='mb-2'>
                         <label class='form-label' for='tgl_awal'>Tanggal Awal</label>
-                        <input type='text' class='form-control' name='tgl_awal' id='tgl_awal'>
+                        <input type='text' class='form-control' name='tgl_awal' id='tgl_awal' required>
                     </div>
                     <div class='mb-2'>
                         <label class='form-label' for='tgl_ahir'>Tanggal Akhir</label>
-                        <input type='text' class='form-control' name='tgl_ahir' id='tgl_ahir'>
+                        <input type='text' class='form-control' name='tgl_ahir' id='tgl_ahir' required>
                     </div>
                     <div class='mb-2'>
                         <label class='form-label' for='bagian'>Informan</label>
-                        <select type='text' class='form-select' name='bagian' id='bagian'>
+                        <select type='text' class='form-select' name='bagian' id='bagian' required>
                             <option value=''>.. pilih ..</option>
                             <option>Yayasan Bugelan</option>
                             <option>Kepala Sekolah</option>
@@ -114,11 +114,11 @@ flash_alert();
                     </div>
                     <div class='mb-2'>
                         <label class='form-label' for='tentang'>Headline</label>
-                        <input type='text' class='form-control' name='tentang' id='tentang'>
+                        <input type='text' class='form-control' name='tentang' id='tentang' required>
                     </div>
                     <div class='mb-2'>
                         <label class='form-label' for='detail'>Detail</label>
-                        <textarea type='text' class='form-control' name='detail' id='detail'></textarea>
+                        <textarea type='text' class='form-control' name='detail' id='detail' required></textarea>
                     </div>
                     <div class='mb-2'>
                         <label class='form-label' for='ket'>Keterangan</label>

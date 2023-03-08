@@ -1,6 +1,39 @@
 <?php
 $this->extend('template/main');
 $this->section('content');
+
+$vii = $profil['periode'];
+$viii = $profil['periode'] - 1;
+$ix = $profil['periode'] - 2;
+
+$vii_hadir = 0;
+$viii_hadir = 0;
+$ix_hadir = 0;
+foreach ($kelas as $item) {
+    if ($item['tahun'] == $vii) {
+        $vii_jumlah = $item['jumlah'];
+    }
+    if ($item['tahun'] == $viii) {
+        $viii_jumlah = $item['jumlah'];
+    }
+    if ($item['tahun'] == $ix) {
+        $ix_jumlah = $item['jumlah'];
+    }
+}
+foreach ($hadir as $item) {
+    if ($item['tahun'] == $vii) {
+        $vii_hadir = $item['jumlah'];
+    }
+    if ($item['tahun'] == $viii) {
+        $viii_hadir = $item['jumlah'];
+    }
+    if ($item['tahun'] == $ix) {
+        $ix_hadir = $item['jumlah'];
+    }
+}
+$vii_bl_hadir = $vii_jumlah - $vii_hadir;
+$viii_bl_hadir = $viii_jumlah - $viii_hadir;
+$ix_bl_hadir = $ix_jumlah - $ix_hadir;
 ?>
 
 <style>
@@ -17,7 +50,7 @@ $this->section('content');
     <div class="col">
         <article class="blog-post text-center">
             <h2 class="blog-post-title">Absensi Sekolah</h2>
-            <p class="blog-post-meta mb-5"><?= date('l, d M Y') ?></p>
+            <p class="blog-post-meta mb-5"><?= date('l, j M Y') ?></p>
         </article>
 
         <div class="row">
@@ -30,7 +63,7 @@ $this->section('content');
                         <div class="row">
                             <div class="col-5">
                                 <h4 class="card-title">Kelas VII</h4>
-                                <h6 class="card-text">15 Hadir</h6>
+                                <h6 class="card-text"><?= $vii_hadir ?> Masuk</h6>
                             </div>
                             <div class="col-7">
                                 <canvas id="absen7"></canvas>
@@ -38,7 +71,7 @@ $this->section('content');
                         </div>
                     </div>
                     <div class="card-footer text-muted">
-                        2 absen
+                        <?= $vii_bl_hadir ?> absen
                     </div>
                 </div>
             </div>
@@ -51,7 +84,7 @@ $this->section('content');
                         <div class="row">
                             <div class="col-5">
                                 <h4 class="card-title">Kelas VIII</h4>
-                                <h6 class="card-text">15 Hadir</h6>
+                                <h6 class="card-text"><?= $viii_hadir ?> Masuk</h6>
                             </div>
                             <div class="col-7">
                                 <canvas id="absen8"></canvas>
@@ -59,7 +92,7 @@ $this->section('content');
                         </div>
                     </div>
                     <div class="card-footer text-muted">
-                        2 absen
+                        <?= $viii_bl_hadir ?> absen
                     </div>
                 </div>
             </div>
@@ -72,7 +105,7 @@ $this->section('content');
                         <div class="row">
                             <div class="col-5">
                                 <h4 class="card-title">Kelas IX</h4>
-                                <h6 class="card-text">15 Hadir</h6>
+                                <h6 class="card-text"><?= $ix_hadir ?> Masuk</h6>
                             </div>
                             <div class="col-7">
                                 <canvas id="absen9"></canvas>
@@ -80,65 +113,113 @@ $this->section('content');
                         </div>
                     </div>
                     <div class="card-footer text-muted">
-                        2 absen
+                        <?= $ix_bl_hadir ?> absen
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 mb-2 order-2 order-lg-4">
                 <table class="table">
-                    <tr>
-                        <td>7</td>
-                        <td>Dimas Pangestu</td>
-                        <td><span class="badge rounded-pill bg-dark float-end me-3">12:25</span></td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td>Muhammad Abdul Mughni</td>
-                        <td><span class="badge rounded-pill bg-danger float-end me-3">Alpa</span></td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td>Ajeng Raras Kandita</td>
-                        <td><span class="badge rounded-pill bg-warning float-end me-3">Izin</span></td>
-                    </tr>
+                    <?php foreach ($absen as $row) :
+                        if ($row['tahun'] == $vii) {
+                            if ($row['absen'] == '') {
+                                $minggat = ($row['jam1'] == false ? 1 : 0) + ($row['jam2'] == false ? 1 : 0) + ($row['jam3'] == false ? 1 : 0) + ($row['jam4'] == false ? 1 : 0) + ($row['jam5'] == false ? 1 : 0);
+                                if ($minggat > 0) { ?>
+                                    <tr>
+                                        <th>7</th>
+                                        <th><?= $row['panggil'] ?></th>
+                                        <td>
+                                            <span class="badge rounded-pill bg-dark float-end me-3"><?= $minggat ?></span>
+                                        </td>
+                                    </tr>
+                            <?php }
+                            } ?>
+                            <?php if ($row['absen'] <> '') { ?>
+                                <tr>
+                                    <td>7</td>
+                                    <td><?= $row['panggil'] ?></td>
+                                    <td>
+                                        <?php if ($row['absen'] == 'a') { ?>
+                                            <span class="badge rounded-pill bg-danger float-end me-3">alpa</span>
+                                        <?php } else if ($row['absen'] == 'i') { ?>
+                                            <span class="badge rounded-pill bg-warning float-end me-3">izin</span>
+                                        <?php } else if ($row['absen'] == 's') { ?>
+                                            <span class="badge rounded-pill bg-info float-end me-3">sakit</span>
+                                        <?php } ?>
+                                    </td>
+                                </tr>
+                    <?php   }
+                        }
+                    endforeach; ?>
                 </table>
             </div>
             <div class="col-lg-4 mb-2 order-4 order-lg-5">
                 <table class="table">
-                    <tr>
-                        <td>8</td>
-                        <td>Piki Prasetyo</td>
-                        <td><span class="badge rounded-pill bg-dark float-end me-3">10:25</span></td>
-                    </tr>
-                    <tr>
-                        <td>8</td>
-                        <td>Adi Bayu</td>
-                        <td><span class="badge rounded-pill bg-danger float-end me-3">Alpa</span></td>
-                    </tr>
-                    <tr>
-                        <td>8</td>
-                        <td>Aneu Anggraeni</td>
-                        <td><span class="badge rounded-pill bg-info float-end me-3">Sakit</span></td>
-                    </tr>
+                    <?php foreach ($absen as $row) :
+                        if ($row['tahun'] == $viii) {
+                            if ($row['absen'] == '') {
+                                $minggat = ($row['jam1'] == false ? 1 : 0) + ($row['jam2'] == false ? 1 : 0) + ($row['jam3'] == false ? 1 : 0) + ($row['jam4'] == false ? 1 : 0) + ($row['jam5'] == false ? 1 : 0);
+                                if ($minggat > 0) { ?>
+                                    <tr>
+                                        <th>8</th>
+                                        <th><?= $row['panggil'] ?></th>
+                                        <td>
+                                            <span class="badge rounded-pill bg-dark float-end me-3"><?= $minggat ?></span>
+                                        </td>
+                                    </tr>
+                            <?php }
+                            } ?>
+                            <?php if ($row['absen'] <> '') { ?>
+                                <tr>
+                                    <td>8</td>
+                                    <td><?= $row['panggil'] ?></td>
+                                    <td>
+                                        <?php if ($row['absen'] == 'a') { ?>
+                                            <span class="badge rounded-pill bg-danger float-end me-3">alpa</span>
+                                        <?php } else if ($row['absen'] == 'i') { ?>
+                                            <span class="badge rounded-pill bg-warning float-end me-3">izin</span>
+                                        <?php } else if ($row['absen'] == 's') { ?>
+                                            <span class="badge rounded-pill bg-info float-end me-3">sakit</span>
+                                        <?php } ?>
+                                    </td>
+                                </tr>
+                    <?php   }
+                        }
+                    endforeach; ?>
                 </table>
             </div>
             <div class="col-lg-4 mb-2 order-last order-lg-6">
                 <table class="table">
-                    <tr>
-                        <td>9</td>
-                        <td>Rizki Nugraha</td>
-                        <td><span class="badge rounded-pill bg-danger float-end me-3">Alpa</span></td>
-                    </tr>
-                    <tr>
-                        <td>9</td>
-                        <td>Hirsa Nurasiyah</td>
-                        <td><span class="badge rounded-pill bg-warning float-end me-3">Izin</span></td>
-                    </tr>
-                    <tr>
-                        <td>9</td>
-                        <td>Hilda Khoirunnisa</td>
-                        <td><span class="badge rounded-pill bg-info float-end me-3">Sakit</span></td>
-                    </tr>
+                    <?php foreach ($absen as $row) :
+                        if ($row['tahun'] == $ix) {
+                            if ($row['absen'] == '') {
+                                $minggat = ($row['jam1'] == false ? 1 : 0) + ($row['jam2'] == false ? 1 : 0) + ($row['jam3'] == false ? 1 : 0) + ($row['jam4'] == false ? 1 : 0) + ($row['jam5'] == false ? 1 : 0);
+                                if ($minggat > 0) { ?>
+                                    <tr>
+                                        <th>9</th>
+                                        <th><?= $row['panggil'] ?></th>
+                                        <td>
+                                            <span class="badge rounded-pill bg-dark float-end me-3"><?= $minggat ?></span>
+                                        </td>
+                                    </tr>
+                            <?php }
+                            } ?>
+                            <?php if ($row['absen'] <> '') { ?>
+                                <tr>
+                                    <td>9</td>
+                                    <td><?= $row['panggil'] ?></td>
+                                    <td>
+                                        <?php if ($row['absen'] == 'a') { ?>
+                                            <span class="badge rounded-pill bg-danger float-end me-3">alpa</span>
+                                        <?php } else if ($row['absen'] == 'i') { ?>
+                                            <span class="badge rounded-pill bg-warning float-end me-3">izin</span>
+                                        <?php } else if ($row['absen'] == 's') { ?>
+                                            <span class="badge rounded-pill bg-info float-end me-3">sakit</span>
+                                        <?php } ?>
+                                    </td>
+                                </tr>
+                    <?php   }
+                        }
+                    endforeach; ?>
                 </table>
             </div>
         </div>
@@ -147,12 +228,19 @@ $this->section('content');
 
 <script src="<?= base_url() ?>/js/chart.min.js"></script>
 <script>
+    var vii_hadir = <?= $vii_hadir ?>;
+    var viii_hadir = <?= $viii_hadir ?>;
+    var ix_hadir = <?= $ix_hadir ?>;
+    var vii_absen = <?= $vii_bl_hadir ?>;
+    var viii_absen = <?= $viii_bl_hadir ?>;
+    var ix_absen = <?= $ix_bl_hadir ?>;
+
     var cta = document.getElementById('absen7')
     var yourChart = new Chart(cta, {
         type: 'pie',
         data: {
             datasets: [{
-                data: [80, 20],
+                data: [vii_hadir, vii_absen],
                 backgroundColor: ['#3ed48e', '#d4d43e']
             }]
         }
@@ -162,7 +250,7 @@ $this->section('content');
         type: 'pie',
         data: {
             datasets: [{
-                data: [80, 20],
+                data: [viii_hadir, viii_absen],
                 backgroundColor: ['#3ed48e', '#d4d43e']
             }]
         }
@@ -172,7 +260,7 @@ $this->section('content');
         type: 'pie',
         data: {
             datasets: [{
-                data: [80, 20],
+                data: [ix_hadir, ix_absen],
                 backgroundColor: ['#3ed48e', '#d4d43e']
             }]
         }

@@ -1,3 +1,14 @@
+<?php
+
+use App\Models\InfoModel;
+use App\Models\KalenderModel;
+
+$informasi = new InfoModel();
+$kalender = new KalenderModel();
+$info = $informasi->limit(3)->orderBy('tgl_awal')->findAll();
+$kald = $kalender->limit(3)->orderBy('tgl_awal')->findAll();
+?>
+
 <div class="p-4 mb-3 bg-light rounded">
     <div class="bd-example">
         <nav>
@@ -8,27 +19,18 @@
         </nav>
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade active show" id="nav-first" role="tabpanel" aria-labelledby="nav-first-tab">
-                <p class="text-success">Pramuka & Paskibra</p>
-                <footer class="blockquote-footer">Setiap Sabtu Pertama</footer>
-                <hr>
-                <p class="text-success">Palang Merah Remaja</p>
-                <footer class="blockquote-footer">Setiap Sabtu Kedua</footer>
-                <hr>
-                <p class="text-success">Training Desain Grafis</p>
-                <footer class="blockquote-footer">Sabtu, 21 Januari 2023</footer>
-                <hr>
-                <p class="text-success">Nobar Sejarah Islam Nusantara</p>
-                <footer class="blockquote-footer">Sabtu, 28 Januari 2023</footer>
+                <?php foreach ($info as $row) : ?>
+                    <p class="text-success"><?= $row['tentang'] ?></p>
+                    <footer class="blockquote-footer"><?= date_format(date_create($row['tgl_awal']), 'l, j M Y') ?></footer>
+                    <hr>
+                <?php endforeach; ?>
             </div>
             <div class="tab-pane fade" id="nav-second" role="tabpanel" aria-labelledby="nav-second-tab">
-                <p class="text-success">In House Training</p>
-                <footer class="blockquote-footer">Sabtu, 7 Januari 2023</footer>
-                <hr>
-                <p class="text-success">Rapat Kerja Guru</p>
-                <footer class="blockquote-footer">Sabtu, 7 Januari 2023</footer>
-                <hr>
-                <p class="text-success">Awal Masuk Semester 2</p>
-                <footer class="blockquote-footer">Senin, 9 Januari 2023</footer>
+                <?php foreach ($kald as $row) : ?>
+                    <p class="text-success"><?= $row['jenis'] . ' - ' . $row['acara'] ?></p>
+                    <footer class="blockquote-footer"><?= date_format(date_create($row['tgl_awal']), 'l, j M Y') ?></footer>
+                    <hr>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>

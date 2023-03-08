@@ -1,5 +1,7 @@
 <?php
 
+date_default_timezone_set("Asia/Jakarta");
+
 // FUNGSI VIEW UPLOADED PIC =================================================================================================================================
 function uploaded($fileName = '', $dir = '', $default = '')
 {

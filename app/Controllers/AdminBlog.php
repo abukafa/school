@@ -28,10 +28,18 @@ class AdminBlog extends BaseController
         return view('admin/blog_detail', $data);
     }
 
+    public function get($id)
+    {
+        $blogModel = new BlogModel();
+        $blog = $blogModel->find($id);
+        echo json_encode($blog);
+    }
+
     public function save($id)
     {
         $image = '';
-        if ($pic = $this->request->getFile('image')) {
+        $pic = $this->request->getFile('image');
+        if ($pic->isValid()) {
             $newName = $pic->getRandomName();
             uploadFile($this->request->getFile('image'), FCPATH . '/img/galeri', $newName);
             $image = $newName;
@@ -40,11 +48,11 @@ class AdminBlog extends BaseController
         if ($id == 0) {
             $blogModel->insert([
                 'kategori' => $this->request->getPost('kategori'),
-                'idm' => $this->request->getPost('idm'),
+                'idm' => session()->get('idm'),
                 'autor' => $this->request->getPost('autor'),
                 'judul' => $this->request->getPost('judul'),
                 'image' => $image,
-                'excerpt' => substr(strip_tags($this->request->getPost('body')), 0, 200),
+                'excerpt' => strip_tags($this->request->getPost('body')),
                 'body' => $this->request->getPost('body'),
                 'created' => date('Y-m-d h:m:s'),
                 'publish' => false
@@ -53,11 +61,15 @@ class AdminBlog extends BaseController
             return redirect()->to('/data/blog');
         } else {
             $blog = $blogModel->find($id);
-            if ($blog['image'] <> '') {
-                $old_file = FCPATH . '/img/galeri/' . $blog['image'];
-                if (file_exists($old_file)) {
-                    unlink($old_file);
-                };
+            if (!empty($image)) {
+                if ($blog['image'] <> '') {
+                    $old_file = FCPATH . '/img/galeri/' . $blog['image'];
+                    if (file_exists($old_file)) {
+                        unlink($old_file);
+                    };
+                }
+            } else {
+                $image = $blog['image'];
             }
 
             $blogModel->update($id, [
@@ -65,8 +77,8 @@ class AdminBlog extends BaseController
                 'idm' => $this->request->getPost('idm'),
                 'autor' => $this->request->getPost('autor'),
                 'judul' => $this->request->getPost('judul'),
-                'image' => $image ?: $blog['image'],
-                'excerpt' => substr(strip_tags($this->request->getPost('body')), 0, 200),
+                'image' => $image,
+                'excerpt' => strip_tags($this->request->getPost('body')),
                 'body' => $this->request->getPost('body'),
             ]);
             flash('Berhasil', 'Mengubah Postingan..');

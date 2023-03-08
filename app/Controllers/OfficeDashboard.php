@@ -2,14 +2,17 @@
 
 namespace App\Controllers;
 
+use App\Models\PoolingModel;
 use App\Models\ProfilModel;
 
 class OfficeDashboard extends BaseController
 {
     public function index()
     {
+        $poolingModel = new PoolingModel();
         $data = [
-            'title' => 'Dashboard'
+            'title' => 'Dashboard',
+            'pooling' => $poolingModel->findAll()
         ];
         return view('office/dashboard', $data);
     }

@@ -28,9 +28,11 @@ flash_alert();
         <h1 class="h2">Biodata</h1>
     </div>
     <form action="" method="post">
-        <div class="row my-5">
-            <div id="uploaded_image" class="col text-center">
-                <img src="<?= uploaded(($member) ? $member['id'] . '.png' : '', '/img/profile') ?>" class="rounded-circle mb-2" id="imgPreview" width="200" height="200" />
+        <div class="row d-flex justify-content-center my-5">
+            <div class="col-md-4 col-6 text-center">
+                <div id="uploaded_image">
+                    <img src="<?= uploaded(($member) ? $member['id'] . '.png' : '', '/img/profile') ?>" class="rounded-circle mb-2" id="imgPreview" width="200" height="200" />
+                </div>
             </div>
             <input type='file' class='form-control d-none p-1' name='upload_image' id='upload_image' accept='.jpg'>
         </div>
@@ -84,24 +86,24 @@ flash_alert();
             </div>
             <div class='col-md-6 mb-2'>
                 <label class='form-label' for='ni'>Nomor Induk Siswa</label>
-                <input type='text' class='form-control' name='ni' id='ni' value="<?= ($member) ? $member['ni'] : '' ?>">
+                <input type='text' class='form-control' name='ni' id='ni' value="<?= ($member) ? $member['ni'] : '' ?>" required>
             </div>
             <div class='col-md-6 mb-2'>
                 <label class='form-label' for='tahun'>Tahun Masuk</label>
-                <input type='text' class='form-control' name='tahun' id='tahun' value="<?= ($member) ? $member['tahun'] : '' ?>">
+                <input type='text' class='form-control' name='tahun' id='tahun' value="<?= ($member) ? $member['tahun'] : '' ?>" required>
             </div>
             <div class='col-md-6 mb-2'>
                 <label class='form-label' for='nama'>Nama Lengkap</label>
-                <input type='text' class='form-control' name='nama' id='nama' value="<?= ($member) ? $member['nama'] : '' ?>">
+                <input type='text' class='form-control' name='nama' id='nama' value="<?= ($member) ? $member['nama'] : '' ?>" required>
             </div>
             <div class='col-md-6 mb-2'>
                 <label class='form-label' for='panggil'>Panggilan</label>
-                <input type='text' class='form-control' name='panggil' id='panggil' value="<?= ($member) ? $member['panggil'] : '' ?>">
+                <input type='text' class='form-control' name='panggil' id='panggil' value="<?= ($member) ? $member['panggil'] : '' ?>" required>
             </div>
             <div class='col-md-6 mb-2'>
                 <label class='form-label' for=''>Jenis Kelamin</label>
-                <select type='text' class='form-select' name='jk' id='jk' value="<?= ($member) ? $member['jk'] : '' ?>">
-                    <option value=''>.. pilih ..</option>
+                <select type='text' class='form-select' name='jk' id='jk' required>
+                    <option><?= ($member) ? $member['jk'] : '' ?></option>
                     <option>Laki-laki</option>
                     <option>Perempuan</option>
                 </select>

@@ -34,15 +34,18 @@ flash_alert()
             <div class="col-lg-6">
                 <div class="mb-3">
                     <label class='form-label' id="kategori_label" for="kategori">Kategori</label>
-                    <select class="form-select" id="kategori" name="kategori" aria-label="Kategori">
+                    <select class="form-select" id="kategori" name="kategori" aria-label="Kategori" required>
                         <option><?= ($blog) ? $blog['kategori'] : '' ?></option>
+                        <option>Profil</option>
                         <option>Pendidikan</option>
                         <option>Dunia Islam</option>
                         <option>Organisasi</option>
                         <option>Kesehatan</option>
+                        <option>Teknologi</option>
                         <option>Sosial</option>
                         <option>Politik</option>
                         <option>Nasional</option>
+                        <option>Wirausaha</option>
                         <option>Kuliner</option>
                         <option>Inspirasi</option>
                     </select>
@@ -50,13 +53,13 @@ flash_alert()
                 <div class="mb-3">
                     <label for="autor" class="form-label">Penulis</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" name="autor" id="autor" value="<?= ($blog) ? $blog['autor'] : '' ?>">
+                        <input type="text" class="form-control" name="autor" id="autor" value="<?= ($blog) ? $blog['autor'] : '' ?>" required>
                         <input type="hidden" class="form-control" name="idm" id="idm" value="<?= ($blog) ? $blog['idm'] : '' ?>">
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="judul" class="form-label">Judul Blog</label>
-                    <input type="text" class="form-control" name="judul" id="judul" value="<?= ($blog) ? $blog['judul'] : '' ?>">
+                    <input type="text" class="form-control" name="judul" id="judul" value="<?= ($blog) ? $blog['judul'] : '' ?>" required>
                 </div>
                 <div class="mb-3">
                     <label for="image" class="form-label">Gambar</label>
@@ -79,7 +82,7 @@ flash_alert()
             </div>
             <div class="col-12 mb-3">
                 <label for="judul" class="form-label">Isi Blog</label>
-                <input type="hidden" id="body" name="body">
+                <input type="text" id="body" name="body" style="visibility: hidden;" required>
                 <trix-editor input="body"><?= ($blog) ? $blog['body'] : '' ?></trix-editor>
             </div>
         </div>

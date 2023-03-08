@@ -2,15 +2,18 @@
 
 namespace App\Controllers;
 
+use App\Models\KompetensiModel;
 use App\Models\MemberModel;
 
 class OfficeMember extends BaseController
 {
     protected $memberModel;
+    protected $kompetensiModel;
 
     public function __construct()
     {
         $this->memberModel = new MemberModel();
+        $this->kompetensiModel = new KompetensiModel();
     }
 
     public function get($id = NULL)
@@ -20,6 +23,15 @@ class OfficeMember extends BaseController
         } else {
             $data = ['member' => $this->memberModel->find($id)];
         }
+        echo json_encode($data);
+    }
+
+    public function memkom($id)
+    {
+        $data = [
+            'member' => $this->memberModel->find($id),
+            'kompetensi' => $this->kompetensiModel->where('idm', $id)->get()->getResultArray()
+        ];
         echo json_encode($data);
     }
 

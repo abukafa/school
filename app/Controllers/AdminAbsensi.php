@@ -20,15 +20,31 @@ class AdminAbsensi extends BaseController
         $this->absensiModel = new AbsensiModel();
     }
 
+    public function getByIdm($idm)
+    {
+        $absensi = $this->absensiModel->find($idm);
+        $data = [
+            'h1' => ($absensi['tanggal'] == date('Y-m-d')) ? $absensi['ket'] : 0,
+            'h2' => ($absensi['tanggal'] == date('Y-m-d', strtotime("-1 days"))) ? $absensi['ket'] : 0,
+            'h3' => ($absensi['tanggal'] == date('Y-m-d', strtotime("-2 days"))) ? $absensi['ket'] : 0,
+            'h4' => ($absensi['tanggal'] == date('Y-m-d', strtotime("-3 days"))) ? $absensi['ket'] : 0,
+            'h5' => ($absensi['tanggal'] == date('Y-m-d', strtotime("-4 days"))) ? $absensi['ket'] : 0,
+            'h6' => ($absensi['tanggal'] == date('Y-m-d', strtotime("-5 days"))) ? $absensi['ket'] : 0,
+        ];
+        echo json_encode($data);
+    }
+
     public function index($thn = NULL)
     {
         if ($thn == NULL) {
-            $member = $this->memberModel->where('akun', 'Siswa')->findAll();
+            $tah = (date('m') > 6 ? date('Y') : date('Y') - 1) - 2;
+            $member = $this->memberModel->where('akun', 'Siswa')->where('tahun >= ', $tah)->findAll();
         } else {
             $member = $this->memberModel->where('akun', 'Siswa')->where('tahun', $thn)->findAll();
         }
         $data = [
             'title' => 'Absensi',
+            'tahun' => $thn,
             'member' => $member,
             'absensi' => $this->absensiModel->where('tanggal', date('Y-m-d'))->findAll()
         ];

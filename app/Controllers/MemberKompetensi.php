@@ -34,6 +34,13 @@ class MemberKompetensi extends BaseController
         echo json_encode($data);
     }
 
+    public function getByIdm($idm)
+    {
+        $kompetensiModel = new KompetensiModel();
+        $data = ['kompetensi' => $kompetensiModel->where('idm', $idm)->get()->getResultArray()];
+        echo json_encode($data);
+    }
+
     public function save($id = NULL)
     {
         $kompetensiModel = new KompetensiModel();

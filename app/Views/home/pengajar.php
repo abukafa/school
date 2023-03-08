@@ -13,7 +13,7 @@ $this->section('content');
             <?php foreach ($guru as $key => $row) : ?>
                 <div class="col-md-4 col-lg-3 mb-4">
                     <div class="card p-2">
-                        <a href="" data-bs-toggle="modal" data-bs-target="#detailInfo" class="modalDetail" data-id="<?= $row['id'] ?>">
+                        <a data-id="<?= $row['id'] ?>" data-bs-toggle="modal" data-bs-target="#detailInfo" class="modalDetail">
                             <img src="<?= uploaded(($row) ? $row['id'] . '.png' : '', '/img/profile') ?>" class="rounded mb-2 w-100 h-100" />
                         </a>
                         <div class="card-body text-center">
@@ -41,8 +41,8 @@ $this->section('content');
             </div>
             <div class="modal-body">
                 <div class="text-center">
-                    <img id="pic" src="" class="img rounded-circle mb-4 w-50" />
-                    <h3 id="nama"></h3>
+                    <img id="pic" src="/img/profile/no.png" class="img rounded-circle mb-4 w-50" />
+                    <h3 id="nama">Nama Saya</h3>
                     <div id="tugas"></div>
                 </div>
                 <div class="row my-4">
@@ -55,31 +55,28 @@ $this->section('content');
                 </div>
                 <div class="mb-4">
                     <h5 class="text-center mb-3">Pendidikan</h5>
-                    <ul class="list-group">
+                    <ul class="list-group pendidikan">
                         <li class="list-group-item">Universitas Galuh<span class="badge rounded-pill bg-warning float-end">Now</span></li>
-                        <li class="list-group-item">SMA 7 Tasikmalaya<span class="badge rounded-pill bg-success float-end">2023</span></li>
-                        <li class="list-group-item">SMPT Bugelan<span class="badge rounded-pill bg-success float-end">2020</span></li>
-                        <li class="list-group-item">SD Manarul Huda<span class="badge rounded-pill bg-success float-end">2010</span></li>
                     </ul>
                 </div>
                 <div class="mb-4">
                     <h5 class="text-center mb-3">Kompetensi</h5>
-                    <ul class="list-group">
+                    <ul class="list-group kompetensi">
                         <li class="list-group-item">Olimpiade Matematika - 2023<span class="badge rounded-pill bg-info float-end">Peserta</span></li>
-                        <li class="list-group-item">Pentas PAI - 2022<span class="badge rounded-pill bg-info float-end">Juara 2</span></li>
-                        <li class="list-group-item">OSIS SMPT Bugelan<span class="badge rounded-pill bg-info float-end">Bag. Kebersihan</span></li>
-                        <li class="list-group-item">Parade Tasmi SMPT Bugelan<span class="badge rounded-pill bg-info float-end">Peserta</span></li>
                     </ul>
                 </div>
                 <div class="alert alert-success" role="alert">
-                    <h4 class="alert-heading">Be Smart!</h4>
-                    <p>This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+                    <div id="kesan">
+                        <p>This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+                    </div>
                     <hr>
-                    <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+                    <div id="pesan">
+                        <p>Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer mb-4">
-                <button type="button" class="btn btn-success"><span data-feather="phone"></span></button>
+                <a href="Https://wa.me/+6287733807998" type="button" class="btn btn-success"><span data-feather="phone"></span></a>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
@@ -89,26 +86,78 @@ $this->section('content');
 <?= $this->include('template/foot-galeri') ?>
 
 <script>
-    $('.modalDetail').on('click', function() {
-        const id = $(this).data('id')
+    // Fungsi Left
+    function left(str, n) {
+        return str.slice(0, n);
+    }
+    // Pengecekan File Exist
+    function fileExists(url) {
+        return new Promise((resolve, reject) => {
+            const xhr = new XMLHttpRequest();
+            xhr.open('HEAD', url, true);
+            xhr.onreadystatechange = function() {
+                if (this.readyState === this.DONE) {
+                    if (this.status !== 404) {
+                        resolve(true);
+                    } else {
+                        resolve(false);
+                    }
+                }
+            };
+            xhr.send();
+        });
+    }
+
+    $('.modalDetail').click(function() {
+        const id = $(this).data('id');
         $.ajax({
-            url: '/admin/member/' + id,
-            method: 'get',
+            url: '/admin/mem-kom/' + id,
+            method: 'GET',
             dataType: 'json',
             success: function(data) {
+                fileExists('/img/profile/' + id + '.png').then((exists) => {
+                    if (exists) {
+                        $('#pic').attr('src', '/img/profile/' + id + '.png')
+                    } else {
+                        $('#pic').attr('src', '/img/profile/no.png')
+                    }
+                });
                 $('#nama').html(data.member.nama)
-                $('#pic').attr('src', '<?= uploaded("' + id + '.png", "/img/profile") ?>')
+                $('#tugas').html('');
                 if (data.member.ket) {
                     const string = data.member.ket
                     const array = string.split(',')
                     const count = array.length
                     for (i = 0; i < count; i++) {
-                        $('#tugas').append('<span class="badge rounded-pill bg-primary">' + array[i] + '</span>')
+                        $('#tugas').append('<span class="badge rounded-pill bg-primary me-1">' + array[i] + '</span>')
                     }
                 }
                 $('#tgl_lahir').html(data.member.taggal_lahir)
                 $('#asal').html(data.member.kecamatan)
                 $('#email').html(data.member.email)
+                $('#kesan').html('<p>' + data.member.kesan + '</p>')
+                $('#pesan').html('<p>' + data.member.pesan + '</p>')
+                $('.pendidikan').html('');
+                $('.kompetensi').html('');
+                const komp = data.kompetensi
+                const con = komp.length
+                for (i = 0; i < con; i++) {
+                    if (data.kompetensi[i].jenis == 'Pendidikan') {
+                        let sekarang = new Date();
+                        let now = sekarang.getFullYear();
+                        let thn = left(data.kompetensi[i].tgl_ahir, 4);
+                        if (thn > now) {
+                            $('.pendidikan').append('<li class="list-group-item">' + data.kompetensi[i].tempat + '<span class="badge rounded-pill bg-info float-end">' + thn + '</span></li>')
+                        } else {
+                            $('.pendidikan').append('<li class="list-group-item">' + data.kompetensi[i].tempat + '<span class="badge rounded-pill bg-warning float-end">now</span></li>')
+                        }
+                    } else {
+                        $('.kompetensi').append('<li class="list-group-item">' + data.kompetensi[i].tempat + '<span class="badge rounded-pill bg-info float-end">' + data.kompetensi[i].hasil + '</span></li>')
+                    }
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
             }
         });
     });

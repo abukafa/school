@@ -23,7 +23,8 @@ $this->section('content');
             <li><a class="dropdown-item" href="/data/absensi">Semua Data</a></li>
         </ul>
     </div>
-    <h4 class="my-3 text-center">Kelas <?= tahun($member[0]['tahun']) ?></h4>
+    <h4 class="mt-4 text-center <?= $tahun ?: 'd-none' ?>">Kelas <?= tahun($member[0]['tahun']) ?></h4>
+    <h6 class="mb-4 text-center"><?= date('l, j M Y h:m') ?></h6>
     <table class="table table-bordered table-hover text-center align-middle">
         <tr class="bg-light">
             <th rowspan="2">Nama</th>

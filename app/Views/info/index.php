@@ -7,22 +7,22 @@ $this->section('content');
     <div class="col-md-8">
         <article class="blog-post">
             <h2 class="blog-post-title">Pengumuman</h2>
-            <p class="blog-post-meta mb-5">December 14, 2020 by <a href="#">Chris</a></p>
+            <p class="blog-post-meta mb-5"><?= date('l, j M Y') ?></p>
         </article>
 
-        <div class="alert alert-success" role="alert">
-            <h4 class="alert-heading">Well done!</h4>
-            <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
-            <hr>
-            <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
-        </div>
+        <?php foreach ($headline as $item) : ?>
+            <div class="alert alert-success" role="alert">
+                <h5 class="alert-heading"><?= $item['tentang'] ?></h5>
+                <p><?= $item['detail'] ?></p>
+                <hr>
+                <p class="mb-0"><?= date_format(date_create($item['tgl_awal']), 'l, j M Y') ?></p>
+            </div>
+        <?php endforeach; ?>
 
         <ul class="list-group">
-            <li class="list-group-item disabled" aria-disabled="true">A disabled item</li>
-            <li class="list-group-item">A second item</li>
-            <li class="list-group-item">A third item</li>
-            <li class="list-group-item">A fourth item</li>
-            <li class="list-group-item">And a fifth one</li>
+            <?php foreach ($info as $item) : ?>
+                <li class="list-group-item"><?= $item['tentang'] ?><span class="float-end"><?= date_format(date_create($item['tgl_awal']), 'l, j M Y') ?></span></li>
+            <?php endforeach; ?>
         </ul>
     </div>
 

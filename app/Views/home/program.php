@@ -6,16 +6,12 @@ $this->section('content');
 <div class="row g-5 mt-2 ps-2">
     <div class="col-md-8">
         <article class="blog-post">
-            <h2 class="blog-post-title">Program Unggulan</h2>
-            <p class="blog-post-meta mb-5">December 14, 2020 by <a href="#">Chris</a></p>
+            <h2 class="blog-post-title"><?= $blog['judul'] ?></h2>
+            <p class="blog-post-meta mb-5"><?= date_format(date_create($blog['created']), 'l, j M Y') ?> by <a href="#"><?= $blog['autor'] ?></a></p>
 
-            <p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
-            <ul>
-                <li>First list item</li>
-                <li>Second list item with a longer description</li>
-                <li>Third list item to close it out</li>
-            </ul>
-            <p>This is some additional paragraph placeholder content. It's a slightly shorter version of the other highly repetitive body text used throughout.</p>
+            <div style="text-align: justify;">
+                <?= $blog['body'] ?>
+            </div>
         </article>
     </div>
 

@@ -52,10 +52,10 @@ flash_alert()
                 <td class="text-start">
                     <p class="mb-0 text-success"><?= $row['judul'] ?></p>
                     <small><?= $row['autor'] . ', ' . date_format(date_create($row['created']), 'd M Y') ?></small>
-                    <p><?= $row['excerpt'] ?>...</p>
+                    <p style="text-align: justify;"><?= substr($row['excerpt'], 0, 200) ?>...</p>
                 </td>
                 <td class="text-end">
-                    <a href="/data/blog/<?= $row['id'] ?>" class="btn btn-sm btn-primary mb-1"><span data-feather="edit"></span></a>
+                    <a href="/data/blog/<?= $row['id'] ?>" class="btn btn-sm btn-primary"><span data-feather="edit"></span></a>
                     <form action="/data/blog/<?= $row['id']; ?>" method="post" class="d-inline" id="delete-<?= $row['id'] ?>">
                         <?= csrf_field(); ?>
                         <input type="hidden" name="_method" value="delete">

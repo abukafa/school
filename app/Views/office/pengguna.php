@@ -5,6 +5,21 @@ $this->section('content');
 flash_alert();
 ?>
 
+<link rel="stylesheet" href="<?= base_url() ?>/plugins/virtual-select/virtual-select.min.css" />
+<script src="<?= base_url() ?>/plugins/virtual-select/virtual-select.min.js"></script>
+
+<style>
+    #label-virtual-select {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    #virtual-select {
+        max-width: 100%;
+        /* width: 500px; */
+    }
+</style>
+
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Pengguna</h1>
@@ -74,7 +89,7 @@ flash_alert();
                 <div class="modal-body">
                     <div class='mb-2'>
                         <label class='form-label' for='uname'>Username</label>
-                        <input type='text' class='form-control' name='uname' id='uname'>
+                        <input type='text' class='form-control' name='uname' id='uname' required>
                     </div>
                     <div class='mb-2 pass'>
                         <label class='form-label' for='pass'>Password</label>
@@ -82,14 +97,14 @@ flash_alert();
                     </div>
                     <div class="mb-2">
                         <label id="idm_label" for="idm">Nama</label>
-                        <select id="idm" name="idm" class="form-control form-select" aria-label="Nama">
+                        <select id="idm" name="idm" class="form-control form-select" aria-label="Nama" required>
                             <option>.. pilih ..</option>
                         </select>
                         <input type="text" class="form-control" id="nama" name="nama" readonly>
                     </div>
                     <div class='mb-2'>
                         <label class='form-label' for='tipe'>Tipe Akun</label>
-                        <select type='text' class='form-select' name='tipe' id='tipe'>
+                        <select type='text' class='form-select' name='tipe' id='tipe' required>
                             <option value=''>.. pilih ..</option>
                             <option>Manager</option>
                             <option>Officer</option>
@@ -97,8 +112,14 @@ flash_alert();
                         </select>
                     </div>
                     <div class='mb-2'>
-                        <label class='form-label' for='akses'>Akses Akun</label>
-                        <input type='text' class='form-control' name='akses' id='akses'>
+                        <label id="label-virtual-select" for='akses'>Akses Akun</label>
+                        <select multiple name="akses" id="virtual-select" data-search="false" data-silent-initial-value-set="true" required>
+                            <option>Office</option>
+                            <option>Absensi</option>
+                            <option>Blog</option>
+                            <option>Galeri</option>
+                            <option>Informasi</option>
+                        </select>
                     </div>
                     <div class='mb-2'>
                         <label class='form-label' for='ket'>Keterangan</label>
@@ -134,7 +155,7 @@ flash_alert();
                 $('#nama').attr('type', 'text');
                 $('#nama').val(data.user.nama);
                 $('#tipe').val(data.user.tipe);
-                $('#akses').val(data.user.akses);
+                $('#virtual-select').attr('placeholder', data.user.akses);
                 $('#ket').val(data.user.ket);
             }
         });
@@ -148,7 +169,7 @@ flash_alert();
         $('#idm').attr('class', 'form-select');
         $('#nama').attr('type', 'hidden');
         $('#tipe').val('');
-        $('#akses').val('');
+        $('#virtual-select').removeAttr('placeholder');
         $('#ket').val('');
     });
     // selector id member
@@ -177,6 +198,10 @@ flash_alert();
                 }
             });
         });
+    });
+
+    VirtualSelect.init({
+        ele: '#virtual-select'
     });
 </script>
 

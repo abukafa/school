@@ -14,7 +14,7 @@ $this->section('content');
     <img src="<?= uploaded($latest['image'], 'img/galeri', 'default.jpg') ?>" class="rounded w-100" alt="">
     <div class="col px-0 mt-3">
         <h1 class="display-4 fst-italic"><?= $latest['judul'] ?></h1>
-        <p class="lead my-3"><?= $latest['excerpt'] ?>...</p>
+        <p class="lead my-3"><?= substr($latest['excerpt'], 0, 200) ?>...</p>
         <p class="lead mb-0"><a href="/blog/<?= $latest['id'] ?>" class="text-white fw-bold">Lanjutkan baca...</a></p>
     </div>
 </div>
